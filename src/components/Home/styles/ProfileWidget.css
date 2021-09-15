@@ -1,0 +1,106 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400;0,700;1,300&display=swap");
+.profileWidget {
+  background-color: white;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+          box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  padding: .6em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.profileWidget-img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 4em;
+  height: 4em;
+  border-radius: 0.2em;
+}
+
+.profileWidget-info {
+  padding: 0 1em 0 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-family: "Oswald", sans-serif;
+  width: 100%;
+}
+
+.profileWidget-info-top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.profileWidget-info-role {
+  background-color: #d13a3a;
+  border-radius: 0.2em;
+  padding: 0 .4em;
+  margin-right: 0.8em;
+  color: #eaeef3;
+}
+
+.profileWidget-info-name {
+  font-size: 1.4rem;
+}
+
+.profileWidget-info-stats {
+  margin-top: 0.3em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.profileWidget-info-stat {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.profileWidget-info-stat-icon {
+  stroke: #757575;
+  stroke-width: .8;
+  width: 1.6rem !important;
+  height: 1.6rem !important;
+  color: #757575;
+}
+
+.profileWidget-info-stat-num {
+  margin-left: 0.6em;
+  font-weight: 500;
+}
+/*# sourceMappingURL=ProfileWidget.css.map */

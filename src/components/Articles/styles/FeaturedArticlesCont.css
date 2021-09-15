@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400;0,700;1,300&display=swap");
+.featuredArticlesCont h3 {
+  font-family: "Oswald", sans-serif;
+  font-size: 1.4rem;
+  color: #1a1a1a;
+  font-weight: 500;
+  margin-bottom: 5px;
+  margin-top: 10px;
+}
+
+.featuredArticlesCont div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.featuredArticlesCont-link {
+  margin-right: 10px;
+}
+
+.featuredArticlesCont-link:last-child {
+  margin: 0;
+}
+/*# sourceMappingURL=FeaturedArticlesCont.css.map */

@@ -1,0 +1,88 @@
+@import './../../../scss/main';
+
+.articlePage {
+    padding: 0 10px 0 10px;
+    display: flex;
+    flex-direction: column;
+    color: $font-color;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1200px;
+    
+    &-main {
+        order: 2;
+        margin: 20px 0 0 0;
+        font-family: $font;
+        //max-width: 100%;
+        max-width: 960px; // 1280
+    }
+    &-right {
+        background-color: rgba(173, 216, 230, 0.144);
+        min-width: 16rem;
+        order: 1;
+        margin: 20px 0 0 0;
+    }
+    &-img {
+        width: 100%;
+        border-radius: $article-radius;
+    }
+    &-title {
+        font-size: 1.8rem;
+        font-weight: 600;
+        padding-top: .4rem;
+        line-height: 2.4rem;
+    }
+    &-info {
+        display: flex;
+        flex-direction: row;
+        align-items: center;       
+        padding: .8rem 0 1.6rem 0;
+
+        &-authorIMG {
+            border-radius: 20em;
+            width: 40px;
+            height: 40px;
+            margin: 0 .5em;
+        }
+        &-authorDate {
+            
+        }
+        &-author {
+
+        }
+        &-date {
+            
+
+        }
+    }
+    &-block {
+        font-family: sans-serif;
+    }
+    &-portableText {
+        //max-width: 100%;
+        //overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        max-width: 100%;
+    }
+    &-blockImage {
+        max-width: 100%;
+        border-radius: $article-radius;
+        margin: 2rem 0;
+    }
+}
+
+@media (min-width: 860px) {
+    .articlePage {
+        flex-direction: row;
+        padding: 0 20px 0 20px;
+    
+        &-main {
+            order: 1;
+        }
+        &-right {
+            order: 2;
+            margin-left: 20px;
+        }
+    }
+  }

@@ -1,0 +1,17 @@
+@import './../../../scss/main';
+
+.recentArticles {
+    margin-top: 10px;
+
+    h3 {
+        font-family: $font;
+        font-size: 1.4rem;  
+        font-weight: 500; 
+        margin-bottom: 5px;
+        margin-top: 10px;
+    }
+
+    &-link {
+        color: $font-color;
+    }
+}

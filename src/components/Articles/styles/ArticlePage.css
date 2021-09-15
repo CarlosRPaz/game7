@@ -1,0 +1,111 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400;0,700;1,300&display=swap");
+.articlePage {
+  padding: 0 10px 0 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  color: #1a1a1a;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1200px;
+}
+
+.articlePage-main {
+  -webkit-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+          order: 2;
+  margin: 20px 0 0 0;
+  font-family: "Oswald", sans-serif;
+  max-width: 960px;
+}
+
+.articlePage-right {
+  background-color: rgba(173, 216, 230, 0.144);
+  min-width: 16rem;
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1;
+  margin: 20px 0 0 0;
+}
+
+.articlePage-img {
+  width: 100%;
+  border-radius: 0.2em;
+}
+
+.articlePage-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  padding-top: .4rem;
+  line-height: 2.4rem;
+}
+
+.articlePage-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: .8rem 0 1.6rem 0;
+}
+
+.articlePage-info-authorIMG {
+  border-radius: 20em;
+  width: 40px;
+  height: 40px;
+  margin: 0 .5em;
+}
+
+.articlePage-block {
+  font-family: sans-serif;
+}
+
+.articlePage-portableText {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  max-width: 100%;
+}
+
+.articlePage-blockImage {
+  max-width: 100%;
+  border-radius: 0.2em;
+  margin: 2rem 0;
+}
+
+@media (min-width: 860px) {
+  .articlePage {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    padding: 0 20px 0 20px;
+  }
+  .articlePage-main {
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
+  }
+  .articlePage-right {
+    -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+            order: 2;
+    margin-left: 20px;
+  }
+}
+/*# sourceMappingURL=ArticlePage.css.map */

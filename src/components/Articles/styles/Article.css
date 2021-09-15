@@ -1,0 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400;0,700;1,300&display=swap");
+.article {
+  width: 100%;
+  height: 5em;
+  margin-bottom: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-decoration: none;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+          box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.article-img {
+  width: 6em;
+  min-height: 1em;
+  border-radius: 0.2em;
+}
+
+.article-infoCont {
+  padding: 10px;
+  font-family: "Oswald", sans-serif;
+}
+
+.article-infoCont-title {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.2rem;
+  margin-bottom: .2em;
+}
+
+.article-infoCont-authorDate {
+  font-size: .8rem;
+}
+/*# sourceMappingURL=Article.css.map */

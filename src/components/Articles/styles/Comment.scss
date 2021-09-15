@@ -1,0 +1,77 @@
+@import './../../../scss/main';
+
+.comment {
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    margin-top: .2em;
+    padding: .6em 0 .6em .6em;
+    font-family: $font-poppins;
+}
+.comment-message {
+    padding: .5em .4em;
+    font-family: sans-serif;
+}
+
+.comment-info {
+    display: flex;
+    width: 100%;
+    font-size: .9rem;
+
+    &-photo {
+        background-color: rgb(189, 189, 189);        
+        width: 2em;
+        height: 2em;
+        border-radius: 20px;
+        margin-right: .6em;
+        object-fit: cover;
+    }
+    &-text {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.1rem;
+    }
+    &-date {
+        font-size: .8rem;
+        opacity: .8;
+    }
+}
+
+.comment-controls {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    &-icon {
+        margin-left: 1em;
+        color: #8d8d8d;
+        cursor: pointer;
+    }
+    &-currentLikes {
+        font-family: $font;
+        font-size: .8rem;
+        margin-left: .4em;
+    }
+}
+
+.like {
+    width: 1.2rem !important;
+    height: 1.2rem !important;
+}
+.liked {
+    color: rgb(228, 60, 60);
+}
+.reply {
+    width: 1.4rem !important;
+    height: 1.4rem !important;
+}
+.arrow {
+    width: 1.6rem !important;
+    height: 1.6rem !important;
+}
+
+.dropdownComments {
+    margin-left: 1em;
+    padding-left: .6em;
+    border-left: solid 1px #9b9b9b;
+}

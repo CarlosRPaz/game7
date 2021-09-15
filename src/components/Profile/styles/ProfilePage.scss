@@ -1,0 +1,63 @@
+@import './../../../scss/main';
+
+.profilePage {
+    padding: 1em;
+    max-width: 960px; // 1280
+    margin-left: auto;
+    margin-right: auto;
+}
+.profilePage-header {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 1em;
+    font-family: $font;
+
+    &-img {
+        width: 5em;
+        border-radius: $article-radius;
+        align-self: center;
+        margin-bottom: .4em;
+    }
+    &-name {
+        font-size: 1.4rem;
+        font-weight: 500;
+    }
+    &-email {
+        font-size: .9rem;
+        opacity: .9;
+    }
+    &-stats {
+        display: flex;
+        justify-content: space-evenly;
+        margin-top: 2em;
+
+        div {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            font-weight: 500;
+
+            label {
+                color: rgb(126, 126, 126);
+            }
+        }
+    }
+}
+.profilePage-comments {
+    background-color: rgb(233, 233, 233);
+
+    &-panel {
+        background-color: $color-surface;
+        padding: .4em 1em;
+        color: $color-light;
+        font-weight: 500;
+    }
+}
+
+
+@media (min-width: 860px) {
+    .profilePage-comments {
+        margin-top: 2em;
+    }
+  }

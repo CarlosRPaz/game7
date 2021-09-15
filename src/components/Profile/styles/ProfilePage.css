@@ -1,0 +1,85 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400;0,700;1,300&display=swap");
+.profilePage {
+  padding: 1em;
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.profilePage-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+  padding: 1em;
+  font-family: "Oswald", sans-serif;
+}
+
+.profilePage-header-img {
+  width: 5em;
+  border-radius: 0.2em;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  margin-bottom: .4em;
+}
+
+.profilePage-header-name {
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.profilePage-header-email {
+  font-size: .9rem;
+  opacity: .9;
+}
+
+.profilePage-header-stats {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  margin-top: 2em;
+}
+
+.profilePage-header-stats div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+  font-weight: 500;
+}
+
+.profilePage-header-stats div label {
+  color: #7e7e7e;
+}
+
+.profilePage-comments {
+  background-color: #e9e9e9;
+}
+
+.profilePage-comments-panel {
+  background-color: #37373b;
+  padding: .4em 1em;
+  color: #eaeef3;
+  font-weight: 500;
+}
+
+@media (min-width: 860px) {
+  .profilePage-comments {
+    margin-top: 2em;
+  }
+}
+/*# sourceMappingURL=ProfilePage.css.map */

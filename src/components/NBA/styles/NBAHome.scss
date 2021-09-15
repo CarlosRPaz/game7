@@ -1,0 +1,54 @@
+@import './../../../scss/main';
+
+.nbaHome {
+    background-color: green;
+    display: flex;
+    justify-content: center;
+    padding: 0 10px 0 10px;
+}
+
+.nbaHome-cont {
+    background-color: purple;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.nbaHome-left {
+    background-color: lightblue;
+    order: 1;
+    flex-grow: 1;
+    margin: 20px 0 0 0;
+    min-width: 160px;
+}
+.nbaHome-middle {
+    background-color: lightcoral;
+    order: 3;
+    flex-grow: 1;
+    margin: 20px 0 0 0;
+}
+.nbaHome-right {
+    background-color: lightgreen;
+    order: 2;
+    flex-grow: 1;
+    margin: 20px 0 0 0;
+    min-width: 160px;
+}
+
+@media (min-width: 800px) {
+    .nbaHome-cont {
+        flex-direction: row;
+    }
+    .nbaHome-left {
+        order: 1;
+        margin-right: 20px;
+    }
+    .nbaHome-middle {
+        order: 2;
+        flex-grow: 2;
+    }
+    .nbaHome-right {
+        order: 3;
+        margin-left: 20px;
+    }
+  }

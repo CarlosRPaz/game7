@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "ACAA,OAAO,CAAC,4FAAI;AAEZ,OAAO,CAAC,qGAAI;AAEZ,OAAO,CAAC,yGAAI;ADFZ,AAAA,eAAe,CAAC;EACZ,UAAU,EAAE,IAAI;CAanB;;AAdD,AAGI,eAHW,CAGX,EAAE,CAAC;EACC,WAAW,ECWZ,QAAQ,EAAE,UAAU;EDVnB,SAAS,EAAE,MAAM;EACjB,WAAW,EAAE,GAAG;EAChB,aAAa,EAAE,GAAG;EAClB,UAAU,EAAE,IAAI;CACnB;;AAEA,AAAD,oBAAM,CAAC;EACH,KAAK,ECMA,OAAO;CDLf",
+    "sources": [
+        "RecentArticles.scss",
+        "../../../scss/_main.scss"
+    ],
+    "names": [],
+    "file": "RecentArticles.css"
+}

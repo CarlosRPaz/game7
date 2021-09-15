@@ -1,0 +1,54 @@
+@import './../../../scss/main';
+
+.mlrHome {
+    background-color: green;
+    display: flex;
+    justify-content: center;
+    padding: 0 10px 0 10px;
+}
+
+.mlrHome-cont {
+    background-color: purple;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.mlrHome-left {
+    background-color: lightblue;
+    order: 1;
+    flex-grow: 1;
+    margin: 20px 0 0 0;
+    min-width: 160px;
+}
+.mlrHome-middle {
+    background-color: lightcoral;
+    order: 3;
+    flex-grow: 1;
+    margin: 20px 0 0 0;
+}
+.mlrHome-right {
+    background-color: lightgreen;
+    order: 2;
+    flex-grow: 1;
+    margin: 20px 0 0 0;
+    min-width: 160px;
+}
+
+@media (min-width: 800px) {
+    .mlrHome-cont {
+        flex-direction: row;
+    }
+    .mlrHome-left {
+        order: 1;
+        margin-right: 20px;
+    }
+    .mlrHome-middle {
+        order: 2;
+        flex-grow: 2;
+    }
+    .mlrHome-right {
+        order: 3;
+        margin-left: 20px;
+    }
+  }

@@ -1,0 +1,54 @@
+@import './../../../scss/main';
+
+.nflHome {
+    background-color: green;
+    display: flex;
+    justify-content: center;
+    padding: 0 10px 0 10px;
+}
+
+.nflHome-cont {
+    background-color: purple;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.nflHome-left {
+    background-color: lightblue;
+    order: 1;
+    flex-grow: 1;
+    margin: 20px 0 0 0;
+    min-width: 160px;
+}
+.nflHome-middle {
+    background-color: lightcoral;
+    order: 3;
+    flex-grow: 1;
+    margin: 20px 0 0 0;
+}
+.nflHome-right {
+    background-color: lightgreen;
+    order: 2;
+    flex-grow: 1;
+    margin: 20px 0 0 0;
+    min-width: 160px;
+}
+
+@media (min-width: 800px) {
+    .nflHome-cont {
+        flex-direction: row;
+    }
+    .nflHome-left {
+        order: 1;
+        margin-right: 20px;
+    }
+    .nflHome-middle {
+        order: 2;
+        flex-grow: 2;
+    }
+    .nflHome-right {
+        order: 3;
+        margin-left: 20px;
+    }
+  }

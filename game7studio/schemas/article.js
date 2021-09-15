@@ -1,6 +1,6 @@
 export default {
-  name: 'post',
-  title: 'Post',
+  name: 'article',
+  title: 'Article',
   type: 'document',
   fields: [
     {
@@ -21,7 +21,7 @@ export default {
       name: 'author',
       title: 'Author',
       type: 'reference',
-      to: {type: 'author'},
+      to: { type: 'author' },
     },
     {
       name: 'mainImage',
@@ -35,7 +35,31 @@ export default {
       name: 'categories',
       title: 'Categories',
       type: 'array',
-      of: [{type: 'reference', to: {type: 'category'}}],
+      of: [{ type: 'reference', to: { type: 'category' } }],
+    },
+    {
+      name: 'mainfeaturedhome',
+      title: 'Main Featured on Home',
+      type: 'boolean',
+      initialValue: false
+    },
+    {
+      name: 'subfeaturedhome',
+      title: 'Sub-Featured on Home',
+      type: 'boolean',
+      initialValue: false
+    },
+    {
+      name: 'mainfeaturedcategory',
+      title: 'Main Featured on Category',
+      type: 'boolean',
+      initialValue: false
+    },
+    {
+      name: 'subfeaturedcategory',
+      title: 'Sub Featured on Category',
+      type: 'boolean',
+      initialValue: false
     },
     {
       name: 'publishedAt',
@@ -47,6 +71,11 @@ export default {
       title: 'Body',
       type: 'blockContent',
     },
+    {
+      name: 'hook',
+      title: 'Short Hook',
+      type: 'string',
+    }
   ],
 
   preview: {
@@ -56,7 +85,7 @@ export default {
       media: 'mainImage',
     },
     prepare(selection) {
-      const {author} = selection
+      const { author } = selection
       return Object.assign({}, selection, {
         subtitle: author && `by ${author}`,
       })

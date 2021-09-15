@@ -1,0 +1,64 @@
+@import './../../../scss/main';
+
+.profileWidget {
+    background-color: white;
+    box-shadow: $article-shadow;
+    padding: .6em;
+
+    display: flex;
+    flex-direction: row;
+
+    &-img {
+        object-fit: cover;
+        width: 4em;
+        height: 4em;
+        border-radius: $article-radius;
+    }
+    &-info {
+        padding: 0 1em 0 1em;
+        display: flex;
+        flex-direction: column;
+        font-family: $font;
+        width: 100%;
+        
+        &-top {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        &-role {
+            background-color: rgb(209, 58, 58);
+            border-radius: $article-radius;
+            padding: 0 .4em;
+            margin-right: 0.8em;
+            color: $color-light;
+        }
+        &-name {
+            font-size: 1.4rem;
+        }
+        &-stats {
+            margin-top: 0.3em;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        &-stat {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            
+            &-icon {
+                stroke: #757575;
+                stroke-width: .8;
+                width: 1.6rem !important;
+                height: 1.6rem !important;
+                color: #757575;
+            }
+            &-num {
+                margin-left: 0.6em;
+                font-weight: 500;
+            }
+        }
+    }
+}
