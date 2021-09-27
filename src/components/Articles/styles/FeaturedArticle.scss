@@ -1,7 +1,6 @@
 @import './../../../scss/main';
 
 .featuredArticle {
-    background-color: rgb(128, 91, 214);
     //flex-grow: 1;
     height: 240px;
     position: relative;
@@ -28,12 +27,16 @@
         left: 10px;
 
         background-color: white;
+        
         font-size: 0.8rem;
+        font-weight: 500;
+        letter-spacing: 1px;
         padding: 0 5px 0 5px;
         border-radius: $article-radius;
 
         &-NFL {
             background-color: $NFL-color;
+            color: $color-light;
         }
         &-NBA {
             background-color: $NBA-color;
@@ -49,7 +52,7 @@
         margin-right: 10px;
 
         color: $color-light;
-        font-size: 1rem;
+        font-size: 1.2rem;
         font-weight: 600;
         line-height: 1.2rem; /*** Play around with this ***/
 
@@ -70,5 +73,10 @@
 @media (min-width: 600px) {
     .featuredArticle {
         height: 320px;
+
+        &-title {
+            font-size: 1.8rem;
+            line-height: 2.2rem; /*** Play around with this ***/
+        }
     }
   }

@@ -70,7 +70,8 @@ function Nav() {
                         <Link to={"/profile/" + user.uid}
                             key={user.uid}
                             className="menu-link"
-                            style={{ textDecoration: 'none' }}>
+                            style={{ textDecoration: 'none' }}
+                            onClick={() => setOpenMenu(!openMenu)}>
                             <img className="menu-profileIMG"
                                 src={user.photoUrl}
                                 alt='tempALT'
@@ -97,23 +98,27 @@ function Nav() {
 
     return (
         <div className="nav">
-            <Link to="/" className="nav__logo-cont">
-                <img className="nav__logo" src={Logo} alt="Lonely Wrld Logo" />
-            </Link>
-
             <div className="nav-links">
-                <Link to="/nfl" style={{ textDecoration: 'none' }}>
-                    <div className="nav-links-link">NFL</div>
+                <Link to="/" className="nav__logo-cont">
+                    <img className="nav__logo" src={Logo} alt="Lonely Wrld Logo" />
                 </Link>
-                <Link to="/nba" style={{ textDecoration: 'none' }}>
-                    <div className="nav-links-link">NBA</div>
-                </Link>
-                <Link to="/mlb" style={{ textDecoration: 'none' }}>
-                    <div className="nav-links-link">MLB</div>
-                </Link>
-                <Link to="/mlr" style={{ textDecoration: 'none' }}>
-                    <div className="nav-links-link">MLR</div>
-                </Link>
+                <div className="nav-linksToHide">
+                    <Link to="/nfl" style={{ textDecoration: 'none' }} className="nav-links-link">
+                        <div className="nav-links-text">NFL</div>
+                    </Link>
+                    <Link to="/nba" style={{ textDecoration: 'none' }} className="nav-links-link">
+                        <div className="nav-links-text">NBA</div>
+                    </Link>
+                    <Link to="/mlb" style={{ textDecoration: 'none' }} className="nav-links-link">
+                        <div className="nav-links-text">MLB</div>
+                    </Link>
+                    <Link to="/mlr" style={{ textDecoration: 'none' }} className="nav-links-link">
+                        <div className="nav-links-text">MLR</div>
+                    </Link>
+                </div>
+            </div>
+
+            <div className="nav-icons">
                 <AvatarOption onClick={() => setOpenMenu(!openMenu)} avatar={user.photoUrl} className="nav-avatar" />
             </div>
 
@@ -156,6 +161,14 @@ function Nav() {
                             </li>
                         );
                     })}
+                    <hr class="solid" />
+
+                    <div onClick={logoutOfApp}
+                        className="sidebar-logout">
+                        <ExitToAppIcon className="sidebar-logout-icon" />
+                        <span>Logout</span>
+                    </div>
+
                 </ul>
             </div>
 

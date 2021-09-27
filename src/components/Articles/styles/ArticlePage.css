@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400;0,700;1,300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap");
 .articlePage {
   padding: 0 10px 0 10px;
   display: -webkit-box;
@@ -67,8 +67,14 @@
   margin: 0 .5em;
 }
 
+.articlePage-info-date {
+  font-family: "Roboto", sans-serif;
+  color: #37373b;
+  font-size: .9em;
+}
+
 .articlePage-block {
-  font-family: sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .articlePage-portableText {

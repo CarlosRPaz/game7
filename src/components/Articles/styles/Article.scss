@@ -32,3 +32,12 @@
         font-size: .8rem;
     }
 }
+
+@media (min-width: 500px) {
+    .article-img {
+        width: 10em;
+    }
+    .article {
+        height: 6em;
+    }
+  }

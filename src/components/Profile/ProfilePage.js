@@ -4,6 +4,9 @@ import { useSelector } from 'react-redux';
 import { selectUser } from '../../features/userSlice';
 import { db } from '../../firebase';
 
+import moment from 'moment';
+
+
 function ProfilePage() {
     const user = useSelector(selectUser);
 
@@ -18,6 +21,24 @@ function ProfilePage() {
                 }))
             ))
     }, []);
+
+    function ProfileComment({ message, likeCount, timestamp }) {
+        return (
+            <div className="profileComment">
+                <div className="profileComment-message">
+                    {message}
+                </div>
+                <div className="profileComment-commentInfo">
+                    <div className="profileComment-likeCount">
+                        <span>{likeCount}</span> likes
+                    </div>
+                    <div className="profileComment-timestamp">
+                        {moment(timestamp.toDate()).fromNow()}
+                    </div>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className="profilePage">
@@ -46,8 +67,13 @@ function ProfilePage() {
                 <div className="profilePage-comments-panel">
                     filter by recent, popular
                 </div>
-                {profileComments.map(({ id, data: { message } }) => (
-                    <p key={id}>{message}</p>
+                {profileComments.map(({ id, data: { message, likeCount, timestamp } }) => (
+                    <ProfileComment
+                        key={id}
+                        message={message}
+                        likeCount={likeCount}
+                        timestamp={timestamp}
+                    />
                 ))}
             </div>
         </div>

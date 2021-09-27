@@ -2,7 +2,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400;0,700;1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
 
 // ********************************
 // *** Variables ******************
@@ -10,7 +10,9 @@ $color-primary: #1DA6FB;
 $color-secondary: #6EE266;
 $color-background: #242427; 
 $color-surface: #37373b; 
-$color-light: #eaeef3;
+$color-lightgray: #e4e8ec;
+$color-lightergray: #f9fbff;
+$color-light: #f8f8ff;
 
 $article-radius: .2em;
 $article-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;

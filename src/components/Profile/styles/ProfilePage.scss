@@ -46,6 +46,8 @@
 }
 .profilePage-comments {
     background-color: rgb(233, 233, 233);
+    border-radius: $article-radius;
+    overflow: hidden;
 
     &-panel {
         background-color: $color-surface;
@@ -53,6 +55,38 @@
         color: $color-light;
         font-weight: 500;
     }
+}
+.profileComment {
+    background-color: $color-lightgray;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: .6em 1em;
+    
+    
+    &-commentInfo {
+        display: flex;
+        flex-direction: row;
+        font-family: $font-roboto;
+        color: gray;
+        font-size: .9em;
+        margin-top: .6em;
+    }
+    &-likeCount {
+        margin-right: 2em;
+
+        span {
+            margin: 0;
+            font-weight: 500;
+            color: $color-surface;
+        }
+    }
+    &-message {
+        flex-grow: 1;
+    }
+}
+.profileComment:nth-child(even) {
+    background-color: white;
 }
 
 

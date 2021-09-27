@@ -8,12 +8,19 @@ import { Link } from "react-router-dom";
 import sanityClient from '../../client.js';
 import ProfileWidget from "./ProfileWidget";
 import PollWidget from "./PollWidget";
+import Article from "../Articles/Article";
+import SocialsWidget from "./SocialsWidget";
+import Pagination from "./Pagination";
 
 function Home() {
 
     const [featuredArticlesData, setFeaturedArticlesData] = useState(null);
     const [headerArticleData, setHeaderArticleData] = useState(null);
-    const [recentArticleData, setRecentArticleData] = useState(null);
+    const [recentArticleData, setRecentArticleData] = useState([]);
+
+    const [loading, setLoading] = useState(false);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [postsPerPage] = useState(6);
 
     // ***********************************************************************************
     // *** Main-Featured All Articles ****************************************************
@@ -60,17 +67,17 @@ function Home() {
             .catch(console.error);
     }, []);
 
-    console.log('[]->{ title }', featuredArticlesData);
-
     // ***********************************************************************************
     // *** Recent All Articles minus mainfeaturedhome && subfeaturedhome *****************
     useEffect(() => {
+        setLoading(true);
         sanityClient
             .fetch(`*[_type == "article" && mainfeaturedhome == false && subfeaturedhome == false] | order(publishedAt desc) {
                 title,
                 slug,
                 author->{name},
                 publishedAt,
+                summary,
                 mainImage{
                     asset->{
                         _id,
@@ -81,24 +88,47 @@ function Home() {
             }`)
             .then((data) => setRecentArticleData(data))
             .catch(console.error);
+        setLoading(false);
     }, []);
+
+    // Get current articles
+    const indexOfLastPost = currentPage * postsPerPage;
+    const indexOfFirstPost = indexOfLastPost - postsPerPage;
+    const currentPosts = recentArticleData.slice(indexOfFirstPost, indexOfLastPost);
+
+    // Change page
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
     return (
         <div className="home">
             <div className="home-cont">
                 <div className="home-left">
-                    <ProfileWidget />
+                    {/*<ProfileWidget />*/}
+                    <SocialsWidget />
+                    {/* Advertisements */}
                 </div>
                 <div className="home-middle">
-                    <HeaderArticle headerArticleData={headerArticleData} />
+                    {headerArticleData &&
+                        <Link to={"/article/" + headerArticleData.slug.current} key={headerArticleData.slug.current}>
+                            <HeaderArticle headerArticleData={headerArticleData} />
+                        </Link>
+                    }
 
-                    <FeaturedArticlesCont featuredArticlesData={featuredArticlesData} />
+                    <FeaturedArticlesCont
+                        featuredArticlesData={featuredArticlesData}
+                        className="featuredArticlesCont"
+                    />
 
-                    <RecentArticles articleData={recentArticleData} />
+                    <RecentArticles articleData={currentPosts} loading={loading} />
+                    <Pagination
+                        postsPerPage={postsPerPage}
+                        totalPosts={recentArticleData.length}
+                        paginate={paginate}
+                    />
                 </div>
                 <div className="home-right">
                     <PollWidget />
-                    Schedule?
+                    {/* Schedule */}
                 </div>
             </div>
         </div>

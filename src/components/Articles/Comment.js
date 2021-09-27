@@ -188,7 +188,7 @@ function Comment({ firestoreId, name, userId, message, photoUrl, commentId, time
                 <img src={photoUrl} alt="" className="comment-info-photo" />
                 <div className="comment-info-text">
                     <p className="comment-info-name">{name}</p>
-                    <p className="comment-info-date">{moment(timestamp).fromNow()}</p>
+                    <p className="comment-info-date">{moment(timestamp.toDate()).fromNow()}</p>
                 </div>
             </div>
             <p className="comment-message">{message}</p>

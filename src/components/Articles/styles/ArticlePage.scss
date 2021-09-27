@@ -44,19 +44,14 @@
             height: 40px;
             margin: 0 .5em;
         }
-        &-authorDate {
-            
-        }
-        &-author {
-
-        }
         &-date {
-            
-
+            font-family: $font-roboto;
+            color: $color-surface;
+            font-size: .9em;
         }
     }
     &-block {
-        font-family: sans-serif;
+            font-family: $font-roboto;
     }
     &-portableText {
         //max-width: 100%;

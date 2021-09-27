@@ -1,0 +1,28 @@
+@import "./../../../scss/main";
+
+.pollWidget {
+  background-color: $color-lightgray;
+  padding: 1em;
+  border-radius: $article-radius;
+  margin-bottom: 1em;
+
+  position: -webkit-sticky;
+  position: sticky;
+  top: 20px;
+
+  p {
+    font-family: $font;
+    font-size: 1.2rem;
+    padding-bottom: 0.4em;
+  }
+  &-body {
+    background-color: $color-lightergray;
+    border-radius: $article-radius;
+    padding: 0.6em;
+    font-family: $font-roboto;
+  }
+  &-question {
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+}

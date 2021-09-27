@@ -7,6 +7,7 @@ import sanityClient from '../../client.js';
 import PortableText from "@sanity/block-content-to-react";
 import urlBuilder from "@sanity/image-url";
 import { maxWidth } from '@material-ui/system';
+import moment from 'moment';
 
 const builder = urlBuilder({ projectId: 'jauwdlqi', dataset: 'production' });
 
@@ -77,7 +78,7 @@ function ArticlePage({ article }) {
                             />
                             <div className="articlePage-info-authorDate">
                                 <p className="articlePage-info-author">By {currentArticle.name}</p>
-                                <p className="articlePage-info-date">{currentArticle.publishedAt}</p>
+                                <p className="articlePage-info-date">{moment(currentArticle.publishedAt).format("LLL")}</p>
                             </div>
                         </div>
                     </header>
