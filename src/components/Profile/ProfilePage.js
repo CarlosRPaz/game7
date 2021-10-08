@@ -80,6 +80,7 @@ function ProfilePage() {
                         <span>119</span>
                     </div>
                 </div>
+                <button className="profilePage-header-editProfileBtn">Edit Profile</button>
             </div>
 
 

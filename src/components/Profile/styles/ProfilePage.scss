@@ -7,6 +7,8 @@
     margin-right: auto;
 }
 .profilePage-header {
+    background-color: white;
+    border-radius: $article-radius;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -15,9 +17,11 @@
 
     &-img {
         width: 5em;
-        border-radius: $article-radius;
+        height: 5em;
+        border-radius: 50px;
         align-self: center;
         margin-bottom: .4em;
+        object-fit: cover;        
     }
     &-name {
         font-size: 1.4rem;
@@ -41,13 +45,29 @@
             label {
                 color: rgb(126, 126, 126);
             }
+            span {
+                margin: 0;
+            }
         }
+    }
+    &-editProfileBtn {
+        background-color: $color-primary;
+        border-radius: $article-radius;
+        border: none;
+        width: 100%;
+        color: $color-light;
+        font-weight: 600;
+        font-size: .9rem;
+        padding: .6em 1.4em; 
+        margin-top: 2rem;
+        cursor: pointer;
     }
 }
 .profilePage-comments {
     background-color: rgb(233, 233, 233);
     border-radius: $article-radius;
     overflow: hidden;
+    margin-top: 1em;
 
     &-panel {
         background-color: $color-surface;
