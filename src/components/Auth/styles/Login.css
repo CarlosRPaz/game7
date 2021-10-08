@@ -1,1 +1,75 @@
-/* No CSS *//*# sourceMappingURL=Login.css.map */
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap");
+.login {
+  background-color: #e4e8ec;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1rem 0 2rem 0;
+}
+
+.login > img {
+  -o-object-fit: contain;
+     object-fit: contain;
+  height: 120px;
+  margin-bottom: 1rem;
+}
+
+.login > form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  padding: 0 1rem 0 1rem;
+}
+
+.login > form > input {
+  width: 100%;
+  border: none;
+  height: 3rem;
+  font-size: 1rem;
+  margin-bottom: 10px;
+  border-radius: 0.2em;
+  font-size: 0.9rem;
+  padding: 1em;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+  outline: none;
+  border: 1px solid rgba(128, 128, 128, 0.479);
+}
+
+.login > form > button {
+  width: 100%;
+  height: 50px;
+  font-size: large;
+  color: #fff;
+  background-color: #1DA6FB;
+  border-radius: 0.2em;
+  border: none;
+}
+
+.login > form > .demoBtn {
+  background-color: #a4acb8;
+  color: #1a1a1a;
+  margin-top: 0.6rem;
+}
+
+.login__register {
+  color: #1DA6FB;
+  cursor: pointer;
+}
+
+.login > p {
+  margin-top: 20px;
+}
+/*# sourceMappingURL=Login.css.map */

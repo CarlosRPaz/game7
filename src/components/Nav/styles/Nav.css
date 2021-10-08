@@ -108,8 +108,7 @@
   margin-right: .8em;
 }
 
-.menu-logout {
-  background-color: rgba(204, 0, 0, 0.769);
+.menu-authBtn {
   cursor: pointer;
   border-radius: 0.2em;
   padding: 1rem 2rem;
@@ -122,14 +121,26 @@
   line-height: 1rem;
 }
 
-.menu-logout-icon {
+.menu-authBtn-icon {
   margin-right: .4em;
   width: .8em !important;
   height: .8em !important;
 }
 
-.menu-logout:hover {
+.logoutBtn {
+  background-color: rgba(204, 0, 0, 0.769);
+}
+
+.logoutBtn:hover {
   background-color: #cc0000;
+}
+
+.loginBtn {
+  background-color: rgba(0, 204, 51, 0.769);
+}
+
+.loginBtn:hover {
+  background-color: #00cc33;
 }
 
 .menuIcon-cont {

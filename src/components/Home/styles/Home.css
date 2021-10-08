@@ -58,6 +58,16 @@
   min-width: 20%;
 }
 
+.home-pagination {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.home-pagination ul {
+  margin: 0 auto;
+}
+
 @media (min-width: 800px) {
   .home-cont {
     -webkit-box-orient: horizontal;

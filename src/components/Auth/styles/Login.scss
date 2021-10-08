@@ -1,0 +1,64 @@
+@import "./../../../scss/main";
+
+.login {
+  background-color: $color-lightgray;
+  display: grid;
+  place-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1rem 0 2rem 0;
+}
+.login > img {
+  object-fit: contain;
+  height: 120px;
+  margin-bottom: 1rem;
+}
+
+.login > form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0 1rem 0 1rem;
+}
+
+.login > form > input {
+  width: 100%;
+  border: none;
+  height: 3rem;
+  font-size: 1rem;
+  margin-bottom: 10px;
+  border-radius: $article-radius;
+  font-size: 0.9rem;
+  padding: 1em;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+  outline: none;
+  border: 1px solid rgba(128, 128, 128, 0.479);
+}
+
+.login > form > button {
+  width: 100%;
+  height: 50px;
+  font-size: large;
+  color: #fff;
+  background-color: $color-primary;
+  border-radius: $article-radius;
+  border: none;
+}
+.login > form > .demoBtn {
+  background-color: rgb(164, 172, 184);
+  color: $font-color;
+  margin-top: 0.6rem;
+}
+
+.login__register {
+  color: $color-primary;
+  cursor: pointer;
+}
+
+.login > p {
+  margin-top: 20px;
+}

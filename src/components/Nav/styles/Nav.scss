@@ -89,24 +89,32 @@
         border-radius: 20em;
         margin-right: .8em;
     }
-    &-logout {
-        background-color: hsla(0, 100%, 40%, 0.769);
+    &-authBtn {
         cursor: pointer;
         border-radius: $article-radius;        
         padding: 1rem 2rem;
         display: flex;
         align-items: center;
         line-height: 1rem;
-
+        
         &-icon {
             margin-right: .4em;
             width: .8em !important;
             height: .8em !important;
         }
-
-        &:hover {
-            background-color: hsl(0, 100%, 40%);           
-        }
+        
+    }
+}
+.logoutBtn {
+    background-color: hsla(0, 100%, 40%, 0.769);
+    &:hover {
+        background-color: hsl(0, 100%, 40%);           
+    }
+}
+.loginBtn {
+    background-color: hsla(135, 100%, 40%, 0.769);
+    &:hover {
+        background-color: hsl(135, 100%, 40%);           
     }
 }
 

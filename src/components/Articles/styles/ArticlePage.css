@@ -114,4 +114,10 @@
     margin-left: 20px;
   }
 }
+
+@media (min-width: 1260px) {
+  .articlePage {
+    padding: 0;
+  }
+}
 /*# sourceMappingURL=ArticlePage.css.map */

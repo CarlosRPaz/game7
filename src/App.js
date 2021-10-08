@@ -16,6 +16,7 @@ import { auth } from './firebase';
 import Login from './components/Auth/Login';
 import ProfilePage from './components/Profile/ProfilePage';
 import { ThemeProvider, createTheme } from '@material-ui/core/styles';
+import Footer from './components/Footer/Footer';
 
 
 function App() {
@@ -63,43 +64,39 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className="app">
-
-        {!user ? (
-          <Login />
-        ) : (
-            <Router>
-              <Nav />
-              <Switch>
-                <Route path="/mlr">
-                  <MLRHome />
-                </Route>
-                <Route path="/mlb">
-                  <MLBHome />
-                </Route>
-                <Route path="/nba">
-                  <NBAHome />
-                </Route>
-                <Route path="/nfl">
-                  <NFLHome />
-                </Route>
-                <Route path="/profile/:uid">
-                  <ProfilePage />
-                </Route>
-                <Route path="/profile">
-                  <ProfilePage />
-                </Route>
-                <Route path="/article/:slug">
-                  <ArticlePage />
-                </Route>
-                <Route path="/article">
-                  <Article />
-                </Route>
-                <Route exact path="/">
-                  <Home />
-                </Route>
-              </Switch>
-            </Router>
-          )}
+        <Router>
+          <Nav />
+          <Switch>
+            <Route path="/mlr">
+              <MLRHome />
+            </Route>
+            <Route path="/mlb">
+              <MLBHome />
+            </Route>
+            <Route path="/nba">
+              <NBAHome />
+            </Route>
+            <Route path="/nfl">
+              <NFLHome />
+            </Route>
+            <Route path="/profile/:uid">
+              <ProfilePage />
+            </Route>
+            <Route path="/profile">
+              <ProfilePage />
+            </Route>
+            <Route path="/article/:slug">
+              <ArticlePage />
+            </Route>
+            <Route path="/article">
+              <Article />
+            </Route>
+            <Route exact path="/">
+              <Home />
+            </Route>
+          </Switch>
+          <Footer />
+        </Router>
       </div >
     </ThemeProvider>
   );

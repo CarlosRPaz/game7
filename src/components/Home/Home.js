@@ -10,7 +10,9 @@ import ProfileWidget from "./ProfileWidget";
 import PollWidget from "./PollWidget";
 import Article from "../Articles/Article";
 import SocialsWidget from "./SocialsWidget";
-import Pagination from "./Pagination";
+//import Pagination from "./Pagination";
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
 
 function Home() {
 
@@ -21,6 +23,11 @@ function Home() {
     const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage] = useState(6);
+
+    const [page, setPage] = useState(1);
+    const handlePageChange = (event, value) => {
+        setPage(value);
+    };
 
     // ***********************************************************************************
     // *** Main-Featured All Articles ****************************************************
@@ -92,9 +99,10 @@ function Home() {
     }, []);
 
     // Get current articles
-    const indexOfLastPost = currentPage * postsPerPage;
+    const indexOfLastPost = page * postsPerPage;
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
     const currentPosts = recentArticleData.slice(indexOfFirstPost, indexOfLastPost);
+    const totalCount = Math.ceil(recentArticleData.length / postsPerPage);
 
     // Change page
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
@@ -118,13 +126,19 @@ function Home() {
                         featuredArticlesData={featuredArticlesData}
                         className="featuredArticlesCont"
                     />
-
-                    <RecentArticles articleData={currentPosts} loading={loading} />
-                    <Pagination
-                        postsPerPage={postsPerPage}
-                        totalPosts={recentArticleData.length}
-                        paginate={paginate}
-                    />
+                    <Stack spacing={1}>
+                        <RecentArticles articleData={currentPosts} loading={loading} />
+                        <Pagination
+                            className="home-pagination"
+                            count={totalCount}
+                            shape="rounded"
+                            page={page}
+                            onChange={handlePageChange}
+                        //postsPerPage={postsPerPage}
+                        //totalPosts={recentArticleData.length}
+                        //paginate={paginate}
+                        />
+                    </Stack>
                 </div>
                 <div className="home-right">
                     <PollWidget />

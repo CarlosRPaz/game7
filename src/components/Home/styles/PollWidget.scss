@@ -10,6 +10,21 @@
   position: sticky;
   top: 20px;
 
+  h5 {
+    margin-bottom: 0.6em;
+    font-family: $font-roboto;
+  }
+  form > div > div > label{
+    margin-left: 0.6em;
+    font-size: 0.9rem;
+  }
+  form > div > div > input, form > div > div > label {
+    cursor: pointer;
+  }
+  form > div > div {
+    margin-bottom: 0.2em;
+  }
+
   p {
     font-family: $font;
     font-size: 1.2rem;
@@ -24,5 +39,17 @@
   &-question {
     font-size: 0.9rem;
     font-weight: 500;
+  }
+  &-submitBtn {
+    background-color: $color-primary;
+    border-radius: $article-radius;
+    border: none;
+    width: 100%;
+    color: $color-light;
+    font-weight: 600;
+    font-size: .9rem;
+    padding: .6em 1.4em; 
+    margin-top: .6rem;
+    cursor: pointer;
   }
 }

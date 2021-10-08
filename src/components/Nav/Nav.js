@@ -14,10 +14,28 @@ import { MenuItem, Button, Menu } from "@material-ui/core";
 
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import LoginIcon from '@mui/icons-material/Login';
+import LogoutIcon from '@mui/icons-material/Logout';
 import CloseIcon from "@material-ui/icons/Close";
+import Modal from '@mui/material/Modal';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 
 import { SidebarData } from "./SidebarData";
+import Login from "../Auth/Login";
+
+const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 300,
+    bgcolor: 'background.paper',
+    border: 'none',
+    borderRadius: '3px',
+    boxShadow: 24,
+    p: 0,
+};
 
 const useStyles = makeStyles({
     root: {
@@ -40,12 +58,15 @@ function Nav() {
     const user = useSelector(selectUser);
     const dispatch = useDispatch();
     const [openMenu, setOpenMenu] = useState(false);
+    const [openModal, setOpenModal] = useState(false);
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [sidebar, setSidebar] = useState(false);
 
     const classes = useStyles();
 
     const showSidebar = () => setSidebar(!sidebar);
+    const showModal = () => setOpenModal(true);
+    const hideModal = () => setOpenModal(false);
 
 
     const logoutOfApp = () => {
@@ -66,32 +87,62 @@ function Nav() {
         return (
             <div className="menu">
                 <ul>
-                    <li>
-                        <Link to={"/profile/" + user.uid}
-                            key={user.uid}
-                            className="menu-link"
-                            style={{ textDecoration: 'none' }}
-                            onClick={() => setOpenMenu(!openMenu)}>
-                            <img className="menu-profileIMG"
-                                src={user.photoUrl}
-                                alt='tempALT'
-                                style={{
-                                    objectFit: 'cover'
-                                }}
-                            />
-                            My Profile
+                    {user ? (
+                        <li>
+                            <Link to={"/profile/" + user.uid}
+                                key={user.uid}
+                                className="menu-link"
+                                style={{ textDecoration: 'none' }}
+                                onClick={() => setOpenMenu(!openMenu)}>
+                                <img className="menu-profileIMG"
+                                    src={user.photoUrl}
+                                    alt='tempALT'
+                                    style={{
+                                        objectFit: 'cover'
+                                    }}
+                                />
+                                My Profile
                         </Link>
-                    </li>
+                        </li>
+                    ) : (
+                            void 0
+                        )}
                     <hr class="solid" />
+
                     <li>
-                        <div onClick={logoutOfApp}
-                            className="menu-logout">
-                            <ExitToAppIcon className="menu-logout-icon" />
-                            Logout
+                        {user ? (
+                            <div onClick={logoutOfApp}
+                                className="menu-authBtn logoutBtn">
+                                <LogoutIcon className="menu-authBtn-icon" />
+                                Logout
                         </div>
+                        ) : (
+                                <div onClick={showModal}
+                                    className="menu-authBtn loginBtn">
+                                    <LoginIcon className="menu-authBtn-icon" />
+                                    Login
+                        </div>
+                            )}
                     </li>
                 </ul>
             </div>
+        );
+    }
+
+    function LoginModal() {
+        return (
+            <>
+                <Modal
+                    open={openModal}
+                    onClose={hideModal}
+                    aria-labelledby="modal-modal-title"
+                    aria-describedby="modal-modal-description"
+                >
+                    <Box sx={style}>
+                        <Login hideModal={hideModal} />
+                    </Box>
+                </Modal>
+            </>
         );
     }
 
@@ -100,7 +151,7 @@ function Nav() {
         <div className="nav">
             <div className="nav-links">
                 <Link to="/" className="nav__logo-cont">
-                    <img className="nav__logo" src={Logo} alt="Lonely Wrld Logo" />
+                    <img className="nav__logo" src={Logo} alt="Game7 Logo" />
                 </Link>
                 <div className="nav-linksToHide">
                     <Link to="/nfl" style={{ textDecoration: 'none' }} className="nav-links-link">
@@ -119,7 +170,7 @@ function Nav() {
             </div>
 
             <div className="nav-icons">
-                <AvatarOption onClick={() => setOpenMenu(!openMenu)} avatar={user.photoUrl} className="nav-avatar" />
+                <AvatarOption onClick={() => setOpenMenu(!openMenu)} avatar={user ? user.photoUrl : 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/271deea8-e28c-41a3-aaf5-2913f5f48be6/de7834s-6515bd40-8b2c-4dc6-a843-5ac1a95a8b55.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzI3MWRlZWE4LWUyOGMtNDFhMy1hYWY1LTI5MTNmNWY0OGJlNlwvZGU3ODM0cy02NTE1YmQ0MC04YjJjLTRkYzYtYTg0My01YWMxYTk1YThiNTUuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.BopkDn1ptIwbmcKHdAOlYHyAOOACXW0Zfgbs0-6BY-E'} className="nav-avatar" />
             </div>
 
             <div className="menuIcon-cont">
@@ -133,23 +184,27 @@ function Nav() {
                             <CloseIcon className="sidebar-close-icon" />
                         </Link>
                     </li>
-                    <li className='sidebar-text'>
-                        <Link to={"/profile/" + user.uid}
-                            key={user.uid}
-                            className="sidebar-profile"
-                            style={{ textDecoration: 'none' }}>
-                            <img className="sidebar-profile-img"
-                                src={user.photoUrl}
-                                alt='tempALT'
-                                style={{
-                                    objectFit: 'cover'
-                                }}
-                            />
-                            <p className='sidebar-profile-name'>
-                                My Profile
+                    {user ? (
+                        <li className='sidebar-text'>
+                            <Link to={"/profile/" + user.uid}
+                                key={user.uid}
+                                className="sidebar-profile"
+                                style={{ textDecoration: 'none' }}>
+                                <img className="sidebar-profile-img"
+                                    src={user.photoUrl}
+                                    alt='tempALT'
+                                    style={{
+                                        objectFit: 'cover'
+                                    }}
+                                />
+                                <p className='sidebar-profile-name'>
+                                    My Profile
                             </p>
-                        </Link>
-                    </li>
+                            </Link>
+                        </li>
+                    ) : (
+                            void 0
+                        )}
                     <hr class="solid" />
                     {SidebarData.map((item, index) => {
                         return (
@@ -165,7 +220,7 @@ function Nav() {
 
                     <div onClick={logoutOfApp}
                         className="sidebar-logout">
-                        <ExitToAppIcon className="sidebar-logout-icon" />
+                        <LogoutIcon className="sidebar-logout-icon" />
                         <span>Logout</span>
                     </div>
 
@@ -175,6 +230,9 @@ function Nav() {
 
             {openMenu &&
                 <Menu />
+            }
+            {openModal &&
+                <LoginModal />
             }
         </div>
     );

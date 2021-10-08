@@ -5,8 +5,9 @@
     padding: 1em 0;
 
     &-header {
-        background-color: rgb(255, 255, 255);
+        background-color: $color-lightgray;       
         padding: .6em;
+        border-radius: $article-radius;
 
         h3 {
             margin-bottom: .6em;
@@ -29,9 +30,23 @@
             flex-grow: 1;
             align-items: center;
         }
-        &-textfield {
+        &-input {
+            border: none;
             flex-grow: 1;
+            border-radius: $article-radius;
+            width: 6rem;
+            font-size: .9rem;
+            padding: 1em; 
+            &:disabled {
+                background-color: rgb(243, 243, 243);
+                border: 1px solid rgba(146, 66, 66, 0.479);
+            }
         }
+        input[type=text]:focus {
+            outline: none;
+            border: 1px solid rgba(128, 128, 128, 0.479);
+        }
+    
         &-sendBtn {
             margin-left: .6em;
             border-radius: $article-radius;
@@ -39,7 +54,7 @@
             background-color: $color-primary;
             color: $color-light;
             font-weight: 600;
-            font-size: 1rem;
+            font-size: .9rem;
             padding: 1rem 2rem; 
         }
     }

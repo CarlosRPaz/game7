@@ -13,6 +13,7 @@
   margin-top: .2em;
   padding: .6em 0 .6em .6em;
   font-family: "Poppins", sans-serif;
+  border-radius: 0.2em;
 }
 
 .comment-message {
@@ -21,6 +22,7 @@
 }
 
 .comment-info {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -28,14 +30,32 @@
   font-size: .9rem;
 }
 
+.comment-info-photoCont {
+  padding-right: 0.3em;
+}
+
 .comment-info-photo {
   background-color: #bdbdbd;
-  width: 2em;
-  height: 2em;
-  border-radius: 20px;
-  margin-right: .6em;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 500px;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.comment-info-vertIconCont {
+  position: absolute;
+  right: 0;
+}
+
+.comment-info-vertIconCont-icon {
+  color: #8d8d8d;
+  cursor: pointer;
+}
+
+.comment-info-vertIconCont button {
+  padding: 0;
+  margin: 0;
 }
 
 .comment-info-text {
@@ -54,6 +74,25 @@
   opacity: .8;
 }
 
+.comment-info-input {
+  background-color: #f3f3f3;
+  border: none;
+  border-radius: 0.2em;
+  font-size: .9rem;
+  padding: 1em;
+  width: 100%;
+  resize: none;
+}
+
+.comment-info textarea[type=text]:focus {
+  outline: none;
+  border: 3px solid rgba(9, 255, 0, 0.479);
+}
+
+.mr06em {
+  margin-right: .6em;
+}
+
 .comment-controls {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -64,6 +103,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  padding-right: .6em;
 }
 
 .comment-controls-icon {
@@ -72,15 +112,15 @@
   cursor: pointer;
 }
 
-.comment-controls-currentLikes {
+.comment-controls-statNum {
   font-family: "Oswald", sans-serif;
   font-size: .8rem;
-  margin-left: .4em;
 }
 
 .like {
   width: 1.2rem !important;
   height: 1.2rem !important;
+  margin-right: .3em;
 }
 
 .liked {
@@ -88,18 +128,61 @@
 }
 
 .reply {
-  width: 1.4rem !important;
-  height: 1.4rem !important;
+  width: 1.5rem !important;
+  height: 1.5rem !important;
 }
 
 .arrow {
-  width: 1.6rem !important;
-  height: 1.6rem !important;
+  width: 1.2rem !important;
+  height: 1.2rem !important;
+  margin-right: .3em;
+}
+
+.m0 {
+  margin-right: 0;
+}
+
+.hide {
+  display: none;
+}
+
+.comment > form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: .2em .6em .2em 0;
+}
+
+.comment > form div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.comment-submitBtn {
+  background-color: #1DA6FB;
+  color: #f8f8ff;
+  border: none;
+  border-radius: 0.2em;
+  font-weight: 600;
+  font-size: .9rem;
+  padding: .5rem .9rem;
+  width: 5rem;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  margin-top: 0.4rem;
 }
 
 .dropdownComments {
-  margin-left: 1em;
-  padding-left: .6em;
-  border-left: solid 1px #9b9b9b;
+  margin-left: .2em;
+  padding-left: .2em;
+  border-left: solid 2px #cccccc;
 }
 /*# sourceMappingURL=Comment.css.map */
