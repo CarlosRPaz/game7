@@ -59,3 +59,29 @@
         }
     }
 }
+.commentSection-blank {
+    background-color: #ffffff;
+    margin-top: .2em;
+    padding: 1em;
+    font-family: $font-poppins;
+    border-radius: $article-radius;  
+    text-align: center; 
+    position: relative;
+    overflow: hidden;
+
+    &-img {
+        position: absolute;
+        width: 200px;
+        top: -3rem;
+        left: -3rem;
+        transform: rotate(.95turn); 
+    }
+    h2, h4 {
+        position: relative;
+        color: rgb(141, 141, 141);
+        z-index: 10;
+    }
+    h2 {
+        font-size: 1.2rem;
+    }
+}

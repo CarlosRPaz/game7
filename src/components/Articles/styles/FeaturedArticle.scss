@@ -1,22 +1,16 @@
 @import './../../../scss/main';
 
 .featuredArticle {
-    //flex-grow: 1;
     height: 240px;
     position: relative;
     font-family: $font;
     border-radius: $article-radius;    
-
     box-shadow: $article-shadow;
-
-    transition: all .3s ease-in-out;
-
-    &:hover {
-        transform: scale(1.02);
-    }
+    overflow: hidden;
 
     img {
         width: 100%;
+        height: 100%;
         object-fit: cover;
         border-radius: $article-radius;    
     }

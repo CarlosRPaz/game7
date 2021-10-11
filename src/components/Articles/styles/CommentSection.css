@@ -75,4 +75,34 @@
   font-size: .9rem;
   padding: 1rem 2rem;
 }
+
+.commentSection-blank {
+  background-color: #ffffff;
+  margin-top: .2em;
+  padding: 1em;
+  font-family: "Poppins", sans-serif;
+  border-radius: 0.2em;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.commentSection-blank-img {
+  position: absolute;
+  width: 200px;
+  top: -3rem;
+  left: -3rem;
+  -webkit-transform: rotate(0.95turn);
+          transform: rotate(0.95turn);
+}
+
+.commentSection-blank h2, .commentSection-blank h4 {
+  position: relative;
+  color: #8d8d8d;
+  z-index: 10;
+}
+
+.commentSection-blank h2 {
+  font-size: 1.2rem;
+}
 /*# sourceMappingURL=CommentSection.css.map */

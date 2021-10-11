@@ -13,9 +13,9 @@ function FeaturedArticlesCont({ featuredArticlesData }) {
     return (
         <div className="featuredArticlesCont">
             <h3>Featured Articles</h3>
-            <div>
+            <div className="featuredArticlesCont-cont">
                 {featuredArticlesData && featuredArticlesData.map((featArticle, index) => (
-                    <Link to={"/article/" + featArticle.slug.current} key={featArticle.slug.current} className="featuredArticlesCont-link" style={{ textDecoration: 'none' }}>
+                    <Link to={"/article/" + featArticle.slug.current} key={featArticle.slug.current} className="featuredArticlesCont-contLink" style={{ textDecoration: 'none' }}>
                         <FeaturedArticle featArticle={featArticle} key={featArticle.slug.current} />
                     </Link>
                 ))}

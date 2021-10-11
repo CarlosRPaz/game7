@@ -285,9 +285,8 @@ hr.solid {
   background-color: lightslategray;
 }
 
-.sidebar-logout {
+.sidebar-auth {
   color: #fcfcfc;
-  background-color: rgba(204, 0, 0, 0.769);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -302,9 +301,17 @@ hr.solid {
   margin: .6em;
 }
 
-.sidebar-logout-icon {
+.sidebar-auth-icon {
   width: .8em !important;
   height: .8em !important;
+}
+
+.sidebar-login {
+  background-color: rgba(0, 204, 78, 0.769);
+}
+
+.sidebar-logout {
+  background-color: rgba(204, 0, 0, 0.769);
 }
 
 .sidebar.active {

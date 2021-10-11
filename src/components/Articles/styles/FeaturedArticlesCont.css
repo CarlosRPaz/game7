@@ -10,24 +10,14 @@
   margin-top: 10px;
 }
 
-.featuredArticlesCont div {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
-.featuredArticlesCont-link {
-  margin-left: 10px;
-}
-
-.featuredArticlesCont-link:first-child {
-  margin: 0;
+.featuredArticlesCont-cont {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  -ms-grid-rows: 1fr;
+      grid-template-rows: 1fr;
+  -webkit-column-gap: .6rem;
+          column-gap: .6rem;
 }
 /*# sourceMappingURL=FeaturedArticlesCont.css.map */

@@ -63,7 +63,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <div className="app">
+      <div className="app" id="page-container">
         <Router>
           <Nav />
           <Switch>

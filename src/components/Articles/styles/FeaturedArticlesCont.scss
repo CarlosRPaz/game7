@@ -9,17 +9,10 @@
         margin-bottom: 5px;
         margin-top: 10px;
     }
-    div {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-    }
-
-    &-link {
-        margin-left: 10px;
-
-        &:first-child {
-            margin: 0;
-        }
+    &-cont {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 1fr;
+        column-gap: .6rem;
     }
 }

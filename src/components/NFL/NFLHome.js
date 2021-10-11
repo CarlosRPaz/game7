@@ -75,7 +75,7 @@ function NFLHome() {
     }, []);
 
     return (
-        <div className="nflHome">
+        <div className="nflHome" id="content-wrap">
             <div className="nflHome-cont">
                 <div className="nflHome-left">left</div>
                 <div className="nflHome-middle">

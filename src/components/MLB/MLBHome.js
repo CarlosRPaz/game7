@@ -74,7 +74,7 @@ function MLBHome() {
     }, []);
 
     return (
-        <div className="mlbHome">
+        <div className="mlbHome" id="content-wrap">
             <div className="mlbHome-cont">
                 <div className="mlbHome-left">left</div>
                 <div className="mlbHome-middle">

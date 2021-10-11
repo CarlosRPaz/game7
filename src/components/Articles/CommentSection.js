@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 import { selectUser } from '../../features/userSlice';
 import uniqid from 'uniqid';
 import { Input, TextField, Button } from '@material-ui/core';
+import LogoGray from './../../img/logogray.png';
 
 function CommentSection({ currentArticleId }) {
     const user = useSelector(selectUser);
@@ -76,6 +77,14 @@ function CommentSection({ currentArticleId }) {
                 </div>
             </div>
 
+
+            {comments.length > 0 ? void 0 : (
+                <div className="commentSection-blank">
+                    <h2>There are currently no comments</h2>
+                    <h4>Be the first to comment!</h4>
+                    <img src={LogoGray} alt="" className="commentSection-blank-img" />
+                </div>
+            )}
             {
                 comments.map(({ id, data: { name, userId, message, photoUrl, commentId, timestamp, likeCount, numReplies } }) => (
                     <Comment

@@ -107,7 +107,8 @@ function Nav() {
                     ) : (
                             void 0
                         )}
-                    <hr class="solid" />
+
+                    {user ? <hr class="solid" /> : void 0}
 
                     <li>
                         {user ? (
@@ -205,7 +206,7 @@ function Nav() {
                     ) : (
                             void 0
                         )}
-                    <hr class="solid" />
+                    {user ? <hr class="solid" /> : void 0}
                     {SidebarData.map((item, index) => {
                         return (
                             <li key={index} className={item.cName}>
@@ -218,11 +219,19 @@ function Nav() {
                     })}
                     <hr class="solid" />
 
-                    <div onClick={logoutOfApp}
-                        className="sidebar-logout">
-                        <LogoutIcon className="sidebar-logout-icon" />
-                        <span>Logout</span>
-                    </div>
+                    {user ? (
+                        <div onClick={logoutOfApp}
+                            className="sidebar-auth sidebar-logout">
+                            <LogoutIcon className="sidebar-auth-icon" />
+                            <span>Logout</span>
+                        </div>
+                    ) : (
+                            <div onClick={showModal}
+                                className="sidebar-auth sidebar-login">
+                                <LoginIcon className="sidebar-auth-icon" />
+                                <span>Login</span>
+                            </div>
+                        )}
 
                 </ul>
             </div>

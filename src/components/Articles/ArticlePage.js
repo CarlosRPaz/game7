@@ -56,7 +56,7 @@ function ArticlePage({ article }) {
     if (!currentArticle) return <div>Loading...</div>;
 
     return (
-        <div className="articlePage">
+        <div className="articlePage" id="content-wrap">
             <div className="articlePage-right">
                 right
             </div>

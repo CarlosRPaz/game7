@@ -108,7 +108,7 @@ function Home() {
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
     return (
-        <div className="home">
+        <div className="home" id="content-wrap">
             <div className="home-cont">
                 <div className="home-left">
                     {/*<ProfileWidget />*/}

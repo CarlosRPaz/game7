@@ -74,7 +74,7 @@ function NBAHome() {
     }, []);
 
     return (
-        <div className="nbaHome">
+        <div className="nbaHome" id="content-wrap">
             <div className="nbaHome-cont">
                 <div className="nbaHome-left">left</div>
                 <div className="nbaHome-middle">

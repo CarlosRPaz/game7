@@ -223,20 +223,25 @@ hr.solid {
             &:hover {background-color: lightslategray;}
         }
     }
-    &-logout {
+    &-auth {
         color: #fcfcfc;
-        background-color: hsla(0, 100%, 40%, 0.769);
         display: flex;
         justify-content: start;
         align-items: center;
         padding: .6em 0 .6em 1em;
         border-radius: $article-radius;
         margin: .6em;
-
+        
         &-icon {
             width: .8em !important;
             height: .8em !important;
         }
+    }
+    &-login {
+        background-color: hsla(143, 100%, 40%, 0.769);        
+    }
+    &-logout {
+        background-color: hsla(0, 100%, 40%, 0.769);
     }
   }
   

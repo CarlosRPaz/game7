@@ -13,6 +13,8 @@
           flex-direction: column;
   padding: 3rem 3rem 1rem 3rem;
   font-family: "Roboto", sans-serif;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
 }
 
 .footer-cont {

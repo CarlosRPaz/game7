@@ -74,7 +74,7 @@ function MLRHome() {
     }, []);
 
     return (
-        <div className="mlrHome">
+        <div className="mlrHome" id="content-wrap">
             <div className="mlrHome-cont">
                 <div className="mlrHome-left">left</div>
                 <div className="mlrHome-middle">

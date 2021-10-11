@@ -5,7 +5,7 @@ import Logo from './../../img/logo.png';
 
 function Footer() {
     return (
-        <div className="footer">
+        <div className="footer" id="footer">
             <div className="footer-cont">
                 <div className="footer-companyCol">
                     <Link to="/" className="footer-logo-cont">

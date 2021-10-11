@@ -12,7 +12,7 @@ function FeaturedArticle({ featArticle }) {
             backgroundPosition: "center center"
         }}*/>
             <img src={featArticle.mainImage.asset.url} alt=""
-                style={{ backgroundSize: "cover", backgroundPosition: "center center" }}
+            //style={{ backgroundSize: "cover", backgroundPosition: "center center" }}
             />
             <div className={`featuredArticle-tag 
                 ${featArticle.categories[0].title === 'NFL' ? 'featuredArticle-tag-NFL' : null}
