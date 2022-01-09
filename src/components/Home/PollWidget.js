@@ -19,22 +19,22 @@ function PollWidget() {
                         <div>
                             <input type="radio" id="contactChoice1"
                                 name="contact" value="option1" />
-                            <label for="contactChoice1">Tom Brady</label>
+                            <label htmlFor="contactChoice1">Tom Brady</label>
                         </div>
                         <div>
                             <input type="radio" id="contactChoice2"
                                 name="contact" value="option2" />
-                            <label for="contactChoice2">Peyton Manning</label>
+                            <label htmlFor="contactChoice2">Peyton Manning</label>
                         </div>
                         <div>
                             <input type="radio" id="contactChoice3"
                                 name="contact" value="option3" />
-                            <label for="contactChoice3">Drew Brees</label>
+                            <label htmlFor="contactChoice3">Drew Brees</label>
                         </div>
                         <div>
                             <input type="radio" id="contactChoice4"
                                 name="contact" value="option4" />
-                            <label for="contactChoice4">Joe Montana</label>
+                            <label htmlFor="contactChoice4">Joe Montana</label>
                         </div>
 
                     </div>

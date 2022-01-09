@@ -1,8 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import './styles/ProfilePage.css';
-import { useSelector } from 'react-redux';
-import { selectUser } from '../../features/userSlice';
-import { db } from '../../firebase';
+import {useSelector} from 'react-redux';
+import {selectUser} from '../../features/userSlice';
+import {
+    db,
+    onSnapshot,
+    query,
+    collection,
+    where,
+
+} from '../../firebase';
+import {useParams} from "react-router-dom";
 
 import moment from 'moment';
 
@@ -11,6 +19,14 @@ import Stack from '@mui/material/Stack';
 
 function ProfilePage() {
     const user = useSelector(selectUser);
+
+    const [currentProfile, setCurrentProfile] = useState(null);
+    const {id} = useParams();
+
+    useEffect(() => {
+        console.log(id);
+    }, [id]);
+
 
     const [profileComments, setProfileComments] = useState([]);
 
@@ -22,16 +38,18 @@ function ProfilePage() {
     };
 
     useEffect(() => {
-        db.collection("comments").where("userId", "==", user.uid).onSnapshot((snapshot) =>
-            setProfileComments(
-                snapshot.docs.map((doc) => ({
-                    id: doc.id,
-                    data: doc.data(),
-                }))
-            ))
+        onSnapshot(query(collection(db, "comments"),
+            where("userId", "==", id)), (snapshot) => {
+                setProfileComments(
+                    snapshot.docs.map((doc) => ({
+                        id: doc.id,
+                        data: doc.data(),
+                    }))
+                )
+            })
     }, []);
 
-    function ProfileComment({ message, likeCount, timestamp }) {
+    function ProfileComment({message, likeCount, timestamp}) {
         return (
             <div className="profileComment">
                 <div className="profileComment-message">
@@ -55,7 +73,7 @@ function ProfilePage() {
     const currentComments = profileComments.slice(indexOfFirstPost, indexOfLastPost);
     const totalCount = Math.ceil(profileComments.length / postsPerPage);
 
-    if (!user) { <h1>Loading...</h1> }
+    if(!user) {<h1>Loading...</h1>}
 
     return (
         <div className="profilePage">
@@ -98,7 +116,7 @@ function ProfilePage() {
                     </div>
 
                     {currentComments ? (
-                        currentComments.map(({ id, data: { message, likeCount, timestamp } }) => (
+                        currentComments.map(({id, data: {message, likeCount, timestamp}}) => (
                             <ProfileComment
                                 key={id}
                                 message={message}
@@ -108,8 +126,8 @@ function ProfilePage() {
 
                         ))
                     ) : (
-                            'Loading...'
-                        )
+                        'Loading...'
+                    )
                     }
                 </div>
 

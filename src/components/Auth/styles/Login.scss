@@ -6,11 +6,12 @@
   place-items: center;
   margin-left: auto;
   margin-right: auto;
-  padding: 1rem 0 2rem 0;
+  width: 100%;
+  padding: .6rem 0 1rem 0;
 }
 .login > img {
   object-fit: contain;
-  height: 120px;
+  height: 100px;
   margin-bottom: 1rem;
 }
 
@@ -19,6 +20,7 @@
   flex-direction: column;
   width: 100%;
   padding: 0 1rem 0 1rem;
+  text-align: center;
 }
 
 .login > form > input {
@@ -51,12 +53,16 @@ input[type="password"]:focus {
 .login > form > .demoBtn {
   background-color: rgb(164, 172, 184);
   color: $font-color;
-  margin-top: 0.6rem;
+  margin: 0.6rem 0 0.6rem 0;
 }
 
 .login__register {
   color: $color-primary;
   cursor: pointer;
+}
+
+.login__forgotPassword {
+  margin-top: 2rem;
 }
 
 .login > p {

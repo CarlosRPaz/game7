@@ -1,18 +1,18 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import "./styles/Nav.css";
 
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import './styles/Nav.css';
 import Logo from './../../img/logo.png';
 import AvatarOption from "./AvatarOption";
-import { useDispatch, useSelector } from "react-redux";
-import { auth } from "../../firebase";
-import { logout, selectUser } from "../../features/userSlice";
+import {useDispatch, useSelector} from "react-redux";
+import {auth} from "../../firebase";
+import {logout, selectUser} from "../../features/userSlice";
 
 import MenuIcon from '@material-ui/icons/Menu';
-import { MenuItem, Button, Menu } from "@material-ui/core";
+import {MenuItem, Button, Menu} from "@material-ui/core";
 
-import { makeStyles, withStyles } from '@material-ui/core/styles';
+import {makeStyles, withStyles} from '@material-ui/core/styles';
 
 import LoginIcon from '@mui/icons-material/Login';
 import LogoutIcon from '@mui/icons-material/Logout';
@@ -21,7 +21,7 @@ import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
-import { SidebarData } from "./SidebarData";
+import {SidebarData} from "./SidebarData";
 import Login from "../Auth/Login";
 
 const style = {
@@ -92,7 +92,7 @@ function Nav() {
                             <Link to={"/profile/" + user.uid}
                                 key={user.uid}
                                 className="menu-link"
-                                style={{ textDecoration: 'none' }}
+                                style={{textDecoration: 'none'}}
                                 onClick={() => setOpenMenu(!openMenu)}>
                                 <img className="menu-profileIMG"
                                     src={user.photoUrl}
@@ -102,13 +102,13 @@ function Nav() {
                                     }}
                                 />
                                 My Profile
-                        </Link>
+                            </Link>
                         </li>
                     ) : (
                             void 0
                         )}
 
-                    {user ? <hr class="solid" /> : void 0}
+                    {user ? <hr className="solid" /> : void 0}
 
                     <li>
                         {user ? (
@@ -116,37 +116,21 @@ function Nav() {
                                 className="menu-authBtn logoutBtn">
                                 <LogoutIcon className="menu-authBtn-icon" />
                                 Logout
-                        </div>
+                            </div>
                         ) : (
-                                <div onClick={showModal}
-                                    className="menu-authBtn loginBtn">
-                                    <LoginIcon className="menu-authBtn-icon" />
-                                    Login
-                        </div>
+                                <Link to="/landing">
+                                    <div onClick={showModal}
+                                        className="menu-authBtn loginBtn">
+                                        <LoginIcon className="menu-authBtn-icon" />
+                                        Login
+                                    </div>
+                                </Link>
                             )}
                     </li>
                 </ul>
             </div>
         );
     }
-
-    function LoginModal() {
-        return (
-            <>
-                <Modal
-                    open={openModal}
-                    onClose={hideModal}
-                    aria-labelledby="modal-modal-title"
-                    aria-describedby="modal-modal-description"
-                >
-                    <Box sx={style}>
-                        <Login hideModal={hideModal} />
-                    </Box>
-                </Modal>
-            </>
-        );
-    }
-
 
     return (
         <div className="nav">
@@ -155,16 +139,16 @@ function Nav() {
                     <img className="nav__logo" src={Logo} alt="Game7 Logo" />
                 </Link>
                 <div className="nav-linksToHide">
-                    <Link to="/nfl" style={{ textDecoration: 'none' }} className="nav-links-link">
+                    <Link to="/nfl" style={{textDecoration: 'none'}} className="nav-links-link">
                         <div className="nav-links-text">NFL</div>
                     </Link>
-                    <Link to="/nba" style={{ textDecoration: 'none' }} className="nav-links-link">
+                    <Link to="/nba" style={{textDecoration: 'none'}} className="nav-links-link">
                         <div className="nav-links-text">NBA</div>
                     </Link>
-                    <Link to="/mlb" style={{ textDecoration: 'none' }} className="nav-links-link">
+                    <Link to="/mlb" style={{textDecoration: 'none'}} className="nav-links-link">
                         <div className="nav-links-text">MLB</div>
                     </Link>
-                    <Link to="/mlr" style={{ textDecoration: 'none' }} className="nav-links-link">
+                    <Link to="/mlr" style={{textDecoration: 'none'}} className="nav-links-link">
                         <div className="nav-links-text">MLR</div>
                     </Link>
                 </div>
@@ -190,9 +174,9 @@ function Nav() {
                             <Link to={"/profile/" + user.uid}
                                 key={user.uid}
                                 className="sidebar-profile"
-                                style={{ textDecoration: 'none' }}>
+                                style={{textDecoration: 'none'}}>
                                 <img className="sidebar-profile-img"
-                                    src={user.photoUrl}
+                                    src={user.photoUrl ? user.photoUrl : 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/271deea8-e28c-41a3-aaf5-2913f5f48be6/de7834s-6515bd40-8b2c-4dc6-a843-5ac1a95a8b55.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzI3MWRlZWE4LWUyOGMtNDFhMy1hYWY1LTI5MTNmNWY0OGJlNlwvZGU3ODM0cy02NTE1YmQ0MC04YjJjLTRkYzYtYTg0My01YWMxYTk1YThiNTUuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.BopkDn1ptIwbmcKHdAOlYHyAOOACXW0Zfgbs0-6BY-E'}
                                     alt='tempALT'
                                     style={{
                                         objectFit: 'cover'
@@ -200,13 +184,13 @@ function Nav() {
                                 />
                                 <p className='sidebar-profile-name'>
                                     My Profile
-                            </p>
+                                </p>
                             </Link>
                         </li>
                     ) : (
                             void 0
                         )}
-                    {user ? <hr class="solid" /> : void 0}
+                    {user ? <hr className="solid" /> : void 0}
                     {SidebarData.map((item, index) => {
                         return (
                             <li key={index} className={item.cName}>
@@ -217,7 +201,7 @@ function Nav() {
                             </li>
                         );
                     })}
-                    <hr class="solid" />
+                    <hr className="solid" />
 
                     {user ? (
                         <div onClick={logoutOfApp}
@@ -226,22 +210,20 @@ function Nav() {
                             <span>Logout</span>
                         </div>
                     ) : (
-                            <div onClick={showModal}
-                                className="sidebar-auth sidebar-login">
-                                <LoginIcon className="sidebar-auth-icon" />
-                                <span>Login</span>
-                            </div>
+                            <Link to="/landing">
+                                <div
+                                    className="sidebar-auth sidebar-login">
+                                    <LoginIcon className="sidebar-auth-icon" />
+                                    <span>Login</span>
+                                </div>
+                            </Link>
                         )}
 
                 </ul>
             </div>
 
-
             {openMenu &&
                 <Menu />
-            }
-            {openModal &&
-                <LoginModal />
             }
         </div>
     );

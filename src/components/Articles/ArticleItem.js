@@ -2,10 +2,11 @@ import React from 'react';
 import './styles/ArticleItem.css';
 import moment from 'moment';
 
-function ArticleItem({ article }) {
+
+function ArticleItem({article}) {
 
     function truncate(string, n) {
-        return string ?.length > n ? string.substr(0, n - 1) + '...' : string;
+        return string.length > n ? string.substr(0, n - 1) + '...' : string;
     }
 
     return (

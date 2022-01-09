@@ -1,24 +1,29 @@
-import React, { useState } from 'react'
-import { useDispatch } from "react-redux";
-import { login } from '../../features/userSlice';
-import { auth, db } from '../../firebase';
+import React, {useState} from 'react'
+import {useDispatch} from "react-redux";
+import {login} from '../../features/userSlice';
+import {
+    auth,
+    db,
+    signInWithEmailAndPassword,
+    sendPasswordResetEmail,
+} from '../../firebase';
 import './styles/Login.css';
 import Logo from '../../img/logo.png';
+import {useHistory} from 'react-router-dom';
 
-function Login({ hideModal }) {
+function Login({hideModal, toggleSwitch}) {
+
+    const history = useHistory();
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [name, setName] = useState("");
-    const [profilePic, setProfilePic] = useState("");
-    const [loginBool, setLoginBool] = useState(true);
+
     const dispatch = useDispatch();
 
     const loginToApp = (e) => {
         e.preventDefault();
 
-        auth
-            .signInWithEmailAndPassword(email, password)
+        signInWithEmailAndPassword(auth, email, password)
             .then((userAuth) => {
                 dispatch(
                     login({
@@ -30,14 +35,12 @@ function Login({ hideModal }) {
                 );
             })
             .catch((error) => alert(error));
-
-        hideModal();
+        history.replace("/");
     };
     const demoLogin = (e) => {
         e.preventDefault();
 
-        auth
-            .signInWithEmailAndPassword('crpaz@asu.edu', 'oakley44')
+        signInWithEmailAndPassword(auth, 'crpaz@asu.edu', 'testPassword')
             .then((userAuth) => {
                 dispatch(
                     login({
@@ -49,46 +52,25 @@ function Login({ hideModal }) {
                 );
             })
             .catch((error) => alert(error));
-
-        hideModal();
+        history.replace("/");
     };
 
-    const register = () => {
-        if (!name) {
-            return alert('Please enter your full name!');
+    const sendResetPasswordEmail = () => {
+        if(!email) {
+            return alert('Please enter your email address!');
         }
 
-        auth
-            .createUserWithEmailAndPassword(email, password)
-            .then((userAuth) => { // if successful, then do:
-                return db.collection('users').doc(userAuth.user.uid).set({
-                    userId: `${userAuth.user.uid}`,
-                    userName: `${userAuth.user.displayName}`,
-                    email: `${userAuth.user.email}`,
-                    photoUrl: `${userAuth.user.photoUrl}`,
-                    /*bio: 'Bio has not been set yet.',*/
-                    role: 'Rookie',
-                    comments: 0,
-                    likes: 0,
-                    rep: 0,
-                });
-                userAuth.user
-                    .updateProfile({
-                        displayName: name,
-                        photoURL: profilePic,
-                    })
-                    .then(() => {
-                        dispatch(
-                            login({
-                                email: userAuth.user.email,
-                                uid: userAuth.user.uid,
-                                displayName: name,
-                                photoUrl: profilePic,
-                            })
-                        );
-                    })
+        sendPasswordResetEmail(auth, email)
+            .then(() => {
+                alert(`Password-reset email sent to ${email}`)
             })
-            .catch((error) => alert(error));
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                alert(error);
+                console.log(errorCode);
+                console.log(errorMessage);
+            });
     };
 
     return (
@@ -98,65 +80,33 @@ function Login({ hideModal }) {
                 alt=""
             />
 
-            {loginBool ? (
-                <>
-                    <form>
-                        <input
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)} placeholder='Email'
-                            type="email"
-                            required
-                        />
-                        <input
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)} placeholder='Password'
-                            type="password"
-                            required
-                        />
+            <>
+                <form>
+                    <input
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)} placeholder='Email'
+                        type="email"
+                        name="email"
+                        required
+                    />
+                    <input
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)} placeholder='Password'
+                        type="password"
+                        name="password"
+                        required
+                    />
 
-                        <button type='submit' onClick={loginToApp}>Sign In</button>
-                        <button type='submit' onClick={demoLogin} className="demoBtn">Demo Login</button>
-                    </form>
-                    <p>Not a member?{' '}
-                        <span className='login__register' onClick={() => setLoginBool(!loginBool)}>Register</span>
+                    <button type='submit' value="Submit" onClick={loginToApp}>Sign In</button>
+                    <button onClick={demoLogin} className="demoBtn">Demo Login</button>
+                    <p>
+                        <span className='login__register' onClick={sendResetPasswordEmail}>Forgot Password</span>
                     </p>
-                </>
-            ) : (
-                    <>
-                        <form>
-                            <input
-                                value={name}
-                                onChange={(e) => setName(e.target.value)}
-                                placeholder='Username'
-                                type="text"
-                                required
-                            />
-                            <input
-                                value={profilePic}
-                                onChange={(e) => setProfilePic(e.target.value)} placeholder='Profile Pic URL (Opt)'
-                                type="text"
-                            />
-                            <input
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)} placeholder='Email'
-                                type="email"
-                                required
-                            />
-                            <input
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)} placeholder='Password'
-                                type="password"
-                                required
-                            />
-
-                            <button type='submit' onClick={register}>Register</button>
-                        </form>
-                        <p>Already have an account?{' '}
-                            <span className='login__register' onClick={() => setLoginBool(!loginBool)}>Sign In</span>
-                        </p>
-                    </>
-                )
-            }
+                </form>
+                <p>Not a member?{' '}
+                    <span className='login__register' onClick={toggleSwitch}>Register</span>
+                </p>
+            </>
         </div>
     )
 }

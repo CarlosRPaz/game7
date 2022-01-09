@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, {useEffect, useState} from 'react'
 import './styles/ArticlePage.css';
-import { useParams } from "react-router-dom";
+import {useParams} from "react-router-dom";
 import CommentSection from './CommentSection';
 
 import sanityClient from '../../client.js';
 import PortableText from "@sanity/block-content-to-react";
 import urlBuilder from "@sanity/image-url";
-import { maxWidth } from '@material-ui/system';
+import {maxWidth} from '@material-ui/system';
 import moment from 'moment';
 
-const builder = urlBuilder({ projectId: 'jauwdlqi', dataset: 'production' });
+const builder = urlBuilder({projectId: 'jauwdlqi', dataset: 'production'});
 
 function urlFor(source) {
     return builder.image(source)
@@ -30,9 +30,9 @@ const serializers = {
 }
 
 
-function ArticlePage({ article }) {
+function ArticlePage({article}) {
     const [currentArticle, setCurrentArticle] = useState(null);
-    const { slug } = useParams();
+    const {slug} = useParams();
 
     useEffect(() => {
         sanityClient.fetch(`*[slug.current == "${slug}"]{
@@ -53,7 +53,7 @@ function ArticlePage({ article }) {
             .catch(console.error);
     }, [slug]);
 
-    if (!currentArticle) return <div>Loading...</div>;
+    if(!currentArticle) return <div>Loading...</div>;
 
     return (
         <div className="articlePage" id="content-wrap">

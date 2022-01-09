@@ -2,18 +2,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap");
 .mlrHome {
-  background-color: green;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding: 0 10px 0 10px;
+  padding: 0 20px;
+  width: auto;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .mlrHome-cont {
-  background-color: purple;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -25,19 +27,6 @@
 }
 
 .mlrHome-left {
-  background-color: lightblue;
-  -webkit-box-ordinal-group: 2;
-      -ms-flex-order: 1;
-          order: 1;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  margin: 20px 0 0 0;
-  min-width: 160px;
-}
-
-.mlrHome-middle {
-  background-color: lightcoral;
   -webkit-box-ordinal-group: 4;
       -ms-flex-order: 3;
           order: 3;
@@ -45,10 +34,20 @@
       -ms-flex-positive: 1;
           flex-grow: 1;
   margin: 20px 0 0 0;
+  min-width: 20%;
+}
+
+.mlrHome-middle {
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  margin-top: 10px;
 }
 
 .mlrHome-right {
-  background-color: lightgreen;
   -webkit-box-ordinal-group: 3;
       -ms-flex-order: 2;
           order: 2;
@@ -56,7 +55,17 @@
       -ms-flex-positive: 1;
           flex-grow: 1;
   margin: 20px 0 0 0;
-  min-width: 160px;
+  min-width: 20%;
+}
+
+.mlrHome-pagination {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.mlrHome-pagination ul {
+  margin: 0 auto;
 }
 
 @media (min-width: 800px) {
@@ -79,12 +88,16 @@
     -webkit-box-flex: 2;
         -ms-flex-positive: 2;
             flex-grow: 2;
+    margin-top: 20px;
   }
   .mlrHome-right {
     -webkit-box-ordinal-group: 4;
         -ms-flex-order: 3;
             order: 3;
     margin-left: 20px;
+  }
+  .featuredArticlesCont {
+    margin-bottom: 2rem;
   }
 }
 /*# sourceMappingURL=MLRHome.css.map */

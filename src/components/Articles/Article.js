@@ -5,7 +5,7 @@ import moment from 'moment';
 function Article({ article }) {
 
     function truncate(string, n) {
-        return string ?.length > n ? string.substr(0, n - 1) + '...' : string;
+        return string.length > n ? string.substr(0, n - 1) + '...' : string;
     }
 
     return (

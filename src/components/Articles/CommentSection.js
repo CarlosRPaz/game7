@@ -1,31 +1,36 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import './styles/CommentSection.css';
 import Comment from './Comment';
-
-import { db } from '../../firebase';
-import firebase from 'firebase';
-import { useSelector } from 'react-redux';
-import { selectUser } from '../../features/userSlice';
+import {
+    db,
+    addDoc,
+    collection,
+    query,
+    where,
+    onSnapshot,
+    serverTimestamp,
+} from '../../firebase';
+import {useSelector} from 'react-redux';
+import {selectUser} from '../../features/userSlice';
 import uniqid from 'uniqid';
-import { Input, TextField, Button } from '@material-ui/core';
+import {Input, TextField, Button} from '@material-ui/core';
 import LogoGray from './../../img/logogray.png';
 
-function CommentSection({ currentArticleId }) {
+function CommentSection({currentArticleId}) {
     const user = useSelector(selectUser);
     const [input, setInput] = useState('');
     const [comments, setComments] = useState([]);
 
     useEffect(() => {
-        db.collection("comments")
-            .where("articleId", "==", currentArticleId)
-            .onSnapshot((snapshot) =>
+        onSnapshot(query(collection(db, "comments"),
+            where("articleId", "==", currentArticleId)), (snapshot) => {
                 setComments(
                     snapshot.docs.map((doc) => ({
                         id: doc.id,
                         data: doc.data(),
                     }))
                 )
-            )
+            })
     }, []);
 
 
@@ -34,13 +39,13 @@ function CommentSection({ currentArticleId }) {
 
         let genID = uniqid();
 
-        await db.collection('comments').add({
+        await addDoc(collection(db, "comments"), {
             name: user.displayName,
             userId: user.uid,
             message: input,
             likeCount: 0,
             photoUrl: user.photoUrl || '',
-            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+            timestamp: serverTimestamp(),
             articleId: currentArticleId,
             commentId: genID,
             numReplies: 0,
@@ -86,7 +91,7 @@ function CommentSection({ currentArticleId }) {
                 </div>
             )}
             {
-                comments.map(({ id, data: { name, userId, message, photoUrl, commentId, timestamp, likeCount, numReplies } }) => (
+                comments.map(({id, data: {name, userId, message, photoUrl, commentId, timestamp, likeCount, numReplies}}) => (
                     <Comment
                         key={id}
                         firestoreId={id}

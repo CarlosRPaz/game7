@@ -33,7 +33,7 @@ function Home() {
     // *** Main-Featured All Articles ****************************************************
     useEffect(() => {
         sanityClient
-            .fetch(`*[_type == "article" && mainfeaturedhome == true]{
+            .fetch(`*[_type == "article" && mainfeaturedhome == true] {
                 title,
                 slug,
                 author,
@@ -56,7 +56,7 @@ function Home() {
     // *** Sub-Featured All Articles *****************************************************
     useEffect(() => {
         sanityClient
-            .fetch(`*[_type == "article" && subfeaturedhome == true]{
+            .fetch(`*[_type == "article" && subfeaturedhome == true] | order(publishedAt desc){
                 title,
                 slug,
                 author->{name},
@@ -111,9 +111,7 @@ function Home() {
         <div className="home" id="content-wrap">
             <div className="home-cont">
                 <div className="home-left">
-                    {/*<ProfileWidget />*/}
                     <SocialsWidget />
-                    {/* Advertisements */}
                 </div>
                 <div className="home-middle">
                     {headerArticleData &&
@@ -134,15 +132,11 @@ function Home() {
                             shape="rounded"
                             page={page}
                             onChange={handlePageChange}
-                        //postsPerPage={postsPerPage}
-                        //totalPosts={recentArticleData.length}
-                        //paginate={paginate}
                         />
                     </Stack>
                 </div>
                 <div className="home-right">
                     <PollWidget />
-                    {/* Schedule */}
                 </div>
             </div>
         </div>
