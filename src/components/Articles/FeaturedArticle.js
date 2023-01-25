@@ -1,10 +1,9 @@
 import React from 'react'
 import './styles/FeaturedArticle.css';
-import { Link } from "react-router-dom";
 
 // If only showing 2 articles, hide last and make sure the NEW last doesnt have margin-right
 
-function FeaturedArticle({ featArticle }) {
+function FeaturedArticle({featArticle}) {
     return (
         <div className="featuredArticle" /*style={{
             backgroundSize: "cover",

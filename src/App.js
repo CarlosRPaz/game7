@@ -11,6 +11,10 @@ import Nav from './components/Nav/Nav';
 import Landing from './components/Landing/Landing';
 import Article from './components/Articles/Article';
 import ArticlePage from './components/Articles/ArticlePage';
+import FantasyPage from './components/Fantasy/FantasyPage';
+import HistoryHome from './components/History/HistoryHome';
+import PickEmHome from './components/PickEm/PickEmHome';
+import PickEmGame from './components/PickEm/PickEmGame';
 import {selectUser, login, logout} from './features/userSlice';
 import {useSelector, useDispatch} from "react-redux";
 import {
@@ -70,6 +74,21 @@ function App() {
         <Router>
           <Nav />
           <Switch>
+            <Route path="/history">
+              <HistoryHome />
+            </Route>
+            <Route path="/pickemgame/:slug">
+              <PickEmGame />
+            </Route>
+            <Route path="/pickemgame">
+              <PickEmGame />
+            </Route>
+            <Route path="/pickem">
+              <PickEmHome />
+            </Route>
+            <Route path="/fantasy">
+              <FantasyPage />
+            </Route>
             <Route path="/mlr">
               <MLRHome />
             </Route>

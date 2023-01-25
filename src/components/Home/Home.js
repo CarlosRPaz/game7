@@ -1,14 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect} from "react";
 import "./styles/Home.css";
 import HeaderArticle from "../Articles/HeaderArticle";
 import FeaturedArticlesCont from "../Articles/FeaturedArticlesCont";
 import RecentArticles from "../Articles/RecentArticles";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 
 import sanityClient from '../../client.js';
-import ProfileWidget from "./ProfileWidget";
 import PollWidget from "./PollWidget";
-import Article from "../Articles/Article";
 import SocialsWidget from "./SocialsWidget";
 //import Pagination from "./Pagination";
 import Pagination from '@mui/material/Pagination';

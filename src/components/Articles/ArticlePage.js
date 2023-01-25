@@ -6,7 +6,7 @@ import CommentSection from './CommentSection';
 import sanityClient from '../../client.js';
 import PortableText from "@sanity/block-content-to-react";
 import urlBuilder from "@sanity/image-url";
-import {maxWidth} from '@material-ui/system';
+//import {maxWidth} from '@material-ui/system';
 import moment from 'moment';
 
 const builder = urlBuilder({projectId: 'jauwdlqi', dataset: 'production'});
@@ -58,7 +58,6 @@ function ArticlePage({article}) {
     return (
         <div className="articlePage" id="content-wrap">
             <div className="articlePage-right">
-                right
             </div>
             <div className="articlePage-main">
                 <article>

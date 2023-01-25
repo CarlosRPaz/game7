@@ -11,8 +11,7 @@
       -ms-flex-direction: column;
           flex-direction: column;
   color: #1a1a1a;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto 1em auto;
   max-width: 1200px;
 }
 
@@ -32,6 +31,7 @@
       -ms-flex-order: 1;
           order: 1;
   margin: 20px 0 0 0;
+  display: none;
 }
 
 .articlePage-img {
@@ -109,6 +109,9 @@
             order: 1;
   }
   .articlePage-right {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
     -webkit-box-ordinal-group: 3;
         -ms-flex-order: 2;
             order: 2;

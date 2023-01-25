@@ -137,6 +137,7 @@
 
 .loginBtn {
   background-color: rgba(0, 204, 51, 0.769);
+  color: white;
 }
 
 .loginBtn:hover {
@@ -312,6 +313,10 @@ hr.solid {
 
 .sidebar-logout {
   background-color: rgba(204, 0, 0, 0.769);
+}
+
+.landingLink {
+  text-decoration: none;
 }
 
 .sidebar.active {

@@ -5,8 +5,14 @@ import moment from 'moment';
 
 function ArticleItem({article}) {
 
+    /*
     function truncate(string, n) {
         return string.length > n ? string.substr(0, n - 1) + '...' : string;
+    }
+    */
+
+    if(!article) {
+        return void 0;
     }
 
     return (

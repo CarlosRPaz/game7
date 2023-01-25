@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect} from "react";
 import "./styles/NFLHome.css";
 import HeaderArticle from "../Articles/HeaderArticle";
 import FeaturedArticlesCont from "../Articles/FeaturedArticlesCont";
 import RecentArticles from "../Articles/RecentArticles";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 
 
 import sanityClient from '../../client.js';

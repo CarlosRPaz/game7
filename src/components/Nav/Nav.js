@@ -105,8 +105,8 @@ function Nav() {
                             </Link>
                         </li>
                     ) : (
-                            void 0
-                        )}
+                        void 0
+                    )}
 
                     {user ? <hr className="solid" /> : void 0}
 
@@ -118,14 +118,14 @@ function Nav() {
                                 Logout
                             </div>
                         ) : (
-                                <Link to="/landing">
-                                    <div onClick={showModal}
-                                        className="menu-authBtn loginBtn">
-                                        <LoginIcon className="menu-authBtn-icon" />
-                                        Login
-                                    </div>
-                                </Link>
-                            )}
+                            <Link to="/landing" className="landingLink ">
+                                <div onClick={showModal}
+                                    className="menu-authBtn loginBtn">
+                                    <LoginIcon className="menu-authBtn-icon" />
+                                    Login
+                                </div>
+                            </Link>
+                        )}
                     </li>
                 </ul>
             </div>
@@ -150,6 +150,15 @@ function Nav() {
                     </Link>
                     <Link to="/mlr" style={{textDecoration: 'none'}} className="nav-links-link">
                         <div className="nav-links-text">MLR</div>
+                    </Link>
+                    <Link to="/fantasy" style={{textDecoration: 'none'}} className="nav-links-link">
+                        <div className="nav-links-text">Fantasy</div>
+                    </Link>
+                    <Link to="/history" style={{textDecoration: 'none'}} className="nav-links-link">
+                        <div className="nav-links-text">History</div>
+                    </Link>
+                    <Link to="/pickem" style={{textDecoration: 'none'}} className="nav-links-link">
+                        <div className="nav-links-text">Pick 'Em</div>
                     </Link>
                 </div>
             </div>
@@ -188,8 +197,8 @@ function Nav() {
                             </Link>
                         </li>
                     ) : (
-                            void 0
-                        )}
+                        void 0
+                    )}
                     {user ? <hr className="solid" /> : void 0}
                     {SidebarData.map((item, index) => {
                         return (
@@ -210,14 +219,14 @@ function Nav() {
                             <span>Logout</span>
                         </div>
                     ) : (
-                            <Link to="/landing">
-                                <div
-                                    className="sidebar-auth sidebar-login">
-                                    <LoginIcon className="sidebar-auth-icon" />
-                                    <span>Login</span>
-                                </div>
-                            </Link>
-                        )}
+                        <Link to="/landing" className="landingLink">
+                            <div
+                                className="sidebar-auth sidebar-login">
+                                <LoginIcon className="sidebar-auth-icon" />
+                                <span>Login</span>
+                            </div>
+                        </Link>
+                    )}
 
                 </ul>
             </div>

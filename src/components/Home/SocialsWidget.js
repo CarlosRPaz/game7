@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, {useState, useEffect} from 'react'
 import './styles/SocialsWidget.css'
 
 import FacebookIcon from '@material-ui/icons/Facebook';
@@ -30,13 +30,14 @@ function SocialsWidget() {
                 instagramLink,
                 linkedInLink,
                 twitterLink,
+                pinterestLink,
                 youtubeLink,
             }`)
             .then((data) => setSocialsData(data[0]))
             .catch(console.error);
     }, []);
 
-    if (!socialsData) {
+    if(!socialsData) {
         return 'Loading...'
     }
 

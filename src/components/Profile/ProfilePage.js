@@ -23,10 +23,6 @@ function ProfilePage() {
     const [currentProfile, setCurrentProfile] = useState(null);
     const {id} = useParams();
 
-    useEffect(() => {
-        console.log(id);
-    }, [id]);
-
 
     const [profileComments, setProfileComments] = useState([]);
 
@@ -126,8 +122,8 @@ function ProfilePage() {
 
                         ))
                     ) : (
-                        'Loading...'
-                    )
+                            'Loading...'
+                        )
                     }
                 </div>
 

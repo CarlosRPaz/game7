@@ -113,6 +113,7 @@
 }
 .loginBtn {
     background-color: hsla(135, 100%, 40%, 0.769);
+    color: white;
     &:hover {
         background-color: hsl(135, 100%, 40%);           
     }
@@ -243,6 +244,10 @@ hr.solid {
     &-logout {
         background-color: hsla(0, 100%, 40%, 0.769);
     }
+  }
+
+  .landingLink {
+      text-decoration: none;
   }
   
   .sidebar.active {

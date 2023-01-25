@@ -13,7 +13,6 @@ import {
 import {useSelector} from 'react-redux';
 import {selectUser} from '../../features/userSlice';
 import uniqid from 'uniqid';
-import {Input, TextField, Button} from '@material-ui/core';
 import LogoGray from './../../img/logogray.png';
 
 function CommentSection({currentArticleId}) {

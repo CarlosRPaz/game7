@@ -42,6 +42,12 @@
             margin: 0;
         }
     }
+    &-nameLink {
+        text-decoration: none;
+    }
+    &-name {
+        color: #000000;
+    }
     &-text {
         display: flex;
         flex-direction: column;

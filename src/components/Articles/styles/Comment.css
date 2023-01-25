@@ -58,6 +58,14 @@
   margin: 0;
 }
 
+.comment-info-nameLink {
+  text-decoration: none;
+}
+
+.comment-info-name {
+  color: #000000;
+}
+
 .comment-info-text {
   display: -webkit-box;
   display: -ms-flexbox;

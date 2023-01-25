@@ -3,7 +3,6 @@ import {useDispatch} from "react-redux";
 import {login} from '../../features/userSlice';
 import {
     auth,
-    db,
     signInWithEmailAndPassword,
     sendPasswordResetEmail,
 } from '../../firebase';
@@ -11,7 +10,7 @@ import './styles/Login.css';
 import Logo from '../../img/logo.png';
 import {useHistory} from 'react-router-dom';
 
-function Login({hideModal, toggleSwitch}) {
+function Login({toggleSwitch}) {
 
     const history = useHistory();
 

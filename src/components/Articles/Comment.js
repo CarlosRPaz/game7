@@ -135,13 +135,6 @@ function Comment({firestoreId, name, userId, message, photoUrl, commentId, times
         console.log('toggleLiked is now ', false);
     }
 
-
-
-
-
-
-
-
     // run function on replying to this comment
     const sendComment = async (e) => {
         e.preventDefault();                                                     // don't refresh page
@@ -211,7 +204,7 @@ function Comment({firestoreId, name, userId, message, photoUrl, commentId, times
             <div className="comment-info">
                 <img src={photoUrl} alt="" className="comment-info-photo mr06em" />
                 <div className="comment-info-text">
-                    <Link to={"/profile/" + userId}>
+                    <Link to={"/profile/" + userId} className="comment-info-nameLink">
                         <p className="comment-info-name">{name}</p>
                     </Link>
                     <p className="comment-info-date">{timestamp ? moment(timestamp.toDate()).fromNow() : 'loading...'}</p>
