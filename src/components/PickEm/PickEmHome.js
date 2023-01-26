@@ -42,7 +42,7 @@ function PickEmHome() {
                 </div>
                 <div className="nflHome-middle">
                     {pickEmGames && pickEmGames.map((pickemGame, index) => (
-                        <Link to={"/pickemgame/" + pickemGame.data.slug} key={pickemGame.data.id} className="recentArticles-link" style={{textDecoration: 'none'}}>
+                        <Link to={"/pickemgame/" + pickemGame.data.slug} key={pickemGame.id} className="recentArticles-link" style={{textDecoration: 'none'}}>
                             <PickEmGameCard pickemGame={pickemGame.data} key={pickemGame.data.id} />
                         </Link>
                     ))}
