@@ -5,10 +5,6 @@ import moment from 'moment';
 
 function PickEmGameCard({pickemGame}) {
 
-    if(pickemGame) {
-        console.log(pickemGame);
-    }
-
     return (
         <div className="pickEmGameCard">
             {pickemGame && <>

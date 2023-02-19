@@ -3,6 +3,9 @@ import "./styles/PickEmGame.css";
 import {Link} from "react-router-dom";
 import {useParams} from "react-router-dom";
 
+import {useSelector} from "react-redux";
+import {selectUser} from "../../features/userSlice";
+
 import sanityClient from '../../client.js';
 import SocialsWidget from "../Home/SocialsWidget";
 import PollWidget from "../Home/PollWidget";
@@ -22,8 +25,13 @@ import {
 
 function PickEmGame() {
 
+    const user = useSelector(selectUser);
+
     const {slug} = useParams();
     const [playersList, setPlayersList] = useState([]);
+    const [currentPickEmGame, setCurrentPickEmGame] = useState();
+    const [activePickID, setActivePickID] = useState();
+    const [isActive, setIsActive] = useState();
 
     // Load pickemgame data from pickemgame that contains the slug that is passed through
     useEffect(() => {
@@ -33,6 +41,8 @@ function PickEmGame() {
             querySnapshot.forEach((doc) => {
                 // doc.data() is never undefined for query doc snapshots
                 console.log(doc.id, " => ", doc.data());
+                // SAVE PICKEMGAME DATA IN useState([]) variable
+                setCurrentPickEmGame({...doc.data(), meta_id: doc.id});
             });
         }
 
@@ -48,7 +58,7 @@ function PickEmGame() {
             querySnapshot.forEach((doc) => {
                 // doc.data() is never undefined for query doc snapshots
                 console.log(doc.id, " => ", doc.data());
-                setPlayersList(playersList => [...playersList, doc.data()]);
+                setPlayersList(playersList => [...playersList, {...doc.data(), meta_id: doc.id}]);
             });
         }
 
@@ -59,6 +69,27 @@ function PickEmGame() {
         console.log('Full list', playersList);
     }
 
+    if(currentPickEmGame) {
+        console.log('Pick Em Game Info: ', currentPickEmGame);
+    }
+
+    const sendPick = async (playerId) => {
+        console.log(playerId);
+        await addDoc(collection(db, 'selections'), {
+            userId: user.id,                // CHANGE
+            selection: playerId,            // GOOD
+            pickEmGameId: currentPickEmGame.meta_id,     // CHANGE
+        });
+    }
+
+    function Selection({player}) {
+        return (
+            <button onClick={(e) => sendPick(player.meta_id)}>
+                {player.name}
+            </button>
+        )
+    }
+
     return (
         <div className="nflHome" id="content-wrap">
             <div className="nflHome-cont">
@@ -66,13 +97,11 @@ function PickEmGame() {
                     <SocialsWidget />
                 </div>
                 <div className="nflHome-middle">
-                    PickEmGame Page. Slug:
-                    {slug ? <p>{slug}</p> : 'loading...'}
+                    <h3>PickEmGame Page</h3>
+                    {slug ? <p>Slug: {slug}</p> : 'loading...'}
 
                     {playersList && playersList.map((player, index) => (
-                        <p key={player.name}>
-                            {player.name}
-                        </p>
+                        <Selection key={player.meta_id} player={player} />
                     ))}
 
                 </div>
