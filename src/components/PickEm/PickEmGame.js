@@ -72,13 +72,16 @@ function PickEmGame() {
     if(currentPickEmGame) {
         console.log('Pick Em Game Info: ', currentPickEmGame);
     }
+    if(user) {
+        console.log('user: ', user);
+    }
 
     const sendPick = async (playerId) => {
         console.log(playerId);
         await addDoc(collection(db, 'selections'), {
-            userId: user.id,                // CHANGE
-            selection: playerId,            // GOOD
-            pickEmGameId: currentPickEmGame.meta_id,     // CHANGE
+            userId: user?.uid,                                // TEST
+            selection: playerId,                             // GOOD
+            pickEmGameId: currentPickEmGame?.meta_id,        // TEST
         });
     }
 
