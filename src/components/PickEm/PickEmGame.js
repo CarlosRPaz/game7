@@ -15,9 +15,11 @@ import {
     addDoc,
     doc,
     getDocs,
+    getDoc,
     collection,
     query,
     where,
+    // update doc
     onSnapshot,
     serverTimestamp,
 } from '../../firebase';
@@ -30,26 +32,45 @@ function PickEmGame() {
     const {slug} = useParams();
     const [playersList, setPlayersList] = useState([]);
     const [currentPickEmGame, setCurrentPickEmGame] = useState();
+    // Store selection here on page-load
     const [activePickID, setActivePickID] = useState();
-    const [isActive, setIsActive] = useState();
+    const [isActive, setIsActive] = useState(true);
 
-    // Load pickemgame data from pickemgame that contains the slug that is passed through
     useEffect(() => {
+        // Load pickemgame data from pickemgame that contains the slug that is passed through
         const loadPickEmGame = async () => {
             const q = query(collection(db, "pickemgames"), where("slug", "==", slug));
             const querySnapshot = await getDocs(q);
             querySnapshot.forEach((doc) => {
                 // doc.data() is never undefined for query doc snapshots
-                console.log(doc.id, " => ", doc.data());
+                // console.log(doc.id, " => ", doc.data());
                 // SAVE PICKEMGAME DATA IN useState([]) variable
                 setCurrentPickEmGame({...doc.data(), meta_id: doc.id});
             });
         }
 
         loadPickEmGame().catch(console.error);
-    }, [])
+    }, [slug])
 
-    // Load Players
+    useEffect(() => {
+        // Load selection if it exists
+        const loadSelection = async () => {
+            const q = query(collection(db, "selections"), where("pickEmGameId", "==", currentPickEmGame.meta_id));
+            const querySnapshot = await getDocs(q);
+
+            querySnapshot.forEach((doc) => {
+                // doc.data() is never undefined for query doc snapshots
+                console.log("selection => ", doc.id);
+                setActivePickID(doc.data().selection);
+            });
+        }
+
+        if(currentPickEmGame) {
+            loadSelection().catch(console.error);
+        }
+    }, [currentPickEmGame])
+
+    // Load All Players List
     useEffect(() => {
         const loadPlayers = async () => {
             const q = query(collection(db, "players"));
@@ -57,7 +78,7 @@ function PickEmGame() {
 
             querySnapshot.forEach((doc) => {
                 // doc.data() is never undefined for query doc snapshots
-                console.log(doc.id, " => ", doc.data());
+                // console.log(doc.id, " => ", doc.data());
                 setPlayersList(playersList => [...playersList, {...doc.data(), meta_id: doc.id}]);
             });
         }
@@ -65,24 +86,26 @@ function PickEmGame() {
         loadPlayers().catch(console.error);
     }, [])
 
-    if(playersList) {
-        console.log('Full list', playersList);
-    }
 
-    if(currentPickEmGame) {
-        console.log('Pick Em Game Info: ', currentPickEmGame);
-    }
-    if(user) {
-        console.log('user: ', user);
+    if(activePickID) {
+        console.log('activePickID: ', activePickID);
     }
 
     const sendPick = async (playerId) => {
         console.log(playerId);
+        // IF selection already exists, UPDATE selection variable
+        // ...
+
+        // IF NOT
+        // ADD selection doc
         await addDoc(collection(db, 'selections'), {
-            userId: user?.uid,                                // TEST
-            selection: playerId,                             // GOOD
-            pickEmGameId: currentPickEmGame?.meta_id,        // TEST
+            userId: user?.uid,                                // GOOD
+            selection: playerId,                              // GOOD
+            pickEmGameId: currentPickEmGame?.meta_id,         // GOOD
         });
+
+        // Update local selection variable
+        // ...
     }
 
     function Selection({player}) {
