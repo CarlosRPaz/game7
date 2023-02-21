@@ -60,7 +60,7 @@ function PickEmGame() {
 
             querySnapshot.forEach((doc) => {
                 // doc.data() is never undefined for query doc snapshots
-                console.log("selection => ", doc.id);
+                console.log("selectionId => ", doc.id);
                 setActivePickID(doc.data().selection);
             });
         }
