@@ -16,6 +16,7 @@ import {
     doc,
     getDocs,
     getDoc,
+    setDoc,
     collection,
     query,
     where,
@@ -33,7 +34,8 @@ function PickEmGame() {
     const [playersList, setPlayersList] = useState([]);
     const [currentPickEmGame, setCurrentPickEmGame] = useState();
     // Store selection here on page-load
-    const [activePickID, setActivePickID] = useState();
+    const [activePickID, setActivePickID] = useState('');
+    const [selectionID, setSelectionID] = useState('');
     const [isActive, setIsActive] = useState(true);
 
     useEffect(() => {
@@ -62,6 +64,7 @@ function PickEmGame() {
                 // doc.data() is never undefined for query doc snapshots
                 console.log("selectionId => ", doc.id);
                 setActivePickID(doc.data().selection);
+                setSelectionID(doc.id);
             });
         }
 
@@ -93,19 +96,21 @@ function PickEmGame() {
 
     const sendPick = async (playerId) => {
         console.log(playerId);
-        // IF selection already exists, UPDATE selection variable
-        // ...
-
-        // IF NOT
-        // ADD selection doc
-        await addDoc(collection(db, 'selections'), {
-            userId: user?.uid,                                // GOOD
-            selection: playerId,                              // GOOD
-            pickEmGameId: currentPickEmGame?.meta_id,         // GOOD
-        });
+        // IF selection already exists, UPDATE selection variable, ELSE ADD selection doc
+        if(activePickID) {
+            const selectionRef = doc(db, 'selections', selectionID);
+            await setDoc(selectionRef, {selection: playerId}, {merge: true});
+        } else {
+            // ADD selection doc
+            await addDoc(collection(db, 'selections'), {
+                userId: user?.uid,                                // GOOD
+                selection: playerId,                              // GOOD
+                pickEmGameId: currentPickEmGame?.meta_id,         // GOOD
+            });
+        }
 
         // Update local selection variable
-        // ...
+        setActivePickID(playerId);
     }
 
     function Selection({player}) {
