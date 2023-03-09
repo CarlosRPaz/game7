@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useRef} from "react";
 import "./styles/PickEmGame.css";
 import {Link} from "react-router-dom";
 import {useParams} from "react-router-dom";
@@ -29,6 +29,8 @@ import {
 function PickEmGame() {
 
     const user = useSelector(selectUser);
+
+    const ref = useRef(null);
 
     const {slug} = useParams();
     const [playersList, setPlayersList] = useState([]);
@@ -94,8 +96,10 @@ function PickEmGame() {
         console.log('activePickID: ', activePickID);
     }
 
-    const sendPick = async (playerId) => {
-        console.log(playerId);
+    const sendPick = async (playerId, e) => {
+        //e.preventDefault();
+        e.target.className += " active";
+
         // IF selection already exists, UPDATE selection variable, ELSE ADD selection doc
         if(activePickID) {
             const selectionRef = doc(db, 'selections', selectionID);
@@ -115,11 +119,37 @@ function PickEmGame() {
 
     function Selection({player}) {
         return (
-            <button onClick={(e) => sendPick(player.meta_id)}>
+            <button
+                onClick={(e) => sendPick(player.meta_id, e)}
+                className={player.meta_id === activePickID ? "btn active" : "btn"}
+            >
                 {player.name}
             </button>
         )
     }
+
+    /*
+    // Get the container element
+    var btnContainer = document.getElementById("btnContainer");
+
+    // Get all buttons with class="btn" inside the container
+    var btns = btnContainer.getElementsByClassName("btn");
+
+    // Loop through the buttons and add the active class to the current/clicked button
+    for(var i = 0;i < btns.length;i++) {
+        btns[i].addEventListener("click", function() {
+            var current = document.getElementsByClassName("active");
+
+            // If there's no active class
+            if(current.length > 0) {
+                current[0].className = current[0].className.replace(" active", "");
+            }
+
+            // Add the active class to the current/clicked button
+            this.className += " active";
+        });
+    }
+    */
 
     return (
         <div className="nflHome" id="content-wrap">
@@ -131,9 +161,11 @@ function PickEmGame() {
                     <h3>PickEmGame Page</h3>
                     {slug ? <p>Slug: {slug}</p> : 'loading...'}
 
-                    {playersList && playersList.map((player, index) => (
-                        <Selection key={player.meta_id} player={player} />
-                    ))}
+                    <div id="btnContainer">
+                        {playersList && playersList.map((player, index) => (
+                            <Selection key={player.meta_id} player={player} />
+                        ))}
+                    </div>
 
                 </div>
                 <div className="nflHome-right">
