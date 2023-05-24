@@ -2,101 +2,60 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap");
 .nflHome {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
   padding: 0 20px;
   width: auto;
   max-width: 1200px;
   margin: 0 auto 1em auto;
 }
-
 .nflHome-cont {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   width: 100%;
 }
-
 .nflHome-left {
-  -webkit-box-ordinal-group: 4;
-      -ms-flex-order: 3;
-          order: 3;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+  order: 3;
+  flex-grow: 1;
   margin: 20px 0 0 0;
   min-width: 20%;
 }
-
 .nflHome-middle {
-  -webkit-box-ordinal-group: 2;
-      -ms-flex-order: 1;
-          order: 1;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+  order: 1;
+  flex-grow: 1;
   margin-top: 10px;
 }
-
 .nflHome-right {
-  -webkit-box-ordinal-group: 3;
-      -ms-flex-order: 2;
-          order: 2;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+  order: 2;
+  flex-grow: 1;
   margin: 20px 0 0 0;
   min-width: 20%;
 }
-
 .nflHome-pagination {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
-
 .nflHome-pagination ul {
   margin: 0 auto;
 }
 
 @media (min-width: 800px) {
   .nflHome-cont {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
+    flex-direction: row;
   }
   .nflHome-left {
-    -webkit-box-ordinal-group: 2;
-        -ms-flex-order: 1;
-            order: 1;
+    order: 1;
     margin-right: 20px;
   }
   .nflHome-middle {
-    -webkit-box-ordinal-group: 3;
-        -ms-flex-order: 2;
-            order: 2;
-    -webkit-box-flex: 2;
-        -ms-flex-positive: 2;
-            flex-grow: 2;
+    order: 2;
+    flex-grow: 2;
     margin-top: 20px;
   }
   .nflHome-right {
-    -webkit-box-ordinal-group: 4;
-        -ms-flex-order: 3;
-            order: 3;
+    order: 3;
     margin-left: 20px;
   }
   .featuredArticlesCont {
     margin-bottom: 2rem;
   }
-}
-/*# sourceMappingURL=NFLHome.css.map */
+}/*# sourceMappingURL=NFLHome.css.map */

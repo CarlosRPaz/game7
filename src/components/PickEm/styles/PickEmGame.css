@@ -1,12 +1,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap");
+#btnContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
 .btn {
-  background-color: gray;
+  background-color: #e4e8ec;
+  border: none;
+  padding: 1rem;
+  flex-grow: 1;
+  border-radius: 0.2em;
+  font-weight: bold;
 }
 
 .active {
-  background-color: red;
+  background-color: #1DA6FB;
   color: white;
-}
-/*# sourceMappingURL=PickEmGame.css.map */
+}/*# sourceMappingURL=PickEmGame.css.map */

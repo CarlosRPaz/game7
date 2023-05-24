@@ -9,8 +9,7 @@
   width: 100%;
   height: 100%;
   border-radius: 0.2em;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-          box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
 .headerArticle-info {
@@ -23,20 +22,17 @@
   right: 10px;
   border-radius: 0.2em;
 }
-
 .headerArticle-info-tags {
   background-color: #242427;
   color: #f8f8ff;
   font-size: 0.8rem;
   padding: 3px 10px 3px 10px;
 }
-
 .headerArticle-info-title {
   padding-left: 10px;
   padding-top: 3px;
   font-weight: 600;
 }
-
 .headerArticle-info-summary {
   font-family: "Roboto", sans-serif;
   font-size: 0.9rem;
@@ -47,5 +43,4 @@
   .headerArticle {
     margin-bottom: 2rem;
   }
-}
-/*# sourceMappingURL=HeaderArticle.css.map */
+}/*# sourceMappingURL=HeaderArticle.css.map */

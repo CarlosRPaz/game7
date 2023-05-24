@@ -17,13 +17,14 @@ import {makeStyles, withStyles} from '@material-ui/core/styles';
 import LoginIcon from '@mui/icons-material/Login';
 import LogoutIcon from '@mui/icons-material/Logout';
 import CloseIcon from "@material-ui/icons/Close";
-import Modal from '@mui/material/Modal';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
+//import Modal from '@mui/material/Modal';
+//import Box from '@mui/material/Box';
+//import Typography from '@mui/material/Typography';
 
 import {SidebarData} from "./SidebarData";
-import Login from "../Auth/Login";
+//import Login from "../Auth/Login";
 
+/*
 const style = {
     position: 'absolute',
     top: '50%',
@@ -52,6 +53,7 @@ const useStyles = makeStyles({
         textTransform: 'capitalize',
     },
 });
+*/
 
 
 function Nav() {
@@ -59,14 +61,14 @@ function Nav() {
     const dispatch = useDispatch();
     const [openMenu, setOpenMenu] = useState(false);
     const [openModal, setOpenModal] = useState(false);
-    const [anchorEl, setAnchorEl] = React.useState(null);
+    //const [anchorEl, setAnchorEl] = React.useState(null);
     const [sidebar, setSidebar] = useState(false);
 
-    const classes = useStyles();
+    //const classes = useStyles();
 
     const showSidebar = () => setSidebar(!sidebar);
     const showModal = () => setOpenModal(true);
-    const hideModal = () => setOpenModal(false);
+    // const hideModal = () => setOpenModal(false);
 
 
     const logoutOfApp = () => {
@@ -74,6 +76,7 @@ function Nav() {
         auth.signOut();
     };
 
+    /*
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
@@ -81,7 +84,7 @@ function Nav() {
     const handleClose = () => {
         setAnchorEl(null);
     };
-
+    */
 
     function Menu() {
         return (

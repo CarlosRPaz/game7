@@ -25,7 +25,6 @@ import {
     serverTimestamp,
 } from '../../firebase';
 
-
 function PickEmGame() {
 
     const user = useSelector(selectUser);
@@ -91,7 +90,6 @@ function PickEmGame() {
         loadPlayers().catch(console.error);
     }, [])
 
-
     if(activePickID) {
         console.log('activePickID: ', activePickID);
     }
@@ -107,9 +105,9 @@ function PickEmGame() {
         } else {
             // ADD selection doc
             await addDoc(collection(db, 'selections'), {
-                userId: user?.uid,                                // GOOD
+                userId: user ?.uid,                                // GOOD
                 selection: playerId,                              // GOOD
-                pickEmGameId: currentPickEmGame?.meta_id,         // GOOD
+                pickEmGameId: currentPickEmGame ?.meta_id,         // GOOD
             });
         }
 

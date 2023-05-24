@@ -9,15 +9,10 @@
   margin-bottom: 5px;
   margin-top: 10px;
 }
-
 .featuredArticlesCont-cont {
-  display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (1fr)[3];
-      grid-template-columns: repeat(3, 1fr);
-  -ms-grid-rows: 1fr;
-      grid-template-rows: 1fr;
-  -webkit-column-gap: .6rem;
-          column-gap: .6rem;
-}
-/*# sourceMappingURL=FeaturedArticlesCont.css.map */
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+  -moz-column-gap: 0.6rem;
+       column-gap: 0.6rem;
+}/*# sourceMappingURL=FeaturedArticlesCont.css.map */

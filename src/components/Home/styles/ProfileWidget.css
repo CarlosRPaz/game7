@@ -3,18 +3,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap");
 .profileWidget {
   background-color: white;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-          box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-  padding: .6em;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  padding: 0.6em;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  flex-direction: row;
 }
-
 .profileWidget-img {
   -o-object-fit: cover;
      object-fit: cover;
@@ -22,85 +15,48 @@
   height: 4em;
   border-radius: 0.2em;
 }
-
 .profileWidget-info {
   padding: 0 1em 0 1em;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   font-family: "Oswald", sans-serif;
   width: 100%;
 }
-
 .profileWidget-info-top {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: row;
+  align-items: center;
 }
-
 .profileWidget-info-role {
-  background-color: #d13a3a;
+  background-color: rgb(209, 58, 58);
   border-radius: 0.2em;
-  padding: 0 .4em;
+  padding: 0 0.4em;
   margin-right: 0.8em;
   color: #f8f8ff;
 }
-
 .profileWidget-info-name {
   font-size: 1.4rem;
 }
-
 .profileWidget-info-stats {
   margin-top: 0.3em;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  flex-direction: row;
+  justify-content: space-between;
 }
-
 .profileWidget-info-stat {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
-
 .profileWidget-info-stat-icon {
   stroke: #757575;
-  stroke-width: .8;
+  stroke-width: 0.8;
   width: 1.6rem !important;
   height: 1.6rem !important;
   color: #757575;
 }
-
 .profileWidget-info-stat-num {
   margin-left: 0.6em;
   font-weight: 500;
-}
-/*# sourceMappingURL=ProfileWidget.css.map */
+}/*# sourceMappingURL=ProfileWidget.css.map */

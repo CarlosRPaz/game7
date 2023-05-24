@@ -5,47 +5,38 @@
   background-color: #e4e8ec;
   padding: 1em;
   border-radius: 0.2em;
-  position: -webkit-sticky;
   position: sticky;
   top: 20px;
 }
-
 .pollWidget h5 {
   margin-bottom: 0.6em;
   font-family: "Roboto", sans-serif;
 }
-
 .pollWidget form > div > div > label {
   margin-left: 0.6em;
   font-size: 0.9rem;
 }
-
 .pollWidget form > div > div > input, .pollWidget form > div > div > label {
   cursor: pointer;
 }
-
 .pollWidget form > div > div {
   margin-bottom: 0.2em;
 }
-
 .pollWidget p {
   font-family: "Oswald", sans-serif;
   font-size: 1.2rem;
   padding-bottom: 0.4em;
 }
-
 .pollWidget-body {
   background-color: #f9fbff;
   border-radius: 0.2em;
   padding: 0.6em;
   font-family: "Roboto", sans-serif;
 }
-
 .pollWidget-question {
   font-size: 0.9rem;
   font-weight: 500;
 }
-
 .pollWidget-submitBtn {
   background-color: #1DA6FB;
   border-radius: 0.2em;
@@ -53,9 +44,8 @@
   width: 100%;
   color: #f8f8ff;
   font-weight: 600;
-  font-size: .9rem;
-  padding: .6em 1.4em;
-  margin-top: .6rem;
+  font-size: 0.9rem;
+  padding: 0.6em 1.4em;
+  margin-top: 0.6rem;
   cursor: pointer;
-}
-/*# sourceMappingURL=PollWidget.css.map */
+}/*# sourceMappingURL=PollWidget.css.map */

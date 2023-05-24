@@ -6,15 +6,17 @@ import PickEmGameCard from "./PickEmGameCard";
 
 import {
     db,
+    /*
     addDoc,
+    where,
+    serverTimestamp,
+    */
     collection,
     query,
-    where,
     onSnapshot,
-    serverTimestamp,
 } from '../../firebase';
 
-import sanityClient from '../../client.js';
+// import sanityClient from '../../client.js';
 import SocialsWidget from "../Home/SocialsWidget";
 import PollWidget from "../Home/PollWidget";
 

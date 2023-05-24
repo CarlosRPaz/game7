@@ -2,137 +2,106 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap");
 .comment {
-  background-color: white;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  background-color: rgb(255, 255, 255);
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  margin-top: .2em;
-  padding: .6em 0 .6em .6em;
+  flex-direction: column;
+  margin-top: 0.2em;
+  padding: 0.6em 0 0.6em 0.6em;
   font-family: "Poppins", sans-serif;
   border-radius: 0.2em;
 }
 
 .comment-message {
-  padding: .5em .4em;
+  padding: 0.5em 0.4em;
   font-family: sans-serif;
 }
 
 .comment-info {
   position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   width: 100%;
-  font-size: .9rem;
+  font-size: 0.9rem;
 }
-
 .comment-info-photoCont {
   padding-right: 0.3em;
 }
-
 .comment-info-photo {
-  background-color: #bdbdbd;
+  background-color: rgb(189, 189, 189);
   width: 2rem;
   height: 2rem;
   border-radius: 500px;
   -o-object-fit: cover;
      object-fit: cover;
 }
-
 .comment-info-vertIconCont {
   position: absolute;
   right: 0;
 }
-
 .comment-info-vertIconCont-icon {
   color: #8d8d8d;
   cursor: pointer;
 }
-
 .comment-info-vertIconCont button {
   padding: 0;
   margin: 0;
 }
-
 .comment-info-nameLink {
   text-decoration: none;
 }
-
 .comment-info-name {
   color: #000000;
 }
-
 .comment-info-text {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   line-height: 1.1rem;
 }
-
 .comment-info-date {
-  font-size: .8rem;
-  opacity: .8;
+  font-size: 0.8rem;
+  opacity: 0.8;
 }
-
 .comment-info-input {
-  background-color: #f3f3f3;
+  background-color: rgb(243, 243, 243);
   border: none;
   border-radius: 0.2em;
-  font-size: .9rem;
+  font-size: 0.9rem;
   padding: 1em;
   width: 100%;
   resize: none;
 }
-
 .comment-info textarea[type=text]:focus {
   outline: none;
   border: 3px solid rgba(9, 255, 0, 0.479);
 }
 
 .mr06em {
-  margin-right: .6em;
+  margin-right: 0.6em;
 }
 
 .comment-controls {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding-right: .6em;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 0.6em;
 }
-
 .comment-controls-icon {
   margin-left: 1em;
   color: #8d8d8d;
   cursor: pointer;
 }
-
 .comment-controls-statNum {
   font-family: "Oswald", sans-serif;
-  font-size: .8rem;
+  font-size: 0.8rem;
 }
 
 .like {
   width: 1.2rem !important;
   height: 1.2rem !important;
-  margin-right: .3em;
+  margin-right: 0.3em;
 }
 
 .liked {
-  color: #e43c3c;
+  color: rgb(228, 60, 60);
 }
 
 .reply {
@@ -143,7 +112,7 @@
 .arrow {
   width: 1.2rem !important;
   height: 1.2rem !important;
-  margin-right: .3em;
+  margin-right: 0.3em;
 }
 
 .m0 {
@@ -155,23 +124,13 @@
 }
 
 .comment > form {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  padding: .2em .6em .2em 0;
+  flex-direction: column;
+  padding: 0.2em 0.6em 0.2em 0;
 }
-
 .comment > form div {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
 
 .comment-submitBtn {
@@ -180,17 +139,15 @@
   border: none;
   border-radius: 0.2em;
   font-weight: 600;
-  font-size: .9rem;
-  padding: .5rem .9rem;
+  font-size: 0.9rem;
+  padding: 0.5rem 0.9rem;
   width: 5rem;
-  -ms-flex-item-align: end;
-      align-self: flex-end;
+  align-self: flex-end;
   margin-top: 0.4rem;
 }
 
 .dropdownComments {
-  margin-left: .2em;
-  padding-left: .2em;
+  margin-left: 0.2em;
+  padding-left: 0.2em;
   border-left: solid 2px #cccccc;
-}
-/*# sourceMappingURL=Comment.css.map */
+}/*# sourceMappingURL=Comment.css.map */

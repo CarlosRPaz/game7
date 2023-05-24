@@ -3,161 +3,110 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap");
 .footer {
   background-color: #e4e8ec;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   padding: 3rem 3rem 1rem 3rem;
   font-family: "Roboto", sans-serif;
-  -ms-flex-item-align: end;
-      align-self: flex-end;
+  align-self: flex-end;
 }
-
 .footer-cont {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto 0 auto;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
 }
-
 .footer-companyCol {
   margin-bottom: 2rem;
 }
-
 .footer-companyCol p {
-  color: #5f5f5f;
-  margin-top: .6rem;
+  color: rgb(95, 95, 95);
+  margin-top: 0.6rem;
   max-width: 300px;
 }
-
 .footer-linksColCont {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  flex-direction: column;
+  justify-content: space-between;
   margin-bottom: 2rem;
 }
-
 .footer-linksCol {
   margin-right: 3rem;
 }
-
 .footer-linksCol ul li {
-  color: #5f5f5f;
+  color: rgb(95, 95, 95);
   list-style: none;
-  margin-bottom: .4rem;
+  margin-bottom: 0.4rem;
 }
-
 .footer-linksCol:last-child {
   margin: 0;
 }
-
 .footer-newsletterCol {
   max-width: 500px;
 }
-
 .footer-legal {
-  color: #5f5f5f;
+  color: rgb(95, 95, 95);
   margin-top: 2em;
   padding-top: 1rem;
   text-align: center;
   border-top: 1px solid lightgray;
 }
-
 .footer-logo-cont {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   text-decoration: none;
   color: #37373b;
   font-weight: 500;
   font-family: "Oswald", sans-serif;
   font-size: 1.6rem;
 }
-
 .footer-logo {
   height: 2rem;
   width: 2rem;
-  margin-right: .6rem;
+  margin-right: 0.6rem;
 }
-
 .footer-label {
   color: #37373b;
   font-size: 1.2rem;
   font-weight: 500;
-  padding: .6em 0;
+  padding: 0.6em 0;
   width: auto;
 }
-
 .footer-newsletterCont {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
-
 .footer-input {
   border: none;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+  flex-grow: 1;
   border-radius: 0.2em;
   width: 6rem;
-  font-size: .9rem;
+  font-size: 0.9rem;
   padding: 1em;
 }
-
 .footer input[type=email]:focus {
   outline: none;
   border: 1px solid rgba(128, 128, 128, 0.479);
 }
-
 .footer-subscribeBtn {
-  margin-left: .3em;
+  margin-left: 0.3em;
   border-radius: 0.2em;
   border: none;
   background-color: #1DA6FB;
   color: #f8f8ff;
   font-weight: 600;
-  font-size: .9rem;
+  font-size: 0.9rem;
   padding: 1em 2em;
 }
 
 @media (min-width: 500px) {
   .footer-linksColCont {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
+    flex-direction: row;
   }
 }
-
 @media (min-width: 1000px) {
   .footer-cont {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
+    flex-direction: row;
   }
   .footer-companyCol {
     margin-bottom: 0;
@@ -169,5 +118,4 @@
     min-width: 250px;
     max-width: 800px;
   }
-}
-/*# sourceMappingURL=Footer.css.map */
+}/*# sourceMappingURL=Footer.css.map */

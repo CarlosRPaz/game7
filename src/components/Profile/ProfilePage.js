@@ -33,6 +33,17 @@ function ProfilePage() {
         setPage(value);
     };
 
+    // Load user's data from database
+    useEffect(() => {
+        onSnapshot(query(collection(db, "users"),
+            where("userId", "==", id)), (snapshot) => {
+                setCurrentProfile(
+                    snapshot.docs.at(0).data()
+                );
+            })
+    }, []);
+
+    // Load all of the user's comments
     useEffect(() => {
         onSnapshot(query(collection(db, "comments"),
             where("userId", "==", id)), (snapshot) => {
@@ -70,6 +81,8 @@ function ProfilePage() {
     const totalCount = Math.ceil(profileComments.length / postsPerPage);
 
     if(!user) {<h1>Loading...</h1>}
+    //if(user) {console.log(user);}
+    if(currentProfile) {console.log(currentProfile);}
 
     return (
         <div className="profilePage">
@@ -79,8 +92,8 @@ function ProfilePage() {
                         alt=""
                         className="profilePage-header-img" />
                     <div className="profilePage-header-infoText">
-                        <p className="profilePage-header-name">{user ? user.displayName : 'Test Name'}</p>
-                        <p className="profilePage-header-email">{user ? user.email : 'Test Email'}</p>
+                        <p className="profilePage-header-name">{currentProfile ? currentProfile.userName : 'Test Name'}</p>
+                        <p className="profilePage-header-email">{currentProfile ? currentProfile.email : 'Test Email'}</p>
                     </div>
                 </div>
 
@@ -88,19 +101,20 @@ function ProfilePage() {
                     <h3>Profile Stats</h3>
                     <div className="profilePage-header-stats">
                         <div>
-                            <span>232</span>
+                            <span>{currentProfile ? currentProfile.comments : '##'}</span>
                             <label>Comments</label>
                         </div>
                         <div>
-                            <span>584</span>
+                            <span>{currentProfile ? currentProfile.likes : '##'}</span>
                             <label>Likes</label>
                         </div>
                         <div>
-                            <span>2.5</span>
+                            <span>{currentProfile ? currentProfile.rep : '##'}</span>
                             <label>Reputation</label>
                         </div>
                     </div>
                 </div>
+                <div className="profilePage-header-bio">{currentProfile && currentProfile.bio}</div>
                 <button className="profilePage-header-editProfileBtn">Edit Profile</button>
             </div>
 
@@ -122,8 +136,8 @@ function ProfilePage() {
 
                         ))
                     ) : (
-                            'Loading...'
-                        )
+                        'Loading...'
+                    )
                     }
                 </div>
 

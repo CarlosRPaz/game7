@@ -1,10 +1,1 @@
-{
-    "version": 3,
-    "mappings": "ACAA,OAAO,CAAC,4FAAI;AAEZ,OAAO,CAAC,qGAAI;AAEZ,OAAO,CAAC,wFAAI;ADFZ,AAAA,WAAW,CAAC;EACR,UAAU,EAAE,IAAI;EAChB,OAAO,EAAE,IAAI;EACb,UAAU,EAAE,IAAI;CAYnB;;AAVI,AAAD,gBAAM,CAAC;EACH,gBAAgB,ECIN,OAAO;EDHjB,eAAe,EAAE,IAAI;EACrB,OAAO,EAAE,SAAS;EAClB,KAAK,ECAG,OAAO;CDKlB;;AATA,AAMG,gBANE,AAMD,OAAO,CAAC;EACL,KAAK,EAAE,GAAG;CACb",
-    "sources": [
-        "Pagination.scss",
-        "../../../scss/_main.scss"
-    ],
-    "names": [],
-    "file": "Pagination.css"
-}
+{"version":3,"sources":["../../../scss/_main.scss","Pagination.scss","Pagination.css"],"names":[],"mappings":"AAAQ,oGAAA;AAEA,6GAAA;AAEA,gGAAA;ACFR;EACI,gBAAA;EACA,aAAA;EACA,iBAAA;ACEJ;ADAI;EACI,yBDIU;ECHV,qBAAA;EACA,oBAAA;EACA,cAAA;ACER;ADAQ;EACI,UAAA;ACEZ","file":"Pagination.css"}

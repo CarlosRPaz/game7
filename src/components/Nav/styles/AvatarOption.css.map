@@ -1,9 +1,1 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,aAAa,CAAC;EACV,MAAM,EAAE,OAAO;CAClB;;AAED,AAAA,kBAAkB,CAAC;EACf,UAAU,EAAE,OAAO;EACnB,MAAM,EAAE,eAAe;EACvB,KAAK,EAAE,eAAe;CACzB",
-    "sources": [
-        "AvatarOption.scss"
-    ],
-    "names": [],
-    "file": "AvatarOption.css"
-}
+{"version":3,"sources":["AvatarOption.scss","AvatarOption.css"],"names":[],"mappings":"AAAA;EACI,eAAA;ACCJ;;ADEA;EACI,sBAAA;KAAA,mBAAA;EACA,uBAAA;EACA,sBAAA;ACCJ","file":"AvatarOption.css"}
