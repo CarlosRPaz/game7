@@ -28,6 +28,7 @@ import {
   increment,
   serverTimestamp,
 } from "firebase/firestore";
+import {getStorage} from "firebase/storage";
 
 /*
 import {getAnalytics} from "firebase/analytics";
@@ -48,7 +49,7 @@ const firebaseConfig = {
   storageBucket: "game7-blog.appspot.com",
   messagingSenderId: "248798987246",
   appId: "1:248798987246:web:095cc133590d933183c4ff",
-  measurementId: "G-KEWYDVY7CL"
+  measurementId: "G-KEWYDVY7CL",
 };
 
 // Initialize Firebase
@@ -58,11 +59,15 @@ const db = getFirestore(app);
 
 const analytics = getAnalytics(app);
 
+// Initialize Cloud Storage and get a reference to the service
+const storage = getStorage(app);
+
 export {
   app,
   db,
   auth,
   analytics,
+  storage,
   doc,
   collection,
   addDoc,
