@@ -17,6 +17,7 @@ import {ref, uploadBytes, getDownloadURL, getStorage} from "firebase/storage";
 import {useParams} from "react-router-dom";
 
 import moment from 'moment';
+import {v4 as uuidv4} from 'uuid';
 
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
@@ -98,9 +99,9 @@ function ProfilePage() {
         const uploadFile = async () => {
             if(!imageUpload) return;
 
-            // TODO: use uuid for img naming
-            const path = "images/img1.jpg";         // TODO: MAYBE MOVE THIS STATE UP A LEVEL TO USE IN retrieveImg func
-            const imageRef = ref(storage, path);         /* (storage, `images/${imageUpload.name}`); */
+            // Tuse uuid for img naming
+            const path = `images/${uuidv4()}.jpg`;         // TODO: MAYBE MOVE THIS STATE UP A LEVEL TO USE IN retrieveImg func
+            const imageRef = ref(storage, path);         /* (storage, `images/${uuidv4().jpg}`); */
 
             await uploadBytes(imageRef, imageUpload).then((snapshot) => {
                 console.log('Uploaded a blob or file!');
