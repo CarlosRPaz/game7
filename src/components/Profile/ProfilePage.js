@@ -12,8 +12,9 @@ import {
     updateDoc,
     storage,
     getDoc,
+    getDocs,
 } from '../../firebase';
-import {ref, uploadBytes, getDownloadURL, getStorage} from "firebase/storage";
+import {ref, uploadBytes, getDownloadURL, getStorage, getMetadata} from "firebase/storage";
 import {useParams} from "react-router-dom";
 
 import moment from 'moment';
@@ -29,6 +30,7 @@ function ProfilePage() {
     const user = useSelector(selectUser);
 
     const [currentProfile, setCurrentProfile] = useState(null);
+    //const [userProfileRef, setUserProfileRef] = useState();
     const {id} = useParams();
     const [open, setOpen] = useState(false);
 
@@ -44,14 +46,61 @@ function ProfilePage() {
     const handleClickOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
+    const [imgRef, setImgRef] = useState(null);
+
+    // Get current comments
+    const indexOfLastPost = page * postsPerPage;
+    const indexOfFirstPost = indexOfLastPost - postsPerPage;
+    const currentComments = profileComments.slice(indexOfFirstPost, indexOfLastPost);
+    const totalCount = Math.ceil(profileComments.length / postsPerPage);
+
+    // State console logging
+    //if(!user) {<h1>Loading...</h1>}
+    //if(user) {console.log("user", user);}
+    //if(currentProfile) {console.log("currentProfile", currentProfile);}
+    //console.log("EditProfileModal open? >>>>>", open);
+
+    // Checking Re-render
+    console.log('Re-render ProfilePage');
+
     // Load user's data from database
     useEffect(() => {
-        onSnapshot(query(collection(db, "users"),
-            where("userId", "==", id)), (snapshot) => {
+        const getUserProfileData = async () => {
+            // get query ref for a user with a certain id
+            const q = query(collection(db, "users"), where("userId", "==", id));
+
+            /* new code
+            const querySnapshot = await getDocs(q);
+            querySnapshot.forEach((doc) => {
+                // doc.data() is never undefined for query doc snapshots 
+                console.log(doc.id, " => ", doc.data());
+                setCurrentProfile(doc.data());
+
+                console.log("getUserProfileData ran")
+            });
+            */
+
+            // old snapshot code
+            // get snapshot of user profile and set to currentProfile
+            onSnapshot(q, (snapshot) => {
                 setCurrentProfile(
                     snapshot.docs.at(0).data()
                 );
-            })
+            },
+                (error) => {
+                    console.log("onSnapshot error: ", error);
+                });
+
+
+        }
+
+        // id maybe loading slow?
+        getUserProfileData();
+        // ERROR HERE? userProfileRef undefined when onSubmit runs
+        // docRef = doc(db, "users", id);
+        //setUserProfileRef(docRef);
+
+        console.log("PP useEffect ran: load user's data");
     }, [id]);
 
     // Load all of the user's comments
@@ -64,8 +113,51 @@ function ProfilePage() {
                         data: doc.data(),
                     }))
                 )
-            })
+            });
+
+        console.log("PP useEffect ran: load user's comments");
     }, [id]);
+
+    useEffect(() => {
+        if(currentProfile) {
+            console.log("currentProfile.url: ", currentProfile.url);
+            console.log('imgRef >> ', imgRef);
+
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+            if(imgRef) {
+                // Get metadata properties
+                getMetadata(imgRef)
+                    .then((metadata) => {
+                        // Metadata now contains the metadata for 'ref(storage, currentProfile.url)'
+                        //setImageUpload(metadata.name);
+                        console.log('metadata in getMetadata:', metadata);
+                    })
+                    .catch((error) => {
+                        // Uh-oh, an error occurred!
+                        console.log('getMetaData error:', error);
+                    });
+            }
+
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        }
+
+        console.log("PP useEffect ran: currentProfile updated if this loads more than once");
+    }, [currentProfile, imgRef])
+
+    useEffect(() => {
+        if(currentProfile) {
+            console.log("currentProfile", currentProfile);
+            console.log("currentProfile.url", currentProfile.url);
+            currentProfile && setImgRef(ref(storage, currentProfile.url));
+        }
+
+        console.log("PP useEffect ran: setImgRef, means currentProfile updated (1<)");
+    }, [currentProfile])
 
     // Profile comment component
     function ProfileComment({message, likeCount, timestamp}) {
@@ -86,51 +178,69 @@ function ProfilePage() {
         );
     }
 
-    console.log('Re-render');
-
     // Edit Profile Modal
-    function EditProfileModal() {
-        const [username, setUsername] = useState('');
-        const [bio, setBio] = useState('');
+    function EditProfileModal(imgRef) {
+        const [username, setUsername] = useState(`${currentProfile?.userName}`);
+        const [bio, setBio] = useState(`${currentProfile?.bio}`);
         const [imageUpload, setImageUpload] = useState();
 
-        const userProfileRef = doc(db, "users", id);
+        //const [userProfileRef, setUserProfileRef] = useState();
 
-        const uploadFile = async () => {
+        // Checking Re-render
+        console.log('Re-render EditProfileModal');
+        //console.log("userProfileRef", userProfileRef);
+
+        useEffect(() => {
+            if(imgRef) {
+                setImageUpload(imgRef.path);
+            }
+        }, [imgRef]);
+
+        const uploadFile = async (docRef) => {
             if(!imageUpload) return;
+            console.log("imageUpload in UF:", imageUpload);
 
-            // Tuse uuid for img naming
+            // Use uuid for img naming
             const path = `images/${uuidv4()}.jpg`;         // TODO: MAYBE MOVE THIS STATE UP A LEVEL TO USE IN retrieveImg func
             const imageRef = ref(storage, path);         /* (storage, `images/${uuidv4().jpg}`); */
 
-            await uploadBytes(imageRef, imageUpload).then((snapshot) => {
+
+            const metadata = {
+                name: `${imageUpload.name}`
+            }
+
+            await uploadBytes(imageRef, imageUpload, metadata).then((snapshot) => {
                 console.log('Uploaded a blob or file!');
+                console.log("imageUpload metadata >>>", metadata);
+
 
                 // Save a reference to the file in Firestore DB
-                updateDoc(userProfileRef, {
+                updateDoc(docRef, {
                     url: path
                 });
-            })
 
-            retrieveImg();
+            });
+
+            retrieveImg(docRef);
+
+            // TODO: Delete old img in storage
+
+            console.log("uploadFile fxn ran");
+
         }
 
-        const retrieveImg = async () => {
-            const docSnap = await getDoc(userProfileRef);
+        const retrieveImg = async (docRef) => {
+            const docSnap = await getDoc(docRef);
             if(docSnap.exists()) {
                 const userSnap = docSnap.data();
                 getDownloadURL(ref(storage, userSnap.url))
                     .then((url) => {
                         // `url` is the download URL for 'images/img1.jpg'
-
+                        console.log('userSnap >>>>>>>', userSnap)
                         //TEST
-                        updateDoc(userProfileRef, {
+                        updateDoc(docRef, {
                             url: url
                         });
-
-                        // Or inserted into an <img> element
-                        const img = document.getElementById('myimg');
-                        img.setAttribute('src', url);
                     })
                     .catch((error) => {
                         // Handle any errors
@@ -139,16 +249,25 @@ function ProfilePage() {
             } else {
                 console.log("No such document!");
             }
+
+            console.log("retrieveImg fxn ran");
         }
 
         // Profile Edit onSubmit
         async function onSubmit(e) {
             e.preventDefault();
-            await updateDoc(userProfileRef, {
+            console.log("id:", id);
+            //console.log("userProfileRef:", userProfileRef);
+            //console.log("userProfileRef path:", userProfileRef.path);
+
+            const docRef = doc(db, "users", id);
+            console.log("docRef", docRef);
+            //setUserProfileRef(docRef);
+            await updateDoc(docRef, {
                 userName: username,
                 bio: bio,
             });
-            uploadFile();
+            uploadFile(docRef);
             handleClose();
         }
 
@@ -193,17 +312,6 @@ function ProfilePage() {
             </Dialog>
         );
     }
-
-    // Get current comments
-    const indexOfLastPost = page * postsPerPage;
-    const indexOfFirstPost = indexOfLastPost - postsPerPage;
-    const currentComments = profileComments.slice(indexOfFirstPost, indexOfLastPost);
-    const totalCount = Math.ceil(profileComments.length / postsPerPage);
-
-    if(!user) {<h1>Loading...</h1>}
-    if(user) {console.log("user", user);}
-    if(currentProfile) {console.log("currentProfile", currentProfile);}
-    console.log(open);
 
     return (
         <div className="profilePage">
@@ -273,7 +381,7 @@ function ProfilePage() {
                     onChange={handlePageChange}
                 />
             </Stack>
-            <EditProfileModal />
+            <EditProfileModal imgRef={imgRef} /*userProfileRef={userProfileRef}*/ />
         </div>
     )
 }

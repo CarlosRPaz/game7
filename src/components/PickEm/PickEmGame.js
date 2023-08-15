@@ -58,7 +58,7 @@ function PickEmGame() {
     useEffect(() => {
         // Load selection if it exists
         const loadSelection = async () => {
-            const q = query(collection(db, "selections"), where("pickEmGameId", "==", currentPickEmGame.meta_id));
+            const q = query(collection(db, "selections"), where("pickEmGameId", "==", currentPickEmGame.meta_id), where("userId", "==", user.uid));
             const querySnapshot = await getDocs(q);
 
             querySnapshot.forEach((doc) => {
@@ -72,7 +72,7 @@ function PickEmGame() {
         if(currentPickEmGame) {
             loadSelection().catch(console.error);
         }
-    }, [currentPickEmGame])
+    }, [currentPickEmGame, user])
 
     // Load All Players List
     useEffect(() => {
@@ -105,9 +105,9 @@ function PickEmGame() {
         } else {
             // ADD selection doc
             await addDoc(collection(db, 'selections'), {
-                userId: user ?.uid,                                // GOOD
+                userId: user?.uid,                                // GOOD
                 selection: playerId,                              // GOOD
-                pickEmGameId: currentPickEmGame ?.meta_id,         // GOOD
+                pickEmGameId: currentPickEmGame?.meta_id,         // GOOD
             });
         }
 
@@ -158,6 +158,7 @@ function PickEmGame() {
                 <div className="nflHome-middle">
                     <h3>PickEmGame Page</h3>
                     {slug ? <p>Slug: {slug}</p> : 'loading...'}
+                    {currentPickEmGame ? <p>{currentPickEmGame.gameType}</p> : 'loading...'}
 
                     <div id="btnContainer">
                         {playersList && playersList.map((player, index) => (
