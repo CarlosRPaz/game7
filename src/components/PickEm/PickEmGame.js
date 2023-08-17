@@ -24,6 +24,8 @@ import {
     onSnapshot,
     serverTimestamp,
 } from '../../firebase';
+import MatchSelections from "./MatchSelections";
+import OneOfMany from "./OneOfMany";
 
 function PickEmGame() {
 
@@ -32,12 +34,8 @@ function PickEmGame() {
     const ref = useRef(null);
 
     const {slug} = useParams();
-    const [playersList, setPlayersList] = useState([]);
     const [currentPickEmGame, setCurrentPickEmGame] = useState();
     // Store selection here on page-load
-    const [activePickID, setActivePickID] = useState('');
-    const [selectionID, setSelectionID] = useState('');
-    const [isActive, setIsActive] = useState(true);
 
     useEffect(() => {
         // Load pickemgame data from pickemgame that contains the slug that is passed through
@@ -54,77 +52,6 @@ function PickEmGame() {
 
         loadPickEmGame().catch(console.error);
     }, [slug])
-
-    useEffect(() => {
-        // Load selection if it exists
-        const loadSelection = async () => {
-            const q = query(collection(db, "selections"), where("pickEmGameId", "==", currentPickEmGame.meta_id), where("userId", "==", user.uid));
-            const querySnapshot = await getDocs(q);
-
-            querySnapshot.forEach((doc) => {
-                // doc.data() is never undefined for query doc snapshots
-                console.log("selectionId => ", doc.id);
-                setActivePickID(doc.data().selection);
-                setSelectionID(doc.id);
-            });
-        }
-
-        if(currentPickEmGame) {
-            loadSelection().catch(console.error);
-        }
-    }, [currentPickEmGame, user])
-
-    // Load All Players List
-    useEffect(() => {
-        const loadPlayers = async () => {
-            const q = query(collection(db, "players"));
-            const querySnapshot = await getDocs(q);
-
-            querySnapshot.forEach((doc) => {
-                // doc.data() is never undefined for query doc snapshots
-                // console.log(doc.id, " => ", doc.data());
-                setPlayersList(playersList => [...playersList, {...doc.data(), meta_id: doc.id}]);
-            });
-        }
-
-        loadPlayers().catch(console.error);
-    }, [])
-
-    if(activePickID) {
-        console.log('activePickID: ', activePickID);
-    }
-
-    const sendPick = async (playerId, e) => {
-        //e.preventDefault();
-        e.target.className += " active";
-
-        // IF selection already exists, UPDATE selection variable, ELSE ADD selection doc
-        if(activePickID) {
-            const selectionRef = doc(db, 'selections', selectionID);
-            await setDoc(selectionRef, {selection: playerId}, {merge: true});
-        } else {
-            // ADD selection doc
-            await addDoc(collection(db, 'selections'), {
-                userId: user?.uid,                                // GOOD
-                selection: playerId,                              // GOOD
-                pickEmGameId: currentPickEmGame?.meta_id,         // GOOD
-            });
-        }
-
-        // Update local selection variable
-        setActivePickID(playerId);
-    }
-
-    function Selection({player}) {
-        return (
-            <button
-                onClick={(e) => sendPick(player.meta_id, e)}
-                className={player.meta_id === activePickID ? "btn active" : "btn"}
-            >
-                {player.name}
-            </button>
-        )
-    }
 
     /*
     // Get the container element
@@ -149,24 +76,33 @@ function PickEmGame() {
     }
     */
 
+    function PickEmGameElement({currentPickEmGame, user}) {
+        const gameType = currentPickEmGame.gameType;
+
+        if(gameType === "oneOfMany") {
+            return <OneOfMany currentPickEmGame={currentPickEmGame} user={user} />;
+        } else if(gameType === "matchSelections") {
+            return <MatchSelections currentPickEmGame={currentPickEmGame} user={user} />;
+        }
+        return <p>gameType error</p>;
+    }
+
     return (
         <div className="nflHome" id="content-wrap">
             <div className="nflHome-cont">
                 <div className="nflHome-left">
                     <SocialsWidget />
                 </div>
+
                 <div className="nflHome-middle">
                     <h3>PickEmGame Page</h3>
                     {slug ? <p>Slug: {slug}</p> : 'loading...'}
                     {currentPickEmGame ? <p>{currentPickEmGame.gameType}</p> : 'loading...'}
 
-                    <div id="btnContainer">
-                        {playersList && playersList.map((player, index) => (
-                            <Selection key={player.meta_id} player={player} />
-                        ))}
-                    </div>
-
+                    {/* Need gameType and pickemgame data */}
+                    {currentPickEmGame && <PickEmGameElement currentPickEmGame={currentPickEmGame} user={user} />}
                 </div>
+
                 <div className="nflHome-right">
                     <PollWidget />
                 </div>
