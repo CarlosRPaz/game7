@@ -59,7 +59,7 @@ function OneOfMany({currentPickEmGame, user}) {
         }
 
         loadPlayers().catch(console.error);
-    }, [currentPickEmGame])
+    }, [currentPickEmGame]);
 
     const sendPick = async (playerId, e) => {
         //e.preventDefault();

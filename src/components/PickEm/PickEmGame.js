@@ -35,6 +35,9 @@ function PickEmGame() {
 
     const {slug} = useParams();
     const [currentPickEmGame, setCurrentPickEmGame] = useState();
+
+    const [matchList, setMatchList] = useState([]);
+
     // Store selection here on page-load
 
     useEffect(() => {
@@ -52,6 +55,24 @@ function PickEmGame() {
 
         loadPickEmGame().catch(console.error);
     }, [slug])
+
+    // load matches if gameType == matchSelections
+    useEffect(() => {
+        if(currentPickEmGame?.gameType === "matchSelections") {
+            const loadMatches = async () => {
+                const q = query(collection(db, "matches"),
+                    where("leagueAbbr", "==", currentPickEmGame.leagueAbbr),
+                    where("year", "==", currentPickEmGame.year));
+                const querySnapshot = await getDocs(q);
+
+                querySnapshot.forEach((doc) => {
+                    setMatchList(matchList => [...matchList, {...doc.data(), meta_id: doc.id}]);
+                });
+            }
+
+            loadMatches().catch(console.error);
+        }
+    }, [currentPickEmGame]);
 
     /*
     // Get the container element
@@ -76,19 +97,19 @@ function PickEmGame() {
     }
     */
 
-    function PickEmGameElement({currentPickEmGame, user}) {
-        const gameType = currentPickEmGame.gameType;
+    function PickEmGameElement({currentPickEmGame, user, matchList}) {
+        //const gameType = currentPickEmGame.gameType;
 
-        if(gameType === "oneOfMany") {
+        if(currentPickEmGame.gameType === "oneOfMany") {
             return <OneOfMany currentPickEmGame={currentPickEmGame} user={user} />;
-        } else if(gameType === "matchSelections") {
-            return <MatchSelections currentPickEmGame={currentPickEmGame} user={user} />;
+        } else if(currentPickEmGame.gameType === "matchSelections") {
+            return <MatchSelections currentPickEmGame={currentPickEmGame} user={user} matchList={matchList} />;
         }
         return <p>gameType error</p>;
     }
 
     return (
-        <div className="nflHome" id="content-wrap">
+        <div className="pickEmGame">
             <div className="nflHome-cont">
                 <div className="nflHome-left">
                     <SocialsWidget />
@@ -100,7 +121,7 @@ function PickEmGame() {
                     {currentPickEmGame ? <p>{currentPickEmGame.gameType}</p> : 'loading...'}
 
                     {/* Need gameType and pickemgame data */}
-                    {currentPickEmGame && <PickEmGameElement currentPickEmGame={currentPickEmGame} user={user} />}
+                    {currentPickEmGame && <PickEmGameElement currentPickEmGame={currentPickEmGame} user={user} matchList={matchList} />}
                 </div>
 
                 <div className="nflHome-right">
