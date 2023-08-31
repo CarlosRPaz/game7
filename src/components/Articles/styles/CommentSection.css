@@ -1,0 +1,84 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap");
+.commentSection {
+  margin: 2em 0 2em 0;
+  padding: 1em 0;
+}
+.commentSection-header {
+  background-color: #e4e8ec;
+  padding: 0.6em;
+  border-radius: 0.2em;
+}
+.commentSection-header h3 {
+  margin-bottom: 0.6em;
+}
+.commentSection-header div {
+  display: flex;
+}
+.commentSection-header-img {
+  background-color: rgb(189, 189, 189);
+  width: 2em;
+  height: 2em;
+  border-radius: 20px;
+  margin-right: 0.6em;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.commentSection-header-form {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+}
+.commentSection-header-input {
+  border: none;
+  flex-grow: 1;
+  border-radius: 0.2em;
+  width: 6rem;
+  font-size: 0.9rem;
+  padding: 1em;
+}
+.commentSection-header-input:disabled {
+  background-color: rgb(243, 243, 243);
+  border: 1px solid rgba(146, 66, 66, 0.479);
+}
+.commentSection-header input[type=text]:focus {
+  outline: none;
+  border: 1px solid rgba(128, 128, 128, 0.479);
+}
+.commentSection-header-sendBtn {
+  margin-left: 0.6em;
+  border-radius: 0.2em;
+  border: none;
+  background-color: #1DA6FB;
+  color: #f8f8ff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 1rem 2rem;
+}
+
+.commentSection-blank {
+  background-color: #ffffff;
+  margin-top: 0.2em;
+  padding: 1em;
+  font-family: "Poppins", sans-serif;
+  border-radius: 0.2em;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.commentSection-blank-img {
+  position: absolute;
+  width: 200px;
+  top: -3rem;
+  left: -3rem;
+  transform: rotate(0.95turn);
+}
+.commentSection-blank h2, .commentSection-blank h4 {
+  position: relative;
+  color: rgb(141, 141, 141);
+  z-index: 10;
+}
+.commentSection-blank h2 {
+  font-size: 1.2rem;
+}/*# sourceMappingURL=CommentSection.css.map */

@@ -1,0 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap");
+.socialsWidget {
+  background-color: #e4e8ec;
+  padding: 1em;
+  border-radius: 0.2em;
+  position: sticky;
+  top: 20px;
+}
+.socialsWidget p {
+  font-family: "Oswald", sans-serif;
+  font-size: 1.2rem;
+  padding-bottom: 0.4em;
+}
+
+.socialsWidget-body {
+  background-color: #f9fbff;
+  border-radius: 0.2em;
+  padding: 0.6em;
+}
+
+.socialsWidget-link {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.3em;
+}
+.socialsWidget-link-icon {
+  width: 1.3em !important;
+  height: 1.3em !important;
+  margin-right: 0.6em;
+  color: #37373b;
+}
+.socialsWidget-link-textLink {
+  text-decoration: none;
+  color: #1DA6FB;
+  font-family: "Roboto", sans-serif;
+}/*# sourceMappingURL=SocialsWidget.css.map */

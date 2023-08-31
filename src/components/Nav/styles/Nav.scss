@@ -1,0 +1,279 @@
+@import './../../../scss/main';
+
+.nav {
+    background-color: $color-background;
+    padding: 10px 20px;
+    width: auto;
+    height: 60px;
+    z-index: 11;
+    position: relative;
+    justify-content: space-between;
+
+    display: flex;
+}
+
+.nav__logo-cont {
+    margin-right: 2em;
+    cursor: pointer;
+}
+.nav__logo {
+    height: 40px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+
+    &-link {
+        margin-right: 1em;
+        padding: 0 .6em 0 .6em;
+        cursor: pointer;
+    }
+    &-text {
+        font-family: $font;
+        color: $color-lightgray;
+        letter-spacing: 1px;
+        padding: .4em;
+    }
+}
+.nav-linksToHide {
+    display: none;
+}
+
+.nav-icons {
+    display: none;
+    align-items: center;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+.menu {
+    background-color: #27282a;
+    color: $color-light;
+    font-weight: 500;
+    padding: 0.5rem;
+    position: absolute;
+    top: 70px;
+    right: 10px;
+    border-radius: 3px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+
+    ul {
+        list-style-type: none;
+        
+        li {
+            padding: 0rem 0rem;
+            line-height: 1rem;
+        }
+    }
+
+    &-link {
+        display: block;
+        color: $color-light;
+        border-radius: $article-radius;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        cursor: pointer;
+        padding: 1rem 2rem;
+
+        &:hover {
+            background-color: $color-surface;
+        }
+    }
+    &-profileIMG {
+        object-fit: cover;
+        width: 1.4em !important;
+        height: 1.4em !important;
+        border-radius: 20em;
+        margin-right: .8em;
+    }
+    &-authBtn {
+        cursor: pointer;
+        border-radius: $article-radius;        
+        padding: 1rem 2rem;
+        display: flex;
+        align-items: center;
+        line-height: 1rem;
+        
+        &-icon {
+            margin-right: .4em;
+            width: .8em !important;
+            height: .8em !important;
+        }
+        
+    }
+}
+.logoutBtn {
+    background-color: hsla(0, 100%, 40%, 0.769);
+    &:hover {
+        background-color: hsl(0, 100%, 40%);           
+    }
+}
+.loginBtn {
+    background-color: hsla(135, 100%, 40%, 0.769);
+    color: white;
+    &:hover {
+        background-color: hsl(135, 100%, 40%);           
+    }
+}
+
+.menuIcon-cont {
+    display: flex;
+    align-items: center;
+}
+.menuIcon {
+    color: $color-light;
+    width: 1.6em !important;
+    height: 1.6em !important;
+    cursor: pointer;
+}
+
+hr.solid {
+    opacity: 0.3;
+    margin: .4em 0 .4em 0;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+  
+  .sidebar {
+    background-color: $color-surface;
+    width: 12em;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    transition: 850ms;
+    border-radius: $article-radius 0 0 $article-radius;
+    overflow: hidden;
+    z-index: 3;
+    
+    &-close {
+        width: auto;
+        padding: 1em;
+        display: flex;
+        align-items: center;
+        
+        &-icon {
+            color: $color-light;
+            width: 1.2em !important;
+            height: 1.2em !important;
+        }
+    }
+
+    &-profile {
+        display: flex;
+        align-items: center;
+
+        &-img {
+            object-fit: cover;
+            width: 1.8em !important;
+            height: 1.8em !important;
+            border-radius: 20em;
+            margin-right: 1.2em;
+        }
+        &-name{
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+    }
+
+    &-items {
+        width: 100%;
+    }
+
+    &-toggle {
+        background-color: $color-background;
+        width: 100%;
+        height: 60px;
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        margin-bottom: .3em;
+    }
+
+    &-icon {
+        width: .8em !important;
+        height: .8em !important;
+    }
+
+    &-text {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        padding: .3em 0 .3em 1em;
+        list-style: none;
+        height: 3em;
+
+        a {
+            text-decoration: none;
+            color: #fcfcfc;
+            font-size: 1rem;
+            width: 95%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0 .6em;
+            border-radius: $article-radius;
+
+            &:hover {background-color: lightslategray;}
+        }
+    }
+    &-auth {
+        color: #fcfcfc;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        padding: .6em 0 .6em 1em;
+        border-radius: $article-radius;
+        margin: .6em;
+        
+        &-icon {
+            width: .8em !important;
+            height: .8em !important;
+        }
+    }
+    &-login {
+        background-color: rgba(0, 204, 78, 0.769);        
+    }
+    &-logout {
+        background-color: hsla(0, 100%, 40%, 0.769);
+    }
+  }
+
+  .landingLink {
+      text-decoration: none;
+  }
+  
+  .sidebar.active {
+    right: 0;
+    transition: 350ms;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+  
+  span {
+    margin-left: 16px;
+  }
+
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+@media (min-width: 800px) {
+    .nav {
+        padding: 10px 40px;
+    }
+    .nav-linksToHide {
+        display: flex;
+    }
+    .menuIcon-cont {
+        display: none;
+    }
+    .nav-icons {
+        display: flex;
+    }
+}

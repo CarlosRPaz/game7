@@ -1,0 +1,153 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap");
+.comment {
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.2em;
+  padding: 0.6em 0 0.6em 0.6em;
+  font-family: "Poppins", sans-serif;
+  border-radius: 0.2em;
+}
+
+.comment-message {
+  padding: 0.5em 0.4em;
+  font-family: sans-serif;
+}
+
+.comment-info {
+  position: relative;
+  display: flex;
+  width: 100%;
+  font-size: 0.9rem;
+}
+.comment-info-photoCont {
+  padding-right: 0.3em;
+}
+.comment-info-photo {
+  background-color: rgb(189, 189, 189);
+  width: 2rem;
+  height: 2rem;
+  border-radius: 500px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.comment-info-vertIconCont {
+  position: absolute;
+  right: 0;
+}
+.comment-info-vertIconCont-icon {
+  color: #8d8d8d;
+  cursor: pointer;
+}
+.comment-info-vertIconCont button {
+  padding: 0;
+  margin: 0;
+}
+.comment-info-nameLink {
+  text-decoration: none;
+}
+.comment-info-name {
+  color: #000000;
+}
+.comment-info-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1rem;
+}
+.comment-info-date {
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+.comment-info-input {
+  background-color: rgb(243, 243, 243);
+  border: none;
+  border-radius: 0.2em;
+  font-size: 0.9rem;
+  padding: 1em;
+  width: 100%;
+  resize: none;
+}
+.comment-info textarea[type=text]:focus {
+  outline: none;
+  border: 3px solid rgba(9, 255, 0, 0.479);
+}
+
+.mr06em {
+  margin-right: 0.6em;
+}
+
+.comment-controls {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 0.6em;
+}
+.comment-controls-icon {
+  margin-left: 1em;
+  color: #8d8d8d;
+  cursor: pointer;
+}
+.comment-controls-statNum {
+  font-family: "Oswald", sans-serif;
+  font-size: 0.8rem;
+}
+
+.like {
+  width: 1.2rem !important;
+  height: 1.2rem !important;
+  margin-right: 0.3em;
+}
+
+.liked {
+  color: rgb(228, 60, 60);
+}
+
+.reply {
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+}
+
+.arrow {
+  width: 1.2rem !important;
+  height: 1.2rem !important;
+  margin-right: 0.3em;
+}
+
+.m0 {
+  margin-right: 0;
+}
+
+.hide {
+  display: none;
+}
+
+.comment > form {
+  display: flex;
+  flex-direction: column;
+  padding: 0.2em 0.6em 0.2em 0;
+}
+.comment > form div {
+  display: flex;
+  align-items: center;
+}
+
+.comment-submitBtn {
+  background-color: #1DA6FB;
+  color: #f8f8ff;
+  border: none;
+  border-radius: 0.2em;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.5rem 0.9rem;
+  width: 5rem;
+  align-self: flex-end;
+  margin-top: 0.4rem;
+}
+
+.dropdownComments {
+  margin-left: 0.2em;
+  padding-left: 0.2em;
+  border-left: solid 2px #cccccc;
+}/*# sourceMappingURL=Comment.css.map */

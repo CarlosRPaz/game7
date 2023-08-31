@@ -1,0 +1,178 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap");
+.profilePage {
+  padding: 1em;
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+}
+.profilePage-stack {
+  width: 100%;
+}
+
+.profilePage-header {
+  background-color: white;
+  max-width: 250px;
+  border-radius: 0.2em;
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  font-family: "Oswald", sans-serif;
+}
+.profilePage-header-info {
+  display: flex;
+  flex-direction: row;
+}
+.profilePage-header-infoText {
+  padding-left: 1rem;
+}
+.profilePage-header-img {
+  width: 4em;
+  height: 4em;
+  border-radius: 50px;
+  align-self: center;
+  margin-bottom: 0.4em;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.profilePage-header-name {
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+.profilePage-header-email {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+.profilePage-header-statsCont {
+  margin-top: 2rem;
+}
+.profilePage-header-statsCont h3 {
+  color: rgb(126, 126, 126);
+  font-size: 1rem;
+  margin-bottom: 0.4rem;
+  font-weight: 500;
+}
+.profilePage-header-stats {
+  display: flex;
+  justify-content: flex-start;
+}
+.profilePage-header-stats div {
+  display: flex;
+  flex-direction: column;
+  margin-right: 1.6rem;
+}
+.profilePage-header-stats div label {
+  color: rgb(126, 126, 126);
+  font-size: 0.9rem;
+}
+.profilePage-header-stats div span {
+  font-size: 1.4rem;
+  margin: 0;
+}
+.profilePage-header-bio {
+  margin-top: 1rem;
+}
+.profilePage-header-editProfileBtn {
+  background-color: #1DA6FB;
+  border-radius: 0.2em;
+  border: none;
+  width: 100%;
+  color: #f8f8ff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.6em 1.4em;
+  margin-top: 2rem;
+  cursor: pointer;
+}
+
+.profilePage-comments {
+  background-color: rgb(233, 233, 233);
+  border-radius: 0.2em;
+  overflow: hidden;
+  margin-top: 1em;
+}
+.profilePage-comments-panel {
+  background-color: #37373b;
+  padding: 0.4em 1em;
+  color: #f8f8ff;
+  font-weight: 500;
+}
+
+.profileComment {
+  background-color: #e4e8ec;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 0.6em 1em;
+}
+.profileComment-commentInfo {
+  display: flex;
+  flex-direction: row;
+  font-family: "Roboto", sans-serif;
+  color: gray;
+  font-size: 0.9em;
+  margin-top: 0.6em;
+}
+.profileComment-likeCount {
+  margin-right: 2em;
+}
+.profileComment-likeCount span {
+  margin: 0;
+  font-weight: 500;
+  color: #37373b;
+}
+.profileComment-message {
+  flex-grow: 1;
+}
+
+.profileComment:nth-child(even) {
+  background-color: white;
+}
+
+.form-container input, .form-container textarea {
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  margin: 0.2rem 0;
+  font-size: 20px;
+  border-radius: 0.2em;
+}
+.form-container textarea {
+  height: 15vh;
+}
+.form-container-btnContainer {
+  display: flex;
+  gap: 1rem;
+}
+.form-container-btnContainer button {
+  border-radius: 0.2em;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 1em 2em;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+.form-container-btnContainer-cancelBtn {
+  border-color: #1DA6FB;
+  border: 5px;
+}
+.form-container-btnContainer-submitBtn {
+  background-color: #1DA6FB;
+  color: #f8f8ff;
+  border: none;
+}
+
+@media (min-width: 600px) {
+  .profilePage {
+    flex-direction: row;
+  }
+  .profilePage-header {
+    margin-right: 1rem;
+  }
+  .profilePage-comments {
+    margin-top: 0;
+  }
+}/*# sourceMappingURL=ProfilePage.css.map */

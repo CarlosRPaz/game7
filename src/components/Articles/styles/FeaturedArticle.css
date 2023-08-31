@@ -1,0 +1,68 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap");
+.featuredArticle {
+  height: 240px;
+  position: relative;
+  font-family: "Oswald", sans-serif;
+  border-radius: 0.2em;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  overflow: hidden;
+}
+.featuredArticle img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 0.2em;
+}
+.featuredArticle-tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: white;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  padding: 0 5px 0 5px;
+  border-radius: 0.2em;
+}
+.featuredArticle-tag-NFL {
+  background-color: rgb(204, 66, 66);
+  color: #f8f8ff;
+}
+.featuredArticle-tag-NBA {
+  background-color: rgb(231, 215, 68);
+}
+.featuredArticle-tag-MLR {
+  background-color: rgb(109, 204, 109);
+}
+.featuredArticle-title {
+  position: absolute;
+  bottom: 35px;
+  left: 10px;
+  margin-right: 10px;
+  color: #f8f8ff;
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.2rem; /*** Play around with this ***/
+  text-shadow: 1px 1px 6px black;
+}
+.featuredArticle-author {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  color: #f8f8ff;
+  font-size: 0.9rem;
+  text-shadow: 1px 1px 6px black;
+}
+
+@media (min-width: 600px) {
+  .featuredArticle {
+    height: 320px;
+  }
+  .featuredArticle-title {
+    font-size: 1.8rem;
+    line-height: 2.2rem; /*** Play around with this ***/
+  }
+}/*# sourceMappingURL=FeaturedArticle.css.map */

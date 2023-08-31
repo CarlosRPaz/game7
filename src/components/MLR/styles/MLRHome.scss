@@ -1,0 +1,61 @@
+@import './../../../scss/main';
+
+.mlrHome {
+    display: flex;
+  justify-content: center;
+  padding: 0 20px;
+  width: auto;
+  max-width: 1200px;
+  margin: 0 auto 1em auto;
+
+  &-cont {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  &-left {
+    order: 3;
+    flex-grow: 1;
+    margin: 20px 0 0 0;
+    min-width: 20%;
+  }
+  &-middle {
+    order: 1;
+    flex-grow: 1;
+    margin-top: 10px;
+  }
+  &-right {
+    order: 2;
+    flex-grow: 1;
+    margin: 20px 0 0 0;
+    min-width: 20%;
+  }
+  &-pagination {
+    display: flex;
+    ul {
+      margin: 0 auto;
+    }
+  }
+}
+
+@media (min-width: 800px) {
+    .mlrHome-cont {
+        flex-direction: row;
+    }
+    .mlrHome-left {
+        order: 1;
+        margin-right: 20px;
+    }
+    .mlrHome-middle {
+        order: 2;
+        flex-grow: 2;
+        margin-top: 20px;
+    }
+    .mlrHome-right {
+        order: 3;
+        margin-left: 20px;
+    }
+    .featuredArticlesCont {
+        margin-bottom: 2rem;
+      }
+  }

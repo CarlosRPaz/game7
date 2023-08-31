@@ -1,0 +1,12 @@
+@import "./../../../scss/main";
+
+.pickEmGameCard {
+    background-color: $color-lightgray;
+    padding: 1em;
+    border-radius: $article-radius;
+    margin-bottom: 0px;
+
+    h1 {
+        font-size: larger;
+    }
+}

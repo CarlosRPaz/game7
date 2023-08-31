@@ -1,0 +1,62 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap");
+.profileWidget {
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  padding: 0.6em;
+  display: flex;
+  flex-direction: row;
+}
+.profileWidget-img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 4em;
+  height: 4em;
+  border-radius: 0.2em;
+}
+.profileWidget-info {
+  padding: 0 1em 0 1em;
+  display: flex;
+  flex-direction: column;
+  font-family: "Oswald", sans-serif;
+  width: 100%;
+}
+.profileWidget-info-top {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.profileWidget-info-role {
+  background-color: rgb(209, 58, 58);
+  border-radius: 0.2em;
+  padding: 0 0.4em;
+  margin-right: 0.8em;
+  color: #f8f8ff;
+}
+.profileWidget-info-name {
+  font-size: 1.4rem;
+}
+.profileWidget-info-stats {
+  margin-top: 0.3em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.profileWidget-info-stat {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.profileWidget-info-stat-icon {
+  stroke: #757575;
+  stroke-width: 0.8;
+  width: 1.6rem !important;
+  height: 1.6rem !important;
+  color: #757575;
+}
+.profileWidget-info-stat-num {
+  margin-left: 0.6em;
+  font-weight: 500;
+}/*# sourceMappingURL=ProfileWidget.css.map */

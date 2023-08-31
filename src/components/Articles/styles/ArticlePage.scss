@@ -1,0 +1,90 @@
+@import './../../../scss/main';
+
+.articlePage {
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    color: $font-color;
+    margin: 0 auto 1em auto;
+    max-width: 1200px;
+    
+    &-main {
+        order: 2;
+        margin: 20px 0 0 0;
+        font-family: $font;
+        //max-width: 100%;
+        max-width: 960px; // 1280
+    }
+    &-right {
+        background-color: rgba(173, 216, 230, 0.144);
+        min-width: 16rem;
+        order: 1;
+        margin: 20px 0 0 0;
+        display: none;
+    }
+    &-img {
+        width: 100%;
+        border-radius: $article-radius;
+    }
+    &-title {
+        font-size: 1.8rem;
+        font-weight: 600;
+        padding-top: .4rem;
+        line-height: 2.4rem;
+    }
+    &-info {
+        display: flex;
+        flex-direction: row;
+        align-items: center;       
+        padding: .8rem 0 1.6rem 0;
+
+        &-authorIMG {
+            border-radius: 20em;
+            width: 40px;
+            height: 40px;
+            margin: 0 .5em;
+        }
+        &-date {
+            font-family: $font-roboto;
+            color: $color-surface;
+            font-size: .9em;
+        }
+    }
+    &-block {
+            font-family: $font-roboto;
+    }
+    &-portableText {
+        //max-width: 100%;
+        //overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        max-width: 100%;
+        font-size: 1.2rem;
+    }
+    &-blockImage {
+        max-width: 100%;
+        border-radius: $article-radius;
+        margin: 2rem 0;
+    }
+}
+
+@media (min-width: 860px) {
+    .articlePage {
+        flex-direction: row;
+        padding: 0 20px 0 20px;
+    
+        &-main {
+            order: 1;
+        }
+        &-right {
+            display: flex;
+            order: 2;
+            margin-left: 20px;
+        }
+    }
+  }
+  @media (min-width: 1260px) {
+    .articlePage {
+        padding: 0;
+    }
+  }

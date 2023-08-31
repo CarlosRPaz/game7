@@ -1,0 +1,10 @@
+.avatarOption {
+  cursor: pointer;
+}
+
+.avatarOption-icon {
+  -o-object-fit: contain;
+     object-fit: contain;
+  height: 36px !important;
+  width: 36px !important;
+}/*# sourceMappingURL=AvatarOption.css.map */

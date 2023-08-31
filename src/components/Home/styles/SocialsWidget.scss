@@ -1,0 +1,39 @@
+@import "./../../../scss/main";
+
+.socialsWidget {
+  background-color: $color-lightgray;
+  padding: 1em;
+  border-radius: $article-radius;
+
+  position: -webkit-sticky;
+  position: sticky;
+  top: 20px;
+
+  p {
+    font-family: $font;
+    font-size: 1.2rem;
+    padding-bottom: 0.4em;
+  }
+}
+.socialsWidget-body {
+  background-color: $color-lightergray;
+  border-radius: $article-radius;
+  padding: 0.6em;
+}
+.socialsWidget-link {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.3em;
+
+  &-icon {
+    width: 1.3em !important;
+    height: 1.3em !important;
+    margin-right: 0.6em;
+    color: $color-surface;
+  }
+  &-textLink {
+    text-decoration: none;
+    color: $color-primary;
+    font-family: $font-roboto;
+  }
+}

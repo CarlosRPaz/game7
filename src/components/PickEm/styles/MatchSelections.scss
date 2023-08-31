@@ -1,0 +1,72 @@
+@import './../../../scss/main';
+
+.matchSelections {
+  //background-color: lightblue;
+  h2 {
+    text-align: center;
+  }
+
+  &-pagination {
+    margin: 1rem;
+    display: flex;
+    ul {
+      margin: 0 auto;
+    }
+  }
+}
+
+.matchElement {
+  background-color: $color-lightergray;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: $article-radius;
+}
+
+.matchInfo {
+  
+}
+
+.btnContainer {
+  //background-color: green;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 10px;
+}
+
+.btn {
+  background-color: $color-lightgray;
+  border: none;
+  padding: 1rem;
+  flex-grow: 1;
+  border-radius: $article-radius;
+  font-weight: bold;
+  flex-basis: 50%;
+  cursor: pointer;
+
+  &-teamName {
+    font-size: 1rem;
+    font-weight: 700;
+  }
+  &-teamNickname {
+    font-size: 0.8rem;
+  }
+}
+
+.active {
+  background-color: $color-primary;
+  color: white;
+}
+
+.atSymbol-cont{
+  display: flex;
+}
+.atSymbol {
+  //background-color: red;
+  align-items: center;
+  width: 1.5rem;
+  filter: invert(0.3);
+  vertical-align: center;
+}

@@ -1,0 +1,61 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap");
+.mlrHome {
+  display: flex;
+  justify-content: center;
+  padding: 0 20px;
+  width: auto;
+  max-width: 1200px;
+  margin: 0 auto 1em auto;
+}
+.mlrHome-cont {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.mlrHome-left {
+  order: 3;
+  flex-grow: 1;
+  margin: 20px 0 0 0;
+  min-width: 20%;
+}
+.mlrHome-middle {
+  order: 1;
+  flex-grow: 1;
+  margin-top: 10px;
+}
+.mlrHome-right {
+  order: 2;
+  flex-grow: 1;
+  margin: 20px 0 0 0;
+  min-width: 20%;
+}
+.mlrHome-pagination {
+  display: flex;
+}
+.mlrHome-pagination ul {
+  margin: 0 auto;
+}
+
+@media (min-width: 800px) {
+  .mlrHome-cont {
+    flex-direction: row;
+  }
+  .mlrHome-left {
+    order: 1;
+    margin-right: 20px;
+  }
+  .mlrHome-middle {
+    order: 2;
+    flex-grow: 2;
+    margin-top: 20px;
+  }
+  .mlrHome-right {
+    order: 3;
+    margin-left: 20px;
+  }
+  .featuredArticlesCont {
+    margin-bottom: 2rem;
+  }
+}/*# sourceMappingURL=MLRHome.css.map */

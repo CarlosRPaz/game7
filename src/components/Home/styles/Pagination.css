@@ -1,0 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap");
+.pagination {
+  list-style: none;
+  display: flex;
+  margin-top: 0.6em;
+}
+.pagination-link {
+  background-color: #e4e8ec;
+  text-decoration: none;
+  padding: 0.3em 0.4em;
+  color: #37373b;
+}
+.pagination-link:active {
+  color: red;
+}/*# sourceMappingURL=Pagination.css.map */

@@ -1,0 +1,76 @@
+@import './../../../scss/main';
+
+.featuredArticle {
+    height: 240px;
+    position: relative;
+    font-family: $font;
+    border-radius: $article-radius;    
+    box-shadow: $article-shadow;
+    overflow: hidden;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: $article-radius;    
+    }
+
+    &-tag {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+
+        background-color: white;
+        
+        font-size: 0.8rem;
+        font-weight: 500;
+        letter-spacing: 1px;
+        padding: 0 5px 0 5px;
+        border-radius: $article-radius;
+
+        &-NFL {
+            background-color: $NFL-color;
+            color: $color-light;
+        }
+        &-NBA {
+            background-color: $NBA-color;
+        }
+        &-MLR {
+            background-color: $MLR-color;
+        }
+    }
+    &-title {
+        position: absolute;
+        bottom: 35px;
+        left: 10px;
+        margin-right: 10px;
+
+        color: $color-light;
+        font-size: 1.2rem;
+        font-weight: 600;
+        line-height: 1.2rem; /*** Play around with this ***/
+
+        text-shadow: 1px 1px 6px black;
+    }
+    &-author {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;     
+        
+        color: $color-light;
+        font-size: 0.9rem;
+
+        text-shadow: 1px 1px 6px black;
+    }
+}
+
+@media (min-width: 600px) {
+    .featuredArticle {
+        height: 320px;
+
+        &-title {
+            font-size: 1.8rem;
+            line-height: 2.2rem; /*** Play around with this ***/
+        }
+    }
+  }

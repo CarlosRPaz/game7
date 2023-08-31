@@ -1,0 +1,85 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap");
+.articlePage {
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  color: #1a1a1a;
+  margin: 0 auto 1em auto;
+  max-width: 1200px;
+}
+.articlePage-main {
+  order: 2;
+  margin: 20px 0 0 0;
+  font-family: "Oswald", sans-serif;
+  max-width: 960px;
+}
+.articlePage-right {
+  background-color: rgba(173, 216, 230, 0.144);
+  min-width: 16rem;
+  order: 1;
+  margin: 20px 0 0 0;
+  display: none;
+}
+.articlePage-img {
+  width: 100%;
+  border-radius: 0.2em;
+}
+.articlePage-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  padding-top: 0.4rem;
+  line-height: 2.4rem;
+}
+.articlePage-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0.8rem 0 1.6rem 0;
+}
+.articlePage-info-authorIMG {
+  border-radius: 20em;
+  width: 40px;
+  height: 40px;
+  margin: 0 0.5em;
+}
+.articlePage-info-date {
+  font-family: "Roboto", sans-serif;
+  color: #37373b;
+  font-size: 0.9em;
+}
+.articlePage-block {
+  font-family: "Roboto", sans-serif;
+}
+.articlePage-portableText {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  font-size: 1.2rem;
+}
+.articlePage-blockImage {
+  max-width: 100%;
+  border-radius: 0.2em;
+  margin: 2rem 0;
+}
+
+@media (min-width: 860px) {
+  .articlePage {
+    flex-direction: row;
+    padding: 0 20px 0 20px;
+  }
+  .articlePage-main {
+    order: 1;
+  }
+  .articlePage-right {
+    display: flex;
+    order: 2;
+    margin-left: 20px;
+  }
+}
+@media (min-width: 1260px) {
+  .articlePage {
+    padding: 0;
+  }
+}/*# sourceMappingURL=ArticlePage.css.map */

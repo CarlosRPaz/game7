@@ -1,0 +1,18 @@
+@import "./../../../scss/main";
+
+.pagination {
+    list-style: none;
+    display: flex;
+    margin-top: .6em;
+
+    &-link {
+        background-color: $color-lightgray;
+        text-decoration: none;
+        padding: .3em .4em;
+        color: $color-surface;
+
+        &:active {
+            color: red;
+        }
+    }
+}

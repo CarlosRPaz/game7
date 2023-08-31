@@ -1,0 +1,148 @@
+@import './../../../scss/main';
+
+.comment {
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    margin-top: .2em;
+    padding: .6em 0 .6em .6em;
+    font-family: $font-poppins;
+    border-radius: $article-radius;
+}
+.comment-message {
+    padding: .5em .4em;
+    font-family: sans-serif;
+}
+
+.comment-info {
+    position: relative;
+    display: flex;
+    width: 100%;
+    font-size: .9rem;
+
+    &-photoCont {
+        padding-right: 0.3em;
+    }
+    &-photo {
+        background-color: rgb(189, 189, 189);        
+        width: 2rem;
+        height: 2rem;
+        border-radius: 500px;
+        object-fit: cover;
+    }
+    &-vertIconCont {
+        position: absolute;
+        right: 0;
+        &-icon {
+            color: #8d8d8d;
+            cursor: pointer;
+        }
+        button {
+            padding: 0;
+            margin: 0;
+        }
+    }
+    &-nameLink {
+        text-decoration: none;
+    }
+    &-name {
+        color: #000000;
+    }
+    &-text {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.1rem;
+    }
+    &-date {
+        font-size: .8rem;
+        opacity: .8;
+    }
+    &-input {
+        background-color: rgb(243, 243, 243);
+        border: none;
+        border-radius: $article-radius;
+        //flex-grow: 1;
+        font-size: .9rem;
+        padding: 1em;
+        width: 100%; 
+        resize: none;
+    }
+    textarea[type=text]:focus {
+        outline: none;
+        border: 3px solid rgba(9, 255, 0, 0.479);
+    }
+}
+.mr06em {
+    margin-right: .6em;
+}
+
+.comment-controls {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: .6em;
+
+    &-icon {
+        margin-left: 1em;
+        color: #8d8d8d;
+        cursor: pointer;
+    }
+    &-statNum {
+        font-family: $font;
+        font-size: .8rem;
+    }
+}
+
+.like {
+    width: 1.2rem !important;
+    height: 1.2rem !important;
+    margin-right: .3em;
+}
+.liked {
+    color: rgb(228, 60, 60);
+}
+.reply {
+    width: 1.5rem !important;
+    height: 1.5rem !important;
+}
+.arrow {
+    width: 1.2rem !important;
+    height: 1.2rem !important;
+    margin-right: .3em;
+}
+.m0 {
+    margin-right: 0;
+}
+.hide {
+    display: none;
+}
+
+.comment > form {
+    display: flex;
+    flex-direction: column;
+    padding: .2em .6em .2em 0;
+
+    div {
+        display: flex;
+        align-items: center;
+    }
+}
+
+.comment-submitBtn {
+    background-color: $color-primary;
+    color: $color-light;
+    border: none;
+    border-radius: $article-radius;
+    font-weight: 600;
+    font-size: .9rem;
+    padding: .5rem .9rem; 
+    width: 5rem;
+    align-self: flex-end;
+    margin-top: 0.4rem;
+}
+
+.dropdownComments {
+    margin-left: .2em;
+    padding-left: .2em;
+    border-left: solid 2px #cccccc;
+}

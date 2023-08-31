@@ -1,0 +1,128 @@
+@import './../../../scss/main';
+
+.footer {
+    background-color: $color-lightgray;
+    display: flex;
+    flex-direction: column;
+    padding: 3rem 3rem 1rem 3rem;
+    font-family: $font-roboto;
+    align-self: flex-end;
+    
+    &-cont {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto 0 auto;
+        justify-content: space-between;
+    }
+    &-companyCol {
+        margin-bottom: 2rem;
+
+        p {
+            color: rgb(95, 95, 95);
+            margin-top: .6rem;
+            max-width: 300px;
+        }
+    }
+    &-linksColCont {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-bottom: 2rem;
+    }
+    &-linksCol {
+        margin-right: 3rem;
+
+        ul li {
+            color: rgb(95, 95, 95);
+            list-style: none;
+            margin-bottom: .4rem;
+        }
+        &:last-child {
+            margin: 0
+        }
+    }
+    &-newsletterCol {
+        max-width: 500px;
+    }
+    &-legal {
+        color: rgb(95, 95, 95);        
+        margin-top: 2em;
+        padding-top: 1rem;
+        text-align: center;
+        border-top: 1px solid lightgray;
+    }
+    &-logo-cont {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: $color-surface;
+        font-weight: 500;
+        font-family: $font;
+        font-size: 1.6rem;
+    }
+    &-logo {
+        height: 2rem;
+        width: 2rem;
+        margin-right: .6rem;
+    }
+    &-label {
+        color: $color-surface;
+        font-size: 1.2rem;
+        font-weight: 500;
+        padding: .6em 0;
+        width: auto;
+    }
+    &-newsletterCont {
+        display: flex;
+    }
+    &-input {
+        border: none;
+        flex-grow: 1;
+        border-radius: $article-radius;
+        width: 6rem;
+        font-size: .9rem;
+        padding: 1em; 
+    }
+    input[type=email]:focus {
+        outline: none;
+        border: 1px solid rgba(128, 128, 128, 0.479);
+    }
+    &-subscribeBtn {
+        margin-left: .3em;
+        border-radius: $article-radius;
+        border: none;
+        background-color: $color-primary;
+        color: $color-light;
+        font-weight: 600;
+        font-size: .9rem;
+        padding: 1em 2em; 
+    }
+}
+
+
+@media (min-width: 500px) {
+    .footer {
+        &-linksColCont {
+            flex-direction: row;
+        }
+    }
+  }
+@media (min-width: 1000px) {
+    .footer {
+        &-cont {
+            flex-direction: row;
+        }
+        &-companyCol {
+            margin-bottom: 0;
+        }
+        &-linksColCont {
+            margin: 0 1rem 0 1rem;
+        }
+        &-newsletterCol {
+            min-width: 250px;
+            max-width: 800px;
+        }
+    }
+  }

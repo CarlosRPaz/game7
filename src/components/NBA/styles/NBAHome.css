@@ -1,0 +1,61 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap");
+.nbaHome {
+  display: flex;
+  justify-content: center;
+  padding: 0 20px;
+  width: auto;
+  max-width: 1200px;
+  margin: 0 auto 1em auto;
+}
+.nbaHome-cont {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.nbaHome-left {
+  order: 3;
+  flex-grow: 1;
+  margin: 20px 0 0 0;
+  min-width: 20%;
+}
+.nbaHome-middle {
+  order: 1;
+  flex-grow: 1;
+  margin-top: 10px;
+}
+.nbaHome-right {
+  order: 2;
+  flex-grow: 1;
+  margin: 20px 0 0 0;
+  min-width: 20%;
+}
+.nbaHome-pagination {
+  display: flex;
+}
+.nbaHome-pagination ul {
+  margin: 0 auto;
+}
+
+@media (min-width: 800px) {
+  .nbaHome-cont {
+    flex-direction: row;
+  }
+  .nbaHome-left {
+    order: 1;
+    margin-right: 20px;
+  }
+  .nbaHome-middle {
+    order: 2;
+    flex-grow: 2;
+    margin-top: 20px;
+  }
+  .nbaHome-right {
+    order: 3;
+    margin-left: 20px;
+  }
+  .featuredArticlesCont {
+    margin-bottom: 2rem;
+  }
+}/*# sourceMappingURL=NBAHome.css.map */
