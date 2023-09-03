@@ -1,9 +1,37 @@
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap");
+.pickEmGame {
+  margin: 0 auto 1em auto;
+  width: auto;
+  padding: 0 20px;
+  max-width: 1200px;
+}
 .pickEmGame h1 {
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
+}
+.pickEmGame-cont {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.pickEmGame-left {
+  order: 3;
+  flex-grow: 1;
+  margin: 20px 0 0 0;
+  min-width: 20%;
+}
+.pickEmGame-middle {
+  order: 1;
+  flex-grow: 1;
+  margin-top: 10px;
+}
+.pickEmGame-right {
+  order: 2;
+  flex-grow: 1;
+  margin: 20px 0 0 0;
+  min-width: 20%;
 }
 
 #btnContainer {
@@ -25,4 +53,24 @@
 .active {
   background-color: #1DA6FB;
   color: white;
+}
+
+@media (min-width: 800px) {
+  .pickEmGame-cont {
+    flex-direction: row;
+  }
+  .pickEmGame-left {
+    order: 1;
+    margin-right: 20px;
+  }
+  .pickEmGame-middle {
+    order: 2;
+    flex-grow: 2;
+    margin-top: 20px;
+    width: 100%;
+  }
+  .pickEmGame-right {
+    order: 3;
+    margin-left: 20px;
+  }
 }/*# sourceMappingURL=PickEmGame.css.map */

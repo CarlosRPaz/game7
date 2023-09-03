@@ -7,14 +7,16 @@ import "./styles/MatchSelections.css";
 import moment from 'moment';
 
 import Pagination from '@mui/material/Pagination';
+import MatchElement from './MatchElement';
+import {useSelector} from 'react-redux';
+import {selectUser} from '../../features/userSlice';
 
 
 // Each blue element
-function MatchSelections({currentPickEmGame, user, matchList, setPage, page}) {
-    //const [matchDataList, setMatchDataList] = useState([]);
-    //const [activePickID, setActivePickID] = useState('');
-    //const [weeklySelections, setWeeklySelections] = useState();
-    const [newMatchData, setNewMatchData] = useState();
+function MatchSelections({currentPickEmGame, jointMatchList, setPage, page}) {
+    const user = useSelector(selectUser);
+
+    //const [newMatchData, setNewMatchData] = useState();
 
     document.querySelector('button').addEventListener('click', changeStyle);
 
@@ -22,6 +24,7 @@ function MatchSelections({currentPickEmGame, user, matchList, setPage, page}) {
         e.target.classList.toggle("btn active");
     }
 
+    /*
     //TODO: make sure to have fallback if selection doesnt exist
     // create useEffect to load in weekly selection object
     useEffect(() => {
@@ -49,6 +52,7 @@ function MatchSelections({currentPickEmGame, user, matchList, setPage, page}) {
 
         currentPickEmGame && loadSelection().catch(console.error);
     }, [currentPickEmGame, user, matchList]);
+    */
 
     const sendPick = async (teamId, matchId, selectionId, e) => {
         //e.preventDefault();
@@ -74,59 +78,6 @@ function MatchSelections({currentPickEmGame, user, matchList, setPage, page}) {
         }
     }
 
-    // Each gray element
-    const MatchElement = ({/*matchData, activePickID,*/ sendPick, singleMatchData}) => {
-
-        const [selectionTester, setSelectionTester] = useState(singleMatchData.selection)
-
-        return (
-            <div className="matchElement">
-                <div className="matchInfo">
-                    <p>{moment(singleMatchData.gametime.toDate()).format('[Game time: ] MMM Do, h:mm a')}</p>
-                    <p>{singleMatchData.stadiumLocation}</p>
-                </div>
-
-                <div className="btnContainer">
-                    <button
-                        onClick={(e) => {
-                            sendPick(
-                                singleMatchData.awayTeam.teamId,
-                                singleMatchData.meta_id,
-                                singleMatchData.selectionId,
-                                e)
-                            setSelectionTester(singleMatchData.awayTeam.teamId)
-                        }}
-                        className={singleMatchData.awayTeam.teamId === selectionTester ? "btn active" : "btn"}
-                        disabled={selectionTester === singleMatchData.awayTeam.teamId}
-                    >
-                        <p className="btn-teamName">{singleMatchData.awayTeam.name}</p>
-                        <p className="btn-teamNickname">{singleMatchData.awayTeam.nickname}</p>
-                    </button>
-                    <div className="atSymbol-cont">
-                        <img src="https://firebasestorage.googleapis.com/v0/b/game7-blog.appspot.com/o/app%2Fimages%2Fat%20symbol.svg?alt=media&token=5a47c90a-d7e2-4329-a5aa-74b2ab979a1b"
-                            alt="@ symbol"
-                            className="atSymbol" />
-                    </div>
-                    <button
-                        onClick={(e) => {
-                            sendPick(
-                                singleMatchData.homeTeam.teamId,
-                                singleMatchData.meta_id,
-                                singleMatchData.selectionId,
-                                e)
-                            setSelectionTester(singleMatchData.homeTeam.teamId)
-                        }}
-                        className={singleMatchData.homeTeam.teamId === selectionTester ? "btn active" : "btn"}
-                        disabled={selectionTester === singleMatchData.homeTeam.teamId}
-                    >
-                        <p className="btn-teamName">{singleMatchData.homeTeam.name}</p>
-                        <p className="btn-teamNickname">{singleMatchData.homeTeam.nickname}</p>
-                    </button>
-                </div>
-            </div>
-        )
-    }
-
     const handlePageChange = (event, value) => {
         setPage(value);
     };
@@ -141,11 +92,11 @@ function MatchSelections({currentPickEmGame, user, matchList, setPage, page}) {
                 shape="rounded"
                 page={page}
                 onChange={handlePageChange}
-                size="large"
+            /*size="large"*/
             />
-            {newMatchData &&
-                newMatchData.map((matchData, index) => (
-                    <MatchElement key={matchData.meta_id} /*matchData={matchData} activePickID={activePickID}*/ sendPick={sendPick} singleMatchData={newMatchData[index]}
+            {jointMatchList &&
+                jointMatchList.map((matchData, index) => (
+                    <MatchElement key={matchData.meta_id} sendPick={sendPick} singleMatchData={jointMatchList[index]}
                     />
                 ))
             }
@@ -155,7 +106,7 @@ function MatchSelections({currentPickEmGame, user, matchList, setPage, page}) {
                 shape="rounded"
                 page={page}
                 onChange={handlePageChange}
-                size="large"
+            /*size="large"*/
             />
         </div>
     )

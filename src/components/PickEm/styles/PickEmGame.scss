@@ -2,10 +2,39 @@
 
 .pickEmGame {
   //background-color: lightcoral;
+  margin: 0 auto 1em auto;
+  width: auto;
+  padding: 0 20px;
+  max-width: 1200px;
+  
   h1 {
     text-align: center;
-    margin-bottom: 1rem;
+    margin-bottom: .8rem;
   }
+
+  &-cont {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  &-left {
+    order: 3;
+    flex-grow: 1;
+    margin: 20px 0 0 0;
+    min-width: 20%;
+  }
+  &-middle {
+    order: 1;
+    flex-grow: 1;
+    margin-top: 10px;
+  }
+  &-right {
+    order: 2;
+    flex-grow: 1;
+    margin: 20px 0 0 0;
+    min-width: 20%;
+  }
+ 
 }
 
 #btnContainer {
@@ -29,4 +58,24 @@
 .active {
     background-color: $color-primary;
     color: white;
+  }
+
+  @media (min-width: 800px) {
+    .pickEmGame-cont {
+        flex-direction: row;
+    }
+    .pickEmGame-left {
+        order: 1;
+        margin-right: 20px;
+    }
+    .pickEmGame-middle {
+        order: 2;
+        flex-grow: 2;
+        margin-top: 20px;
+        width: 100%;
+    }
+    .pickEmGame-right {
+        order: 3;
+        margin-left: 20px;
+    }
   }

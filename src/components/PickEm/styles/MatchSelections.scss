@@ -23,7 +23,8 @@
 }
 
 .matchInfo {
-  
+  margin: 1rem 0 0 0;
+  align-content: center;
 }
 
 .btnContainer {
@@ -55,8 +56,21 @@
   }
 }
 
+button:disabled {
+  cursor: default;
+}
+
 .active {
   background-color: $color-primary;
+  color: #242424;
+}
+
+.won {
+  background-color: rgb(38, 122, 38);
+  color: white;
+}
+.lost {
+  background-color: rgb(207, 62, 62);
   color: white;
 }
 
