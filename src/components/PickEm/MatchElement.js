@@ -68,10 +68,12 @@ function MatchElement({/*matchData, activePickID,*/ sendPick, singleMatchData}) 
                                 && singleMatchData?.homeTeam?.teamId === selectionTester
                                 ? "lost" : ""} //red
                     `}
+                    /* //////////////////////////////////////////////// LOCK FOR US TO PUT IN VOTES
                         disabled={
                             selectionTester === singleMatchData?.homeTeam?.teamId
                             || moment().format('LLL') >= moment(singleMatchData?.gametime?.toDate()).format('LLL')
                         }
+                        */
                     >
                         <p className="btn-teamName">
                             {singleMatchData?.homeTeam?.rank ? ('(' + singleMatchData?.homeTeam?.rank + ')') : null}{' '}
