@@ -38,6 +38,7 @@ function PickEmGame() {
     const [currentPickEmGame, setCurrentPickEmGame] = useState();
 
     const [matchList, setMatchList] = useState([]);
+    const [jointMatchList, setJointMatchList] = useState([]);
 
     const [page, setPage] = useState(1);
 
@@ -49,8 +50,6 @@ function PickEmGame() {
             const q = query(collection(db, "pickemgames"), where("slug", "==", slug));
             const querySnapshot = await getDocs(q);
             querySnapshot.forEach((doc) => {
-                // doc.data() is never undefined for query doc snapshots
-                // console.log(doc.id, " => ", doc.data());
                 // SAVE PICKEMGAME DATA IN useState([]) variable
                 setCurrentPickEmGame({...doc.data(), meta_id: doc.id});
             });
@@ -58,6 +57,7 @@ function PickEmGame() {
 
         loadPickEmGame().catch(console.error);
     }, [slug])
+
     /*
         // load matches if gameType == matchSelections
         useEffect(() => {
@@ -85,7 +85,8 @@ function PickEmGame() {
                 const matchesRef = query(collection(db, "matches"),
                     where("week", "==", page),
                     where("leagueAbbr", "==", currentPickEmGame.leagueAbbr),
-                    where("year", "==", currentPickEmGame.year));
+                    where("year", "==", currentPickEmGame.year),
+                    orderBy("gametime"));
                 const querySnapshot = await getDocs(matchesRef);
 
                 setMatchList([]);
@@ -98,6 +99,36 @@ function PickEmGame() {
             loadMatches().catch(console.error);
         }
     }, [currentPickEmGame, page]);
+
+    //TODO: make sure to have fallback if selection doesnt exist
+    // create useEffect to load in weekly selection object
+    useEffect(() => {
+        if(currentPickEmGame?.gameType === "matchSelections" && page) {
+            // Load selection if it exists
+            const loadSelection = async () => {
+                const q = query(collection(db, "selections"),
+                    where("pickEmGameId", "==", currentPickEmGame.meta_id),
+                    where("userId", "==", user?.uid));
+                const querySnapshot = await getDocs(q);
+
+                if(querySnapshot.empty) {
+                    setJointMatchList(matchList);
+                } else {
+                    querySnapshot.forEach((doc) => {
+                        let picks = doc.data().picks;
+                        let result = matchList.map(match => ({
+                            ...match,
+                            selection: picks[match.meta_id],
+                            selectionId: doc.id,
+                        }));
+                        setJointMatchList(result);
+                    });
+                }
+            }
+
+            currentPickEmGame && loadSelection().catch(console.error);
+        }
+    }, [currentPickEmGame, user, matchList, page]);
 
     /*
     // Get the container element
@@ -122,34 +153,34 @@ function PickEmGame() {
     }
     */
 
-    function PickEmGameElement({currentPickEmGame, user, matchList}) {
+    function PickEmGameElement({currentPickEmGame, jointMatchList}) {
         //const gameType = currentPickEmGame.gameType;
 
         if(currentPickEmGame.gameType === "oneOfMany") {
-            return <OneOfMany currentPickEmGame={currentPickEmGame} user={user} />;
+            return <OneOfMany currentPickEmGame={currentPickEmGame} />;
         } else if(currentPickEmGame.gameType === "matchSelections") {
-            return <MatchSelections currentPickEmGame={currentPickEmGame} user={user} matchList={matchList} setPage={setPage} page={page} />;
+            return <MatchSelections currentPickEmGame={currentPickEmGame} jointMatchList={jointMatchList} setPage={setPage} page={page} />;
         }
         return <p>gameType error</p>;
     }
 
     return (
         <div className="pickEmGame">
-            <div className="nflHome-cont">
-                <div className="nflHome-left">
+            <div className="pickEmGame-cont">
+                <div className="pickEmGame-left">
                     <SocialsWidget />
                 </div>
 
-                <div className="nflHome-middle">
+                <div className="pickEmGame-middle">
                     <h1>
                         {currentPickEmGame ? <p>{currentPickEmGame.name}</p> : 'loading...'}
                     </h1>
 
                     {/* Need gameType and pickemgame data */}
-                    {currentPickEmGame && <PickEmGameElement currentPickEmGame={currentPickEmGame} user={user} matchList={matchList} setPage={setPage} page={page} />}
+                    {currentPickEmGame && <PickEmGameElement currentPickEmGame={currentPickEmGame} jointMatchList={jointMatchList} setPage={setPage} page={page} />}
                 </div>
 
-                <div className="nflHome-right">
+                <div className="pickEmGame-right">
                     <PollWidget />
                 </div>
             </div>

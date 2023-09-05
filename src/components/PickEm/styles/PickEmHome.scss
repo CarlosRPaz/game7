@@ -1,12 +1,16 @@
 @import './../../../scss/main';
 
-.nflHome {
-    display: flex;
+.pickEmGameHome {
+  display: flex;
   justify-content: center;
   padding: 0 20px;
   width: auto;
   max-width: 1200px;
   margin: 0 auto 1em auto;
+
+  h1 {
+    margin-bottom: .8rem;
+  }
 
   &-cont {
     display: flex;
@@ -30,32 +34,31 @@
     margin: 20px 0 0 0;
     min-width: 20%;
   }
-  &-pagination {
-    display: flex;
-    ul {
-      margin: 0 auto;
-    }
+
 }
+.disabled-link {
+  pointer-events: none;
+}
+.alert {
+  width: 50%;
 }
 
 @media (min-width: 800px) {
-    .nflHome-cont {
+    .pickEmGameHome-cont {
         flex-direction: row;
     }
-    .nflHome-left {
+    .pickEmGameHome-left {
         order: 1;
         margin-right: 20px;
     }
-    .nflHome-middle {
+    .pickEmGameHome-middle {
         order: 2;
         flex-grow: 2;
-    margin-top: 20px;
+        margin-top: 20px;
+        width: 100%;
     }
-    .nflHome-right {
+    .pickEmGameHome-right {
         order: 3;
         margin-left: 20px;
     }
-    .featuredArticlesCont {
-        margin-bottom: 2rem;
-      }
   }

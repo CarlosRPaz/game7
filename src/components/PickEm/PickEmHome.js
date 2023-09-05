@@ -19,11 +19,25 @@ import {
 // import sanityClient from '../../client.js';
 import SocialsWidget from "../Home/SocialsWidget";
 import PollWidget from "../Home/PollWidget";
+import {useSelector} from "react-redux";
+import {selectUser} from "../../features/userSlice";
+import {Box, Collapse, Grow, IconButton, CloseIcon, Slide, Snackbar} from "@material-ui/core";
+import {Alert} from "@mui/material";
 
 
 function PickEmHome() {
+    const user = useSelector(selectUser);
 
     const [pickEmGames, setPickEmGames] = useState([]);
+    //const [showAlert, setShowAlert] = useState(false);
+
+    const [state, setState] = useState({
+        open: false,
+        vertical: 'top',
+        horizontal: 'center',
+    });
+    const {vertical, horizontal, open} = state;
+
 
     useEffect(() => {
         onSnapshot(query(collection(db, "pickemgames")), (snapshot) => {
@@ -36,24 +50,54 @@ function PickEmHome() {
         })
     }, []);
 
+    const handleClick = (newState) => (e) => {
+        if(!user) {
+            e.preventDefault();
+            setState({...newState, open: true});
+        } else {
+            return;
+        }
+    };
+    const handleClose = () => {
+        setState({...state, open: false});
+    };
+
     return (
-        <div className="nflHome" id="content-wrap">
-            <div className="nflHome-cont">
-                <div className="nflHome-left">
-                    <SocialsWidget />
-                </div>
-                <div className="nflHome-middle">
-                    {pickEmGames && pickEmGames.map((pickemGame, index) => (
-                        <Link to={"/pickemgame/" + pickemGame.data.slug} key={pickemGame.id} className="recentArticles-link" style={{textDecoration: 'none'}}>
-                            <PickEmGameCard pickemGame={pickemGame.data} key={pickemGame.data.id} />
-                        </Link>
-                    ))}
-                </div>
-                <div className="nflHome-right">
-                    <PollWidget />
+        <>
+            <Snackbar
+                anchorOrigin={{vertical, horizontal}}
+                open={open}
+                onClose={handleClose}
+                message=""
+                key={vertical + horizontal}
+            >
+                <Alert onClose={handleClose} severity="warning" sx={{width: '100%'}}>
+                    You must be logged in to access Game7's Pick 'Em Games
+                </Alert>
+            </Snackbar>
+            <div className="pickEmGameHome" id="content-wrap">
+                <div className="pickEmGameHome-cont">
+                    <div className="pickEmGameHome-left">
+                        <SocialsWidget />
+                    </div>
+                    <div className="pickEmGameHome-middle">
+                        <h1>Game7's Pick 'Em Games</h1>
+                        {pickEmGames && pickEmGames.map((pickemGame, index) => (
+                            <Link to={"/pickemgame/" + pickemGame.data.slug} key={pickemGame.id}
+                                className={`recentArticles-link`}
+                                style={{textDecoration: 'none'}}
+                                onClick={handleClick({vertical: 'bottom', horizontal: 'center'})}
+                            >
+                                <PickEmGameCard pickemGame={pickemGame.data} key={pickemGame.data.id} />
+                            </Link>
+                        ))}
+                    </div>
+                    <div className="pickEmGameHome-right">
+                        <PollWidget />
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 }
 

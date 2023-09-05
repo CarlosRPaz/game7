@@ -19,6 +19,11 @@
   border-radius: 0.2em;
 }
 
+.matchInfo {
+  margin: 1rem 0 0 0;
+  align-content: center;
+}
+
 .btnContainer {
   width: 100%;
   display: flex;
@@ -46,8 +51,22 @@
   font-size: 0.8rem;
 }
 
+button:disabled {
+  cursor: default;
+}
+
 .active {
   background-color: #1DA6FB;
+  color: #242424;
+}
+
+.won {
+  background-color: rgb(38, 122, 38);
+  color: white;
+}
+
+.lost {
+  background-color: rgb(207, 62, 62);
   color: white;
 }
 

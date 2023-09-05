@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import "./styles/Nav.css";
 
 import {Link} from "react-router-dom";
@@ -6,7 +6,7 @@ import './styles/Nav.css';
 import Logo from './../../img/logo.png';
 import AvatarOption from "./AvatarOption";
 import {useDispatch, useSelector} from "react-redux";
-import {auth} from "../../firebase";
+import {auth, collection, db, onSnapshot, query, where} from "../../firebase";
 import {logout, selectUser} from "../../features/userSlice";
 
 import MenuIcon from '@material-ui/icons/Menu';
@@ -70,10 +70,13 @@ function Nav() {
     const showModal = () => setOpenModal(true);
     // const hideModal = () => setOpenModal(false);
 
+    const [profileData, setProfileData] = useState(null);
+
 
     const logoutOfApp = () => {
         dispatch(logout());
         auth.signOut();
+        // update img TODO: create state for img. set img state on useEffect
     };
 
     /*
@@ -85,6 +88,30 @@ function Nav() {
         setAnchorEl(null);
     };
     */
+
+    // Load user's data from database
+    useEffect(() => {
+        const getUserProfileData = async () => {
+            if(user) {
+                // get query ref for a user with a certain id
+                const q = query(collection(db, "users"), where("userId", "==", user.uid));
+
+                // get snapshot of user profile and set to currentProfile
+                onSnapshot(q, (snapshot) => {
+                    setProfileData(
+                        snapshot.docs.at(0).data()
+                    );
+                },
+                    (error) => {
+                        console.log("onSnapshot error: ", error);
+                    });
+            }
+        }
+
+        getUserProfileData();
+
+        console.log("PP useEffect ran: load user's data");
+    }, [user]);
 
     function Menu() {
         return (
@@ -98,7 +125,7 @@ function Nav() {
                                 style={{textDecoration: 'none'}}
                                 onClick={() => setOpenMenu(!openMenu)}>
                                 <img className="menu-profileIMG"
-                                    src={user.photoUrl}
+                                    src={profileData?.url}
                                     alt='tempALT'
                                     style={{
                                         objectFit: 'cover'
@@ -135,6 +162,9 @@ function Nav() {
         );
     }
 
+    console.log("user", user);
+    console.log("profileData", profileData);
+
     return (
         <div className="nav">
             <div className="nav-links">
@@ -167,7 +197,7 @@ function Nav() {
             </div>
 
             <div className="nav-icons">
-                <AvatarOption onClick={() => setOpenMenu(!openMenu)} avatar={user ? user.photoUrl : 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/271deea8-e28c-41a3-aaf5-2913f5f48be6/de7834s-6515bd40-8b2c-4dc6-a843-5ac1a95a8b55.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzI3MWRlZWE4LWUyOGMtNDFhMy1hYWY1LTI5MTNmNWY0OGJlNlwvZGU3ODM0cy02NTE1YmQ0MC04YjJjLTRkYzYtYTg0My01YWMxYTk1YThiNTUuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.BopkDn1ptIwbmcKHdAOlYHyAOOACXW0Zfgbs0-6BY-E'} className="nav-avatar" />
+                <AvatarOption onClick={() => setOpenMenu(!openMenu)} avatar={profileData ? profileData?.url : 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/271deea8-e28c-41a3-aaf5-2913f5f48be6/de7834s-6515bd40-8b2c-4dc6-a843-5ac1a95a8b55.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzI3MWRlZWE4LWUyOGMtNDFhMy1hYWY1LTI5MTNmNWY0OGJlNlwvZGU3ODM0cy02NTE1YmQ0MC04YjJjLTRkYzYtYTg0My01YWMxYTk1YThiNTUuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.BopkDn1ptIwbmcKHdAOlYHyAOOACXW0Zfgbs0-6BY-E'} className="nav-avatar" />
             </div>
 
             <div className="menuIcon-cont">

@@ -1,9 +1,12 @@
 import React from "react";
 import "./styles/HeaderArticle.css";
+import {Skeleton} from "@mui/material";
 
-function HeaderArticle({ headerArticleData }) {
-    if (!headerArticleData) {
-        return 'Loading...'
+function HeaderArticle({headerArticleData}) {
+    if(!headerArticleData) {
+        return (
+            <Skeleton variant="rounded" width={210} height={60} />
+        )
     }
 
     return (
