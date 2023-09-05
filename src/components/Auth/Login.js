@@ -97,7 +97,7 @@ function Login({toggleSwitch}) {
                     />
 
                     <button type='submit' value="Submit" onClick={loginToApp}>Sign In</button>
-                    <button onClick={demoLogin} className="demoBtn">Demo Login</button>
+                    {/*<button onClick={demoLogin} className="demoBtn">Demo Login</button>*/}
                     <p>
                         <span className='login__register' onClick={sendResetPasswordEmail}>Forgot Password</span>
                     </p>

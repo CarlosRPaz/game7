@@ -81,12 +81,14 @@ function Register({toggleSwitch}) {
                         name="name"
                         required
                     />
+                    {/*
                     <input
                         value={profilePic}
                         onChange={(e) => setProfilePic(e.target.value)} placeholder='Profile Pic URL (Opt)'
                         type="text"
                         name="profilePic"
-                    />
+                        />
+                    */}
                     <input
                         value={email}
                         onChange={(e) => setEmail(e.target.value)} placeholder='Email'

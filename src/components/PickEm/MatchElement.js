@@ -29,10 +29,12 @@ function MatchElement({/*matchData, activePickID,*/ sendPick, singleMatchData}) 
                                 && singleMatchData.awayTeam.teamId === selectionTester
                                 ? "lost" : ""} //red
                     `}
+                    /* //////////////////////////////////////////////// LOCK FOR US TO PUT IN VOTES
                         disabled={
                             selectionTester === singleMatchData?.awayTeam?.teamId
                             || singleMatchData?.winnerTeamId != null
                         }
+                    */
                     >
                         <p className="btn-teamName">
                             {singleMatchData?.awayTeam?.rank ? ('(' + singleMatchData?.awayTeam?.rank + ')') : null}{' '}
