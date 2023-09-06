@@ -15,6 +15,7 @@ import {selectUser} from '../../features/userSlice';
 // Each blue element
 function MatchSelections({currentPickEmGame, jointMatchList, setPage, page}) {
     const user = useSelector(selectUser);
+    const [ygra, setYGRA] = useState();
 
     //const [newMatchData, setNewMatchData] = useState();
 
@@ -66,6 +67,11 @@ function MatchSelections({currentPickEmGame, jointMatchList, setPage, page}) {
             let selectionsUpdate = {};
             selectionsUpdate[`picks.${matchId}`] = teamId;
             await updateDoc(selectionRef, selectionsUpdate, {merge: true});
+        } else if(ygra) {
+            const selectionRef = doc(db, "selections", ygra);
+            let selectionsUpdate = {};
+            selectionsUpdate[`picks.${matchId}`] = teamId;
+            await updateDoc(selectionRef, selectionsUpdate, {merge: true});
         } else { // ELSE ADD selection doc
             const docData = {
                 pickEmGameId: currentPickEmGame.meta_id,
@@ -74,7 +80,8 @@ function MatchSelections({currentPickEmGame, jointMatchList, setPage, page}) {
                     [matchId]: teamId
                 }
             }
-            await addDoc(collection(db, "selections"), docData);
+            const docRef = await addDoc(collection(db, "selections"), docData);
+            setYGRA(docRef.id);
         }
     }
 

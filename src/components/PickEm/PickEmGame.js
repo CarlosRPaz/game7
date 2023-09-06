@@ -103,7 +103,7 @@ function PickEmGame() {
     //TODO: make sure to have fallback if selection doesnt exist
     // create useEffect to load in weekly selection object
     useEffect(() => {
-        if(currentPickEmGame?.gameType === "matchSelections" && page) {
+        if(currentPickEmGame?.gameType === "matchSelections") {
             // Load selection if it exists
             const loadSelection = async () => {
                 const q = query(collection(db, "selections"),
