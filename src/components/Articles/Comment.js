@@ -21,9 +21,9 @@ import {
 
 import uniqid from 'uniqid';
 import moment from 'moment';
-import ReplyIcon from '@material-ui/icons/Reply';
-import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
-import CommentIcon from '@material-ui/icons/Comment';
+import ReplyIcon from '@mui/icons-material/Reply';
+import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
+import CommentIcon from '@mui/icons-material/Comment';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import {Link} from "react-router-dom";
 

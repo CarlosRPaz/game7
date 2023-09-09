@@ -8,11 +8,11 @@ import {
 } from '../../firebase';
 import './styles/Login.css';
 import Logo from '../../img/logo.png';
-import {useHistory} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
 function Login({toggleSwitch}) {
 
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -34,7 +34,7 @@ function Login({toggleSwitch}) {
                 );
             })
             .catch((error) => alert(error));
-        history.replace("/");
+        navigate.replace("/");
     };
     const demoLogin = (e) => {
         e.preventDefault();
@@ -51,7 +51,7 @@ function Login({toggleSwitch}) {
                 );
             })
             .catch((error) => alert(error));
-        history.replace("/");
+        navigate.replace("/");
     };
 
     const sendResetPasswordEmail = () => {

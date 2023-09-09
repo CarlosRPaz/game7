@@ -9,14 +9,14 @@ import {useDispatch, useSelector} from "react-redux";
 import {auth, collection, db, onSnapshot, query, where} from "../../firebase";
 import {logout, selectUser} from "../../features/userSlice";
 
-import MenuIcon from '@material-ui/icons/Menu';
-import {MenuItem, Button, Menu} from "@material-ui/core";
+import MenuIcon from '@mui/icons-material/Menu';
+import {MenuItem, Button, Menu} from "@mui/material";
 
-import {makeStyles, withStyles} from '@material-ui/core/styles';
+import {makeStyles, withStyles} from '@mui/material/styles';
 
 import LoginIcon from '@mui/icons-material/Login';
 import LogoutIcon from '@mui/icons-material/Logout';
-import CloseIcon from "@material-ui/icons/Close";
+import CloseIcon from "@mui/icons-material/Close";
 //import Modal from '@mui/material/Modal';
 //import Box from '@mui/material/Box';
 //import Typography from '@mui/material/Typography';

@@ -14,10 +14,10 @@ import {
     doc,
     updateProfile,
 } from '../../firebase';
-import {useHistory} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
 function Register({toggleSwitch}) {
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -61,7 +61,7 @@ function Register({toggleSwitch}) {
                 });
             })
             .catch((error) => alert(error));
-        history.replace("/");
+        navigate.replace("/");
     };
 
     return (

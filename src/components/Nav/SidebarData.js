@@ -1,14 +1,14 @@
 import React from "react";
-import HomeIcon from "@material-ui/icons/Home";
-import BookIcon from "@material-ui/icons/Book";
-import PersonIcon from "@material-ui/icons/Person";
-import HelpIcon from "@material-ui/icons/Help";
-import MailIcon from "@material-ui/icons/Mail";
+import HomeIcon from "@mui/icons-material/Home";
+import BookIcon from "@mui/icons-material/Book";
+import PersonIcon from "@mui/icons-material/Person";
+import HelpIcon from "@mui/icons-material/Help";
+import MailIcon from "@mui/icons-material/Mail";
 
-import FootballIcon from '@material-ui/icons/SportsFootball';
-import BasketballIcon from '@material-ui/icons/SportsBasketball';
-import BaseballIcon from '@material-ui/icons/SportsBaseball';
-import RugbyIcon from '@material-ui/icons/SportsRugby';
+import FootballIcon from '@mui/icons-material/SportsFootball';
+import BasketballIcon from '@mui/icons-material/SportsBasketball';
+import BaseballIcon from '@mui/icons-material/SportsBaseball';
+import RugbyIcon from '@mui/icons-material/SportsRugby';
 
 export const SidebarData = [
     {
