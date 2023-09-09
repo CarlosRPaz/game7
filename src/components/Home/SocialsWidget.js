@@ -1,12 +1,18 @@
 import React, {useState, useEffect} from 'react'
 import './styles/SocialsWidget.css'
 
-import FacebookIcon from '@material-ui/icons/Facebook';
-import InstagramIcon from '@material-ui/icons/Instagram';
-import LinkedInIcon from '@material-ui/icons/LinkedIn';
-import PinterestIcon from '@material-ui/icons/Pinterest';
-import TwitterIcon from '@material-ui/icons/Twitter';
-import YouTubeIcon from '@material-ui/icons/YouTube';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import PinterestIcon from '@mui/icons-material/Pinterest';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import YouTubeIcon from '@mui/icons-material/YouTube';
+
+import {SvgIcon} from '@mui/material';
+
+
+import {ReactComponent as DiscordSvg} from '../../img/discord-icon-svgrepo-com.svg';
+import {ReactComponent as XSvg} from '../../img/X_logo_2023_original.svg';
 
 import sanityClient from '../../client.js';
 
@@ -20,17 +26,13 @@ function SocialsWidget() {
         sanityClient
             .fetch(`*[_type == "socials"]{
                 title,
-                showFacebook,
                 showInstagram,
-                showLinkedIn,
-                showPinterest,
-                showTwitter,
+                showX,
+                showDiscord,
                 showYoutube,
-                facebookLink,
                 instagramLink,
-                linkedInLink,
-                twitterLink,
-                pinterestLink,
+                xLink,
+                discordLink,
                 youtubeLink,
             }`)
             .then((data) => setSocialsData(data[0]))
@@ -45,34 +47,24 @@ function SocialsWidget() {
         <div className="socialsWidget">
             <p>{socialsData.title}</p>
             <div className="socialsWidget-body">
-                {socialsData.showFacebook ? (
-                    <div className="socialsWidget-link">
-                        <FacebookIcon className="socialsWidget-link-icon" />
-                        <a href={socialsData.facebookLink} className='socialsWidget-link-textLink'>Facebook</a>
-                    </div>
-                ) : void 0}
                 {socialsData.showInstagram ? (
                     <div className="socialsWidget-link">
                         <InstagramIcon className="socialsWidget-link-icon" />
                         <a href={socialsData.instagramLink} className='socialsWidget-link-textLink'>Instagram</a>
                     </div>
                 ) : void 0}
-                {socialsData.showLinkedIn ? (
+                {socialsData.showX ? (
                     <div className="socialsWidget-link">
-                        <LinkedInIcon className="socialsWidget-link-icon" />
-                        <a href={socialsData.linkedInLink} className='socialsWidget-link-textLink'>LinkedIn</a>
+                        <SvgIcon component={XSvg} viewBox="0 0 280 340" className="socialsWidget-link-iconX" />
+                        {/*<XSvg className="socialsWidget-link-iconX" height={26} width={26} viewBox="0 0 384 512" />*/}
+                        {/*<TwitterIcon className="socialsWidget-link-icon" />*/}
+                        <a href={socialsData.xLink} className='socialsWidget-link-textLink'>X</a>
                     </div>
                 ) : void 0}
-                {socialsData.showPinterest ? (
+                {socialsData.showDiscord ? (
                     <div className="socialsWidget-link">
-                        <PinterestIcon className="socialsWidget-link-icon" />
-                        <a href={socialsData.pinterestLink} className='socialsWidget-link-textLink'>Pinterest</a>
-                    </div>
-                ) : void 0}
-                {socialsData.showTwitter ? (
-                    <div className="socialsWidget-link">
-                        <TwitterIcon className="socialsWidget-link-icon" />
-                        <a href={socialsData.twitterLink} className='socialsWidget-link-textLink'>Twitter</a>
+                        <DiscordSvg className="socialsWidget-link-iconDiscord" />
+                        <a href={socialsData.discordLink} className='socialsWidget-link-textLink'>Discord</a>
                     </div>
                 ) : void 0}
                 {socialsData.showYouTube ? (

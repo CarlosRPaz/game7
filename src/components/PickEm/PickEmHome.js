@@ -21,7 +21,7 @@ import SocialsWidget from "../Home/SocialsWidget";
 import PollWidget from "../Home/PollWidget";
 import {useSelector} from "react-redux";
 import {selectUser} from "../../features/userSlice";
-import {Box, Collapse, Grow, IconButton, CloseIcon, Slide, Snackbar} from "@material-ui/core";
+import {Box, Collapse, Grow, IconButton, CloseIcon, Slide, Snackbar} from "@mui/material";
 import {Alert} from "@mui/material";
 
 
