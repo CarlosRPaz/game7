@@ -41,4 +41,22 @@ export const SidebarData = [
         icon: <RugbyIcon className="sidebar-icon" />,
         cName: "sidebar-text"
     },
+    {
+        title: "Fantasy",
+        path: "/fantasy",
+        icon: <FootballIcon className="sidebar-icon" />,
+        cName: "sidebar-text"
+    },
+    {
+        title: "History",
+        path: "/history",
+        icon: <FootballIcon className="sidebar-icon" />,
+        cName: "sidebar-text"
+    },
+    {
+        title: "Pick 'Ems",
+        path: "/pickem",
+        icon: <FootballIcon className="sidebar-icon" />,
+        cName: "sidebar-text"
+    },
 ];

@@ -29,12 +29,10 @@ function MatchElement({/*matchData, activePickID,*/ sendPick, singleMatchData}) 
                                 && singleMatchData.awayTeam.teamId === selectionTester
                                 ? "lost" : ""} //red
                     `}
-                    /* //////////////////////////////////////////////// LOCK FOR US TO PUT IN VOTES
                         disabled={
                             selectionTester === singleMatchData?.awayTeam?.teamId
                             || singleMatchData?.winnerTeamId != null
                         }
-                    */
                     >
                         <p className="btn-teamName">
                             {singleMatchData?.awayTeam?.rank ? ('(' + singleMatchData?.awayTeam?.rank + ')') : null}{' '}
@@ -68,12 +66,10 @@ function MatchElement({/*matchData, activePickID,*/ sendPick, singleMatchData}) 
                                 && singleMatchData?.homeTeam?.teamId === selectionTester
                                 ? "lost" : ""} //red
                     `}
-                    /* //////////////////////////////////////////////// LOCK FOR US TO PUT IN VOTES
                         disabled={
                             selectionTester === singleMatchData?.homeTeam?.teamId
                             || moment().format('LLL') >= moment(singleMatchData?.gametime?.toDate()).format('LLL')
                         }
-                        */
                     >
                         <p className="btn-teamName">
                             {singleMatchData?.homeTeam?.rank ? ('(' + singleMatchData?.homeTeam?.rank + ')') : null}{' '}
@@ -85,7 +81,7 @@ function MatchElement({/*matchData, activePickID,*/ sendPick, singleMatchData}) 
             </div>
 
             <div className="matchInfo">
-                <p>{moment(singleMatchData?.gametime.toDate()).format('[Game time: ] MMM Do, h:mm a')}</p>
+                <p>{moment(singleMatchData?.gametime?.toDate()).format('dddd MMM Do, h:mm a')}</p>
                 <p>{singleMatchData?.stadiumLocation}</p>
             </div>
         </div>
