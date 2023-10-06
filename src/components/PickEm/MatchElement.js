@@ -32,6 +32,7 @@ function MatchElement({/*matchData, activePickID,*/ sendPick, singleMatchData}) 
                         disabled={
                             selectionTester === singleMatchData?.awayTeam?.teamId
                             || singleMatchData?.winnerTeamId != null
+                            || moment().format('LLL') >= moment(singleMatchData?.gametime?.toDate()).format('LLL')
                         }
                     >
                         <p className="btn-teamName">
@@ -68,6 +69,7 @@ function MatchElement({/*matchData, activePickID,*/ sendPick, singleMatchData}) 
                     `}
                         disabled={
                             selectionTester === singleMatchData?.homeTeam?.teamId
+                            || singleMatchData?.winnerTeamId != null
                             || moment().format('LLL') >= moment(singleMatchData?.gametime?.toDate()).format('LLL')
                         }
                     >
