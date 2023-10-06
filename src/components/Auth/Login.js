@@ -29,29 +29,12 @@ function Login({toggleSwitch}) {
                         email: userAuth.user.email,
                         uid: userAuth.user.uid,
                         displayName: userAuth.user.displayName,
-                        profileUrl: userAuth.user.photoURL,
+                        profileUrl: userAuth.user.photoURL, // TODO: delete this?
                     })
                 );
             })
             .catch((error) => alert(error));
-        navigate.replace("/");
-    };
-    const demoLogin = (e) => {
-        e.preventDefault();
-
-        signInWithEmailAndPassword(auth, 'crpaz@asu.edu', 'testPassword')
-            .then((userAuth) => {
-                dispatch(
-                    login({
-                        email: userAuth.user.email,
-                        uid: userAuth.user.uid,
-                        displayName: userAuth.user.displayName,
-                        profileUrl: userAuth.user.photoURL,
-                    })
-                );
-            })
-            .catch((error) => alert(error));
-        navigate.replace("/");
+        navigate("/");
     };
 
     const sendResetPasswordEmail = () => {
@@ -97,7 +80,6 @@ function Login({toggleSwitch}) {
                     />
 
                     <button type='submit' value="Submit" onClick={loginToApp}>Sign In</button>
-                    {/*<button onClick={demoLogin} className="demoBtn">Demo Login</button>*/}
                     <p>
                         <span className='login__register' onClick={sendResetPasswordEmail}>Forgot Password</span>
                     </p>

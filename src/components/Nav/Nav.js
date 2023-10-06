@@ -24,6 +24,11 @@ import CloseIcon from "@mui/icons-material/Close";
 import {SidebarData} from "./SidebarData";
 //import Login from "../Auth/Login";
 
+import {useNavigate} from 'react-router-dom';
+
+import DefaultProfImg from './../../img/default profile img.jpg';
+
+
 /*
 const style = {
     position: 'absolute',
@@ -58,6 +63,9 @@ const useStyles = makeStyles({
 
 function Nav() {
     const user = useSelector(selectUser);
+
+    const navigate = useNavigate();
+
     const dispatch = useDispatch();
     const [openMenu, setOpenMenu] = useState(false);
     const [openModal, setOpenModal] = useState(false);
@@ -67,15 +75,22 @@ function Nav() {
     //const classes = useStyles();
 
     const showSidebar = () => setSidebar(!sidebar);
-    const showModal = () => setOpenModal(true);
+    const showModal = () => {
+        setOpenModal(true);
+        setOpenMenu(!openMenu);
+    }
     // const hideModal = () => setOpenModal(false);
 
     const [profileData, setProfileData] = useState(null);
+    const [profileImg, setProfileImg] = useState();
 
 
     const logoutOfApp = () => {
         dispatch(logout());
         auth.signOut();
+        navigate("/");
+        setOpenMenu(!openMenu);
+        setProfileImg();
         // update img TODO: create state for img. set img state on useEffect
     };
 
@@ -101,6 +116,7 @@ function Nav() {
                     setProfileData(
                         snapshot.docs.at(0).data()
                     );
+                    setProfileImg(snapshot.docs.at(0).data().url)
                 },
                     (error) => {
                         console.log("onSnapshot error: ", error);
@@ -191,13 +207,13 @@ function Nav() {
                         <div className="nav-links-text">History</div>
                     </Link>
                     <Link to="/pickem" style={{textDecoration: 'none'}} className="nav-links-link">
-                        <div className="nav-links-text">Pick 'Em</div>
+                        <div className="nav-links-text">Pick 'Ems</div>
                     </Link>
                 </div>
             </div>
-
+            {/* TODO: replace default img with local img */}
             <div className="nav-icons">
-                <AvatarOption onClick={() => setOpenMenu(!openMenu)} avatar={profileData ? profileData?.url : 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/271deea8-e28c-41a3-aaf5-2913f5f48be6/de7834s-6515bd40-8b2c-4dc6-a843-5ac1a95a8b55.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzI3MWRlZWE4LWUyOGMtNDFhMy1hYWY1LTI5MTNmNWY0OGJlNlwvZGU3ODM0cy02NTE1YmQ0MC04YjJjLTRkYzYtYTg0My01YWMxYTk1YThiNTUuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.BopkDn1ptIwbmcKHdAOlYHyAOOACXW0Zfgbs0-6BY-E'} className="nav-avatar" />
+                <AvatarOption onClick={() => setOpenMenu(!openMenu)} avatar={profileImg ? profileImg : DefaultProfImg} className="nav-avatar" />
             </div>
 
             <div className="menuIcon-cont">

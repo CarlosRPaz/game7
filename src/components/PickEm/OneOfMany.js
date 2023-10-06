@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react'
-
+import React, {Fragment, createContext, forwardRef, useContext, useEffect, useRef, useState} from 'react'
+import './styles/OneOfMany.css';
 import {
     db,
     addDoc,
@@ -13,9 +13,17 @@ import {
     // update doc
     onSnapshot,
     serverTimestamp,
+    updateDoc,
 } from '../../firebase';
 import {useSelector} from 'react-redux';
 import {selectUser} from '../../features/userSlice';
+import {lighten, darken} from '@mui/system';
+import {useTheme, styled} from '@mui/material/styles';
+import TextField from '@mui/material/TextField';
+import Autocomplete, {autocompleteClasses} from '@mui/material/Autocomplete';
+import {CircularProgress, ListSubheader, Popper, Typography} from '@mui/material';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import {VariableSizeList} from 'react-window';
 
 function OneOfMany({currentPickEmGame}) {
     const user = useSelector(selectUser);
@@ -38,8 +46,10 @@ function OneOfMany({currentPickEmGame}) {
             querySnapshot.forEach((doc) => {
                 // doc.data() is never undefined for query doc snapshots
                 console.log("selectionId => ", doc.id);
-                setActivePickID(doc.data().selection);
+                setActivePickID(doc.data().selectionId);
                 setSelectionID(doc.id);
+                setValue(doc.data().selectionName);
+                setInputValue(doc.data().selectionName)
             });
         }
 
@@ -97,14 +107,187 @@ function OneOfMany({currentPickEmGame}) {
         )
     }
 
-    return (
-        <div>
-            <h1>OneOfMany component</h1>
+    //////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////
+    const GroupHeader = styled('div')(({theme}) => ({
+        position: 'sticky',
+        top: '-8px',
+        padding: '4px 10px',
+        color: theme.palette.primary.main,
+        backgroundColor:
+            theme.palette.mode === 'light'
+                ? lighten(theme.palette.primary.light, 0.85)
+                : darken(theme.palette.primary.main, 0.8),
+    }));
 
+    const GroupItems = styled('ul')({
+        padding: 0,
+    });
+    /*
+        const options = playersList.map((option) => {
+            const team = option.name[0].toUpperCase();
+            return {
+                team: /[0-9]/.test(team) ? '0-9' : team,
+                ...option,
+            };
+        });
+    */
+    //////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////
+
+    const [open, setOpen] = useState(false);
+    const [options, setOptions] = useState([]);
+    const loading = open && options.length === 0;
+
+    useEffect(() => {
+        let active = true;
+
+        if(!loading) {
+            return undefined;
+        }
+
+        (async () => {
+            await sleep(1e3); // For demo purposes.
+
+            if(active) {
+                setOptions([...playersList]);
+            }
+        })();
+
+        return () => {
+            active = false;
+        };
+    }, [loading]);
+
+    useEffect(() => {
+        if(!open) {
+            setOptions([]);
+        }
+    }, [open]);
+
+    function sleep(delay = 0) {
+        return new Promise((resolve) => {
+            setTimeout(resolve, delay);
+        });
+    }
+
+    //////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////
+
+    const [value, setValue] = useState();
+    const [inputValue, setInputValue] = useState('');
+    const [playerId, setPlayerId] = useState('');
+
+    const selectPlayer = async (newValue) => {
+        console.log("newValue", newValue);
+        // set value state
+        setValue(newValue.name);
+
+        if(selectionID) {
+            // if selection exists, update selection with new value
+            const selectionRef = doc(db, "selections", selectionID);
+            await updateDoc(selectionRef, {
+                selectionId: newValue.meta_id,
+                selectionName: newValue.name
+            }, {merge: true});
+            console.log("fxn SID", selectionID);
+        } else {
+            // else send new selection to Firestore; new doc
+            const docData = {
+                pickEmGameId: currentPickEmGame.meta_id,
+                userId: user.uid,
+                selectionId: newValue.meta_id,
+                selectionName: newValue.name
+            }
+            const docRef = await addDoc(collection(db, "selections"), docData);
+            // set selection doc id state
+            //setYGRA(docRef.id);
+            console.log(docRef.id);
+        }
+    }
+
+    return (
+        <div className="oneOfMany">
+            <h1>OneOfMany component</h1>
+            {/*
             <div id="btnContainer">
                 {playersList && playersList.map((player, index) => (
                     <Selection key={player.meta_id} player={player} />
                 ))}
+            </div>
+            */}
+
+            <div className="autocompleteComponent">
+                {/*
+                <Autocomplete
+                    id="grouped-demo"
+                    options={options.sort((a, b) => -b.team.localeCompare(a.team))}
+                    groupBy={(option) => option.team}
+                    getOptionLabel={(option) => option.name}
+                    sx={{width: 300}}
+                    renderInput={(params) => <TextField {...params} label="With categories" />}
+                    renderGroup={(params) => (
+                        <li key={params.key}>
+                            <GroupHeader>{params.group}</GroupHeader>
+                            <GroupItems>{params.children}</GroupItems>
+                        </li>
+                    )}
+                />
+                */}
+
+                <Autocomplete
+                    id="asynchronous-demo"
+                    //value={value}
+                    onChange={(e, newValue) => {
+                        selectPlayer(newValue);
+                    }}
+                    inputValue={inputValue}
+                    onInputChange={(event, newInputValue) => {
+                        setInputValue(newInputValue);
+                        console.log("newInputValue", newInputValue);
+                    }}
+                    sx={{width: 300}}
+                    open={open}
+                    onOpen={() => {
+                        setOpen(true);
+                    }}
+                    onClose={() => {
+                        setOpen(false);
+                    }}
+                    groupBy={(option) => option.team}
+                    isOptionEqualToValue={(option, value) => option.name === value.name}
+                    getOptionLabel={(option) => option.name}
+                    options={options.sort((a, b) => -b.team.localeCompare(a.team))}
+                    loading={loading}
+                    renderInput={(params) => (
+                        <TextField
+                            {...params}
+                            label="Select a player"
+                            InputProps={{
+                                ...params.InputProps,
+                                endAdornment: (
+                                    <Fragment>
+                                        {loading ? <CircularProgress color="inherit" size={20} /> : null}
+                                        {params.InputProps.endAdornment}
+                                    </Fragment>
+                                ),
+                            }}
+                        />
+                    )}
+                />
+            </div>
+
+            <div className="oneOfMany-selection">
+                <h3>Your selection:</h3>
+                <div className="oneOfMany-selectionName">
+                    {`${value !== null ? `${value}` : 'null'}`}
+                </div>
             </div>
         </div>
     )
