@@ -29,11 +29,13 @@ function MatchElement({/*matchData, activePickID,*/ sendPick, singleMatchData}) 
                                 && singleMatchData.awayTeam.teamId === selectionTester
                                 ? "lost" : ""} //red
                     `}
-                        disabled={
-                            selectionTester === singleMatchData?.awayTeam?.teamId
-                            || singleMatchData?.winnerTeamId != null
-                            || moment().format('LLL') >= moment(singleMatchData?.gametime?.toDate()).format('LLL')
-                        }
+                    /*
+                    disabled={
+                        selectionTester === singleMatchData?.awayTeam?.teamId
+                        || singleMatchData?.winnerTeamId != null
+                        || moment().format('LLL') >= moment(singleMatchData?.gametime?.toDate()).format('LLL')
+                    }
+                    */
                     >
                         <p className="btn-teamName">
                             {singleMatchData?.awayTeam?.rank ? ('(' + singleMatchData?.awayTeam?.rank + ')') : null}{' '}
@@ -67,11 +69,13 @@ function MatchElement({/*matchData, activePickID,*/ sendPick, singleMatchData}) 
                                 && singleMatchData?.homeTeam?.teamId === selectionTester
                                 ? "lost" : ""} //red
                     `}
-                        disabled={
-                            selectionTester === singleMatchData?.homeTeam?.teamId
-                            || singleMatchData?.winnerTeamId != null
-                            || moment().format('LLL') >= moment(singleMatchData?.gametime?.toDate()).format('LLL')
-                        }
+                    /*
+                    disabled={
+                        selectionTester === singleMatchData?.homeTeam?.teamId
+                        || singleMatchData?.winnerTeamId != null
+                        || moment().format('LLL') >= moment(singleMatchData?.gametime?.toDate()).format('LLL')
+                    }
+                    */
                     >
                         <p className="btn-teamName">
                             {singleMatchData?.homeTeam?.rank ? ('(' + singleMatchData?.homeTeam?.rank + ')') : null}{' '}
