@@ -286,7 +286,10 @@ function OneOfMany({currentPickEmGame}) {
             <div className="oneOfMany-selection">
                 <h3>Your selection:</h3>
                 <div className="oneOfMany-selectionName">
-                    {`${value !== null ? `${value}` : 'null'}`}
+                    {
+                        value ? `${value !== null ? `${value}` : 'null'}`
+                            : 'No selection exists'
+                    }
                 </div>
             </div>
         </div>

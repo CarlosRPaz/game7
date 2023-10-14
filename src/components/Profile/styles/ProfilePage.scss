@@ -7,9 +7,15 @@
     margin-right: auto;
     display: flex;
     flex-direction: column;
+    align-items: stretch;
+    align-content: stretch;
 
     &-stack {
-        width: 100%;
+        min-width: 400px;
+
+        &-empty {
+            padding: .6em 1em;
+        }
     } 
 }
 .profilePage-header {
@@ -20,6 +26,7 @@
     flex-direction: column;
     padding: 1em;
     font-family: $font;
+    min-height: auto;
 
     &-info {
         display: flex;
@@ -145,7 +152,7 @@
         border-radius: $article-radius;
     }
     textarea {
-        height: 15vh;
+        height: 5vh;
     }
 
     &-btnContainer {

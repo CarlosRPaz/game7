@@ -11,6 +11,7 @@ import SocialsWidget from "./SocialsWidget";
 //import Pagination from "./Pagination";
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
+import PickEmAdWidget from "./PickEmAdWidget";
 
 function Home() {
 
@@ -135,6 +136,7 @@ function Home() {
                 </div>
                 <div className="home-right">
                     <PollWidget />
+                    <PickEmAdWidget />
                 </div>
             </div>
         </div>

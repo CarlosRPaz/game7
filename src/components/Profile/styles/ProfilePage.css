@@ -8,9 +8,14 @@
   margin-right: auto;
   display: flex;
   flex-direction: column;
+  align-items: stretch;
+  align-content: stretch;
 }
 .profilePage-stack {
-  width: 100%;
+  min-width: 400px;
+}
+.profilePage-stack-empty {
+  padding: 0.6em 1em;
 }
 
 .profilePage-header {
@@ -21,6 +26,7 @@
   flex-direction: column;
   padding: 1em;
   font-family: "Oswald", sans-serif;
+  min-height: auto;
 }
 .profilePage-header-info {
   display: flex;
@@ -141,7 +147,7 @@
   border-radius: 0.2em;
 }
 .form-container textarea {
-  height: 15vh;
+  height: 5vh;
 }
 .form-container-btnContainer {
   display: flex;
