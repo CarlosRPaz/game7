@@ -1,0 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap");
+.adWidget {
+  background-color: #e4e8ec;
+  padding: 1em;
+  border-radius: 0.2em;
+  position: sticky;
+  top: 20px;
+  margin-top: 1rem;
+}
+.adWidget p {
+  font-family: "Oswald", sans-serif;
+  font-size: 1.2rem;
+  padding-bottom: 0.4em;
+}
+.adWidget-body {
+  background-color: #f9fbff;
+  border-radius: 0.2em;
+  padding: 0.6em;
+}
+.adWidget-question {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.adWidget-names {
+  margin-top: 0.4rem;
+  color: gray;
+  font-size: small;
+  font-weight: 800;
+}/*# sourceMappingURL=AdWidget.css.map */

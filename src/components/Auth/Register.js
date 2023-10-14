@@ -21,38 +21,34 @@ function Register({toggleSwitch}) {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [name, setName] = useState("");
-    const [profilePic, setProfilePic] = useState("");
+    const [username, setUsername] = useState("");
 
     const dispatch = useDispatch();
 
     const register = (e) => {
         e.preventDefault();
 
-        if(!name) {
-            return alert('Please enter your full name!');
+        if(!username) {
+            return alert('Please enter your a username!');
         }
 
         createUserWithEmailAndPassword(auth, email, password)
             .then((userAuth) => { // if successful, then do:
                 updateProfile(userAuth.user, {
-                    displayName: name,
-                    photoURL: profilePic,
+                    displayName: username,
                 }).then(() => {
                     dispatch(
                         login({
                             email: userAuth.user.email,
                             uid: userAuth.user.uid,
-                            displayName: name,
-                            photoUrl: profilePic,
+                            displayName: username,
                         })
                     );
                 });
                 setDoc(doc(db, 'users', userAuth.user.uid), {
                     userId: `${userAuth.user.uid}`,
-                    userName: `${userAuth.user.displayName}`,
+                    userName: username,
                     email: `${userAuth.user.email}`,
-                    photoUrl: `${userAuth.user.photoUrl}`,
                     bio: 'Bio has not been set yet.',
                     role: 'Rookie',
                     comments: 0,
@@ -61,7 +57,7 @@ function Register({toggleSwitch}) {
                 });
             })
             .catch((error) => alert(error));
-        navigate.replace("/");
+        navigate("/");
     };
 
     return (
@@ -74,21 +70,13 @@ function Register({toggleSwitch}) {
             <>
                 <form>
                     <input
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
                         placeholder='Username'
                         type="text"
-                        name="name"
+                        name="username"
                         required
                     />
-                    {/*
-                    <input
-                        value={profilePic}
-                        onChange={(e) => setProfilePic(e.target.value)} placeholder='Profile Pic URL (Opt)'
-                        type="text"
-                        name="profilePic"
-                        />
-                    */}
                     <input
                         value={email}
                         onChange={(e) => setEmail(e.target.value)} placeholder='Email'
