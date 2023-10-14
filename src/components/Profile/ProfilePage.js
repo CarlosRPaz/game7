@@ -321,9 +321,9 @@ function ProfilePage() {
                         alt=""
                         className="profilePage-header-img" />
                     <div className="profilePage-header-infoText">
-                        <p className="profilePage-header-name">{currentProfile ? currentProfile.userName : 'Test Name'}</p>
+                        <p className="profilePage-header-name">{currentProfile ? currentProfile?.userName : 'Test Name'}</p>
                         {/*<p className="profilePage-header-email">{currentProfile ? currentProfile.email : 'Test Email'}</p>*/}
-                        <p className="profilePage-header-email">{currentProfile ? currentProfile.role : 'Test Role'}</p>
+                        <p className="profilePage-header-email">{currentProfile ? currentProfile?.role : 'Test Role'}</p>
                     </div>
                 </div>
 
@@ -331,11 +331,11 @@ function ProfilePage() {
                     <h3>Profile Stats</h3>
                     <div className="profilePage-header-stats">
                         <div>
-                            <span>{currentProfile ? currentProfile.comments : '##'}</span>
+                            <span>{currentProfile ? currentProfile?.comments : '##'}</span>
                             <label>Comments</label>
                         </div>
                         <div>
-                            <span>{currentProfile ? currentProfile.likes : '##'}</span>
+                            <span>{currentProfile ? currentProfile?.likes : '##'}</span>
                             <label>Likes</label>
                         </div>
                         {/* 
