@@ -81,8 +81,13 @@ function PickEmGame() {
     // load matches FOR PAGINATION ///////////////////////////////////////// UNDER CONSTRUCTION
     useEffect(() => {
         if(currentPickEmGame?.gameType === "matchSelections" && page) {
+
             const loadMatches = async () => {
-                const matchesRef = query(collection(db, "matches"),
+                const matchesRef = query(collection(db,
+                    (currentPickEmGame?.leagueAbbr === "CFB" ? "matches"
+                        : currentPickEmGame?.leagueAbbr === "NFL" ? "nflmatches"
+                            : "nbamatches")
+                ),
                     where("week", "==", page),
                     where("leagueAbbr", "==", currentPickEmGame.leagueAbbr),
                     where("year", "==", currentPickEmGame.year),

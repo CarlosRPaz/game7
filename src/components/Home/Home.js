@@ -135,7 +135,7 @@ function Home() {
                     </Stack>
                 </div>
                 <div className="home-right">
-                    <PollWidget />
+                    {/*<PollWidget />*/}
                     <PickEmAdWidget />
                 </div>
             </div>

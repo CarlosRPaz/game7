@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import './styles/AdWidget.css'
 import {collection, getDocs, onSnapshot, query} from 'firebase/firestore';
 import {db} from '../../firebase';
+import {Link} from 'react-router-dom';
 
 function PickEmAdWidget() {
     const [pickEmNames, setPickEmNames] = useState([]);
@@ -35,14 +36,16 @@ function PickEmAdWidget() {
                     ))}
                 </div>
                 <div>
-                    <button
-                        className="pollWidget-submitBtn"
-                    >
-                        Go to Pick 'Ems
-                    </button>
+                    <Link to={"/pickem/"}>
+                        <button
+                            className="pollWidget-submitBtn"
+                        >
+                            Go to Pick 'Ems
+                        </button>
+                    </Link>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 

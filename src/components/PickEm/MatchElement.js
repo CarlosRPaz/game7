@@ -39,7 +39,7 @@ function MatchElement({/*matchData, activePickID,*/ sendPick, singleMatchData}) 
                     >
                         <p className="btn-teamName">
                             {singleMatchData?.awayTeam?.rank ? ('(' + singleMatchData?.awayTeam?.rank + ')') : null}{' '}
-                            {singleMatchData?.awayTeam?.name}</p>
+                            {singleMatchData?.awayTeam?.name || singleMatchData?.awayTeam?.hometown}</p>
                         <p className="btn-teamNickname">{singleMatchData?.awayTeam?.nickname}</p>
                     </button>
                 }
@@ -79,7 +79,7 @@ function MatchElement({/*matchData, activePickID,*/ sendPick, singleMatchData}) 
                     >
                         <p className="btn-teamName">
                             {singleMatchData?.homeTeam?.rank ? ('(' + singleMatchData?.homeTeam?.rank + ')') : null}{' '}
-                            {singleMatchData?.homeTeam?.name}
+                            {singleMatchData?.homeTeam?.name || singleMatchData?.homeTeam?.hometown}
                         </p>
                         <p className="btn-teamNickname">{singleMatchData?.homeTeam?.nickname}</p>
                     </button>
@@ -88,7 +88,7 @@ function MatchElement({/*matchData, activePickID,*/ sendPick, singleMatchData}) 
 
             <div className="matchInfo">
                 <p>{moment(singleMatchData?.gametime?.toDate()).format('dddd MMM Do, h:mm a')}</p>
-                <p>{singleMatchData?.stadiumLocation}</p>
+                <p>{singleMatchData?.stadiumLocation || singleMatchData?.gameLocation}</p>
             </div>
         </div>
     )

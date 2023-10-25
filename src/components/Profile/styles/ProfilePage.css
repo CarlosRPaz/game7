@@ -34,6 +34,7 @@
 }
 .profilePage-header-infoText {
   padding-left: 1rem;
+  padding-top: 1rem;
 }
 .profilePage-header-img {
   width: 4em;
@@ -147,7 +148,7 @@
   border-radius: 0.2em;
 }
 .form-container textarea {
-  height: 5vh;
+  height: 10rem;
 }
 .form-container-btnContainer {
   display: flex;

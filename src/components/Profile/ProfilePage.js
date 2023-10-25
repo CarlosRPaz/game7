@@ -304,7 +304,7 @@ function ProfilePage() {
                             <div className="form-container-btnContainer">
                                 {/* type="button" should keep the Cancel button from submitting */}
                                 <button type="button" className="form-container-btnContainer-cancelBtn" onClick={handleClose}>Cancel</button>
-                                <button type="submit" className="form-container-btnContainer-submitBtn">Submit</button>
+                                <button type="submit" className="form-container-btnContainer-submitBtn">Update</button>
                             </div>
                         </form>
                     </div>
@@ -323,7 +323,7 @@ function ProfilePage() {
                     <div className="profilePage-header-infoText">
                         <p className="profilePage-header-name">{currentProfile ? currentProfile?.userName : 'Test Name'}</p>
                         {/*<p className="profilePage-header-email">{currentProfile ? currentProfile.email : 'Test Email'}</p>*/}
-                        <p className="profilePage-header-email">{currentProfile ? currentProfile?.role : 'Test Role'}</p>
+                        {/*<p className="profilePage-header-email">{currentProfile ? currentProfile?.role : 'Test Role'}</p>*/}
                     </div>
                 </div>
 
