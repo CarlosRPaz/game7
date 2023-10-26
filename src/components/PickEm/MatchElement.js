@@ -32,7 +32,7 @@ function MatchElement({/*matchData, activePickID,*/ sendPick, singleMatchData}) 
 
                         disabled={
                             selectionTester === singleMatchData?.awayTeam?.teamId
-                            || singleMatchData?.winnerTeamId != null
+                            || singleMatchData?.winnerTeamId != null // !== to lock
                             || moment().format('LLL') >= moment(singleMatchData?.gametime?.toDate()).format('LLL')
                         }
 
@@ -72,7 +72,7 @@ function MatchElement({/*matchData, activePickID,*/ sendPick, singleMatchData}) 
 
                         disabled={
                             selectionTester === singleMatchData?.homeTeam?.teamId
-                            || singleMatchData?.winnerTeamId != null
+                            || singleMatchData?.winnerTeamId != null // !== to lock
                             || moment().format('LLL') >= moment(singleMatchData?.gametime?.toDate()).format('LLL')
                         }
 
