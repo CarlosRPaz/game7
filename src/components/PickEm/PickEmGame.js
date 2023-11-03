@@ -27,6 +27,7 @@ import {
 import MatchSelections from "./MatchSelections";
 import OneOfMany from "./OneOfMany";
 import {getCountFromServer, orderBy} from "firebase/firestore";
+import moment from "moment";
 
 function PickEmGame() {
 
@@ -57,6 +58,18 @@ function PickEmGame() {
 
         loadPickEmGame().catch(console.error);
     }, [slug])
+
+    useEffect(() => {
+        if(currentPickEmGame) {
+            // Load week of season
+            let currentDate = new Date();
+            let startDate = new Date(currentPickEmGame.startDate);
+            let days = Math.floor((currentDate - startDate) / (24 * 60 * 60 * 1000));
+            let weekNumber = Math.ceil(days / 7);
+            ///////////////////////
+            setPage(weekNumber)
+        }
+    }, [currentPickEmGame])
 
     /*
         // load matches if gameType == matchSelections
