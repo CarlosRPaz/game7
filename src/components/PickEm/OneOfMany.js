@@ -213,7 +213,7 @@ function OneOfMany({currentPickEmGame}) {
     }
 
     return (
-        <div className="oneOfMany">
+        (<div className="oneOfMany">
             <h1>OneOfMany component</h1>
             {/*
             <div id="btnContainer">
@@ -222,7 +222,6 @@ function OneOfMany({currentPickEmGame}) {
                 ))}
             </div>
             */}
-
             <div className="autocompleteComponent">
                 {/*
                 <Autocomplete
@@ -269,20 +268,21 @@ function OneOfMany({currentPickEmGame}) {
                         <TextField
                             {...params}
                             label="Select a player"
-                            InputProps={{
-                                ...params.InputProps,
-                                endAdornment: (
-                                    <Fragment>
-                                        {loading ? <CircularProgress color="inherit" size={20} /> : null}
-                                        {params.InputProps.endAdornment}
-                                    </Fragment>
-                                ),
+                            slotProps={{
+                                input: {
+                                    ...params.InputProps,
+                                    endAdornment: (
+                                        <Fragment>
+                                            {loading ? <CircularProgress color="inherit" size={20} /> : null}
+                                            {params.InputProps.endAdornment}
+                                        </Fragment>
+                                    ),
+                                }
                             }}
                         />
                     )}
                 />
             </div>
-
             <div className="oneOfMany-selection">
                 <h3>Your selection:</h3>
                 <div className="oneOfMany-selectionName">
@@ -292,8 +292,8 @@ function OneOfMany({currentPickEmGame}) {
                     }
                 </div>
             </div>
-        </div>
-    )
+        </div>)
+    );
 }
 
 export default OneOfMany
