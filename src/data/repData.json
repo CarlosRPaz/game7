@@ -1,0 +1,66 @@
+{
+    "NFL": {
+        "2024": {
+            "2024-NFL-DivWin": {
+                "gameWeight": 5,
+                "maxPossibleScore": 8
+            },
+            "2024-NFL-DivPlacement": {
+                "gameWeight": 10,
+                "maxPossibleScore": 32
+            },
+           "2024-NFL-PreSeasonBracket": {
+                "gameWeight": 25,
+                "maxPossibleScore": 117
+            },
+            "2024-NFL-SBMVP": {
+                "gameWeight": 10,
+                "maxPossibleScore": 1
+            },
+            "2024-NFL-MVP": {
+                "gameWeight": 5,
+                "maxPossibleScore": 1
+            },
+            "2024-NFL-COTY": {
+                "gameWeight": 2,
+                "maxPossibleScore": 1
+            },
+            "2024-NFL-OROY": {
+                "gameWeight": 1,
+                "maxPossibleScore": 1
+            },
+            "2024-NFL-DROY": {
+                "gameWeight": 1,
+                "maxPossibleScore": 1
+            },
+            "2024-NFL-OPOY": {
+                "gameWeight": 2,
+                "maxPossibleScore": 1
+            },
+            "2024-NFL-DPOY": {
+                "gameWeight": 2,
+                "maxPossibleScore": 1
+            },
+            "2024-NFL-CBOY": {
+                "gameWeight": 2,
+                "maxPossibleScore": 1
+            },
+            "2024-NFL-Weeklypickems": {
+                "gameWeight": 25,
+                "maxPossibleScore": 272
+            },
+            "2024-NFL-PostSeasonBracket": {
+                "gameWeight": 25,
+                "maxPossibleScore": 75
+            }
+        }
+    },
+    "NBA": {
+        "2023": {
+            "2024-NFL-Weeklypickems": {
+                "gameWeight": 0.375,
+                "maxPossibleScore": 272
+            }
+        }
+    }
+}

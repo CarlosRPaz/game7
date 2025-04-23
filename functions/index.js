@@ -27,6 +27,8 @@ const {onDocumentUpdated} = require("firebase-functions/v2/firestore");
 const {initializeApp} = require("firebase-admin/app");
 const {getFirestore} = require("firebase-admin/firestore");
 
+const { updateUserRep } = require('./updateUserRep'); // Import the function
+
 initializeApp();
 const dbContext = getFirestore();
 
@@ -35,15 +37,20 @@ const dbContext = getFirestore();
 // Function to check the answers and add score to user's selections document
 exports.updateSelectionScores = onDocumentUpdated('z_pickemgames/{pickEmGameId}', 
     async (change) => {
-        console.log("pickEmGame before: ", change.data.before.data().correctAnswers);
-        console.log("pickEmGame after: ", change.data.after.data().correctAnswers);
+        //console.log("Inside updateSelectionScores");
+
+        //console.log("pickEmGame before: ", change.data.before.data().correctAnswers);
+        //console.log("pickEmGame after: ", change.data.after.data().correctAnswers);
 
         // Only trigger the function if the 'correctAnswers' field was updated
         if (change.data.before.data().correctAnswers !== change.data.after.data().correctAnswers) {
+            //console.log("Inside if statement correctAnswers field updated");
+
+
             const correctAnswers = change.data.after.data().correctAnswers;
             const pickEmGameId = change.params.pickEmGameId;
-            console.log("Correct Answers", correctAnswers)
-            console.log("pickEmGameId", pickEmGameId)
+            //console.log("Correct Answers", correctAnswers)
+            //console.log("pickEmGameId", pickEmGameId)
 
             // Get all selections related to the updated pickEmGameId
             const selectionsSnapshot = await dbContext.collection('z_selections')
@@ -59,8 +66,8 @@ exports.updateSelectionScores = onDocumentUpdated('z_pickemgames/{pickEmGameId}'
                 const selectionData = selectionDoc.data();
                 const picks = selectionData.picks;
                 
-                console.log("picks", picks)
-                console.log("selectionSnapshot ==>", selectionData)
+                //console.log("picks", picks)
+                //console.log("selectionSnapshot ==>", selectionData)
 
                 // Count the number of matching picks
                 // Regrades on every update of correctAnswers`
@@ -79,7 +86,7 @@ exports.updateSelectionScores = onDocumentUpdated('z_pickemgames/{pickEmGameId}'
             // Commit the batch update`
             await batch.commit();
 
-            console.log(`Scores updated for pickEmGameId: ${pickEmGameId}`);
+            //console.log(`Scores updated for pickEmGameId: ${pickEmGameId}`);
         }
         return null;
     });
@@ -87,40 +94,57 @@ exports.updateSelectionScores = onDocumentUpdated('z_pickemgames/{pickEmGameId}'
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 /// Cloud function 2:
 /// when score is added to a selection, recalculate that users total score
+/// CONSIDER: Is there a case in which score ISN't updated but rep would need to be recalculated?
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 exports.updateUserScores = onDocumentUpdated('z_selections/{selectionId}',
     async (change) => {
-        console.log("Full selection data >>> ", change.data.after.data())
-        console.log("selection score before: ", change.data.before.data().score);
-        console.log("selection score after: ",change.data.after.data().score);
+        //console.log("Full selection data >>> ", change.data.after.data())
+        //console.log("selection score before: ", change.data.before.data().score);
+        //console.log("selection score after: ",change.data.after.data().score);
 
         // Only trigger the function if the 'score' field was updated
         if (change.data.before.data().score !== change.data.after.data().score) {
             const selectionId = change.params.selectionId;
             const score = change.data.after.data().score;
             const pickEmGameId = change.data.after.data().pickEmGameId;
-            const maxPossibleScore = change.data.after.data().maxPossibleScore;
+            const attempted = change.data.after.data().attempted;
             const userId = change.data.after.data().userId;
-            console.log("selectionId >>>", selectionId)
-            console.log("score >>>", score)
-            console.log("pickEmGameId >>>", pickEmGameId)
-            console.log("maxPossibleScore >>>", maxPossibleScore)
-            console.log("userId >>>", userId)
+            const league = change.data.after.data().league;
+            const year = change.data.after.data().year;
+            //console.log("LEAGUE right here >>>>>", league);
             
-            // Get all users related to the userId
+            // Set user's score in user doc
             const userRef = dbContext.collection('z_users').doc(userId);
             const res = await userRef.set(
                 { 
                     pickEmGameScores: {
-                        [`${pickEmGameId}`]: {
-                            score: score,
-                            maxPossibleScore: maxPossibleScore
+                        [`${league}`]: {
+                            [`${year}`]: {
+                                [`${pickEmGameId}`]: {
+                                    score: score,
+                                    attempted: attempted
+                                }
+                            }
                         }
                     }
                 }, 
                 { merge: true }
             );
+
+            // take all of user's scores and recalculate rep with an external fxn
+            const docSnapshot = await userRef.get(); // This retrieves the document
+            if (docSnapshot.exists) {
+                // If the document exists, you can extract and use the data
+                const userData = docSnapshot.data();
+                //console.log("userDocSnapshot > userData >>>", userData); // Logs the entire document data
+            } else {
+                console.log("No such document!");
+            }
+
+            updateUserRep(docSnapshot.data(), userRef, pickEmGameId, league, year, score);
         }
+
+        
         return null;
     });
 
