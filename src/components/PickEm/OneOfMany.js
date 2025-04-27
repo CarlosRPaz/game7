@@ -89,6 +89,8 @@ function OneOfMany({currentPickEmGame}) {
                 userId: user?.uid,                                // GOOD
                 selection: playerId,                              // GOOD
                 pickEmGameId: currentPickEmGame?.meta_id,         // GOOD
+                league: currentPickEmGame?.leagueAbbr,
+                year: currentPickEmGame?.year
             });
         }
 
@@ -203,7 +205,12 @@ function OneOfMany({currentPickEmGame}) {
                 pickEmGameId: currentPickEmGame.meta_id,
                 userId: user.uid,
                 selectionId: newValue.meta_id,
-                selectionName: newValue.name
+                selectionName: newValue.name,
+                picks: {
+                    selectionName: newValue.name
+                },
+                league: currentPickEmGame?.leagueAbbr,
+                year: currentPickEmGame?.year
             }
             const docRef = await addDoc(collection(db, "selections"), docData);
             // set selection doc id state

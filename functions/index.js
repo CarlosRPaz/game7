@@ -27,10 +27,98 @@ const {onDocumentUpdated} = require("firebase-functions/v2/firestore");
 const {initializeApp} = require("firebase-admin/app");
 const {getFirestore} = require("firebase-admin/firestore");
 
-const { updateUserRep } = require('./updateUserRep'); // Import the function
+const repData = require('./data/repData.json');
 
 initializeApp();
 const dbContext = getFirestore();
+
+
+// helper fxn
+const updateUserRep = async (userLeagueScoreData, userRef, pickEmGameId, league, year, score) => {
+    //console.log('INSIDE UPDATE USER REP FUNCTION');
+    //console.log('userLeagueScoreData parameter:', userLeagueScoreData);
+    //console.log('league parameter:', league);
+    //console.log('year parameter:', year);
+    //console.log('repData.gameWeight >>> ', repData[league][year]['2024-NFL-Weeklypickems'].gameWeight);
+    //console.log('repData >>> ', repData[league]);
+    //console.log('userLeagueScoreData parameter >>> ', userLeagueScoreData.pickEmGameScores[league]);
+    const userScore = score;
+    const maxPossibleScore = repData[league][year][pickEmGameId].maxPossibleScore;
+    const gameWeight = repData[league][year][pickEmGameId].gameWeight;
+
+    console.log("userScore: ", userScore)
+    console.log("repData.maxPossibleScore: ", maxPossibleScore)
+    console.log("repData.gameWeight: ", gameWeight)
+
+    const weightedScore = ((userScore/maxPossibleScore)*gameWeight)
+
+    console.log("weightedScore: ", weightedScore)
+
+    //console.log("user weightedScore >>> ", weightedScore);
+    // Update the user's pickEmGameScores with the new weighted score
+    await userRef.update({
+        [`pickEmGameScores.${league}.${year}.${pickEmGameId}.weightedScore`]: weightedScore
+    });
+
+    // We are not pulling the updated DB pickEmGameScores, so we will update the local pickEmGameScores with the new weighted score as well
+    if (!userLeagueScoreData.pickEmGameScores[league][year][pickEmGameId]) {
+        userLeagueScoreData.pickEmGameScores[league][year][pickEmGameId] = {};
+    }
+    userLeagueScoreData.pickEmGameScores[league][year][pickEmGameId].weightedScore = weightedScore;
+
+    // Recalculate the total weighted score for this league-year; starts with local data
+    let totalWeightedScore = 0;
+    let gameCount = 0;
+
+     // Loop through all the games in the league-year and sum their weighted scores
+    const leagueYearGames = userLeagueScoreData.pickEmGameScores[league][year];
+    for (const game in leagueYearGames) {
+         if (leagueYearGames[game].weightedScore) {
+             totalWeightedScore += leagueYearGames[game].weightedScore;
+             gameCount++;
+         }
+     }
+
+     //console.log("totalWeightedScore for league-year> > > ", totalWeightedScore); ///// WORKS
+     //console.log("gameCount > > > ", gameCount);
+
+    // TO-DO: Store leagueYearUserRepScore in the user's document.
+    const leagueYearUserRepScore = totalWeightedScore;
+    await userRef.update({
+        [`pickEmGameScores.${league}.${year}.leagueYearUserRepScore`]: leagueYearUserRepScore
+    }); 
+
+    // We are not pulling the updated DB pickEmGameScores, so we will update the local pickEmGameScores with the new leagueYearUserRepScore as well
+    userLeagueScoreData.pickEmGameScores[league][year].leagueYearUserRepScore = leagueYearUserRepScore;
+
+    // TO-DO: Recalculate leagueUserRepScore by averaging all leagueYearUserRepScore values for a specific league adn store as leagueUserRepScore
+    // Now, recalculate the leagueUserRepScore (average of all leagueYearUserRepScore for this league)
+    let totalRepScore = 0;
+    let yearCount = 0;
+    const leagueYears = userLeagueScoreData.pickEmGameScores[league];
+
+    // Loop through all the years in the league
+    for (const year in leagueYears) {
+        if (leagueYears[year].leagueYearUserRepScore) {
+            totalRepScore += leagueYears[year].leagueYearUserRepScore;
+            yearCount++;
+        }
+    }
+
+    // Calculate the average league user rep score
+    const leagueUserRepScore = totalRepScore / yearCount;
+
+    // Update the leagueUserRepScore at the root level for the user
+    await userRef.update({
+        [`${league}-Rep`]: leagueUserRepScore
+    });
+
+    // TO-DO: CLEAN LOGS TO PRESENT TO G7 STAFF
+
+    return `updateUserRep executed`;
+};
+
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -42,7 +130,7 @@ exports.updateSelectionScores = onDocumentUpdated('z_pickemgames/{pickEmGameId}'
         //console.log("pickEmGame before: ", change.data.before.data().correctAnswers);
         //console.log("pickEmGame after: ", change.data.after.data().correctAnswers);
 
-        // Only trigger the function if the 'correctAnswers' field was updated
+        // Only trigger the function if the 'correctAnswers' field was updated with new information
         if (change.data.before.data().correctAnswers !== change.data.after.data().correctAnswers) {
             //console.log("Inside if statement correctAnswers field updated");
 
@@ -167,3 +255,5 @@ exports.addmessage = onRequest(async (req, res) => {
   });
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+

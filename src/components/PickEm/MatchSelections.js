@@ -76,6 +76,8 @@ function MatchSelections({currentPickEmGame, jointMatchList, setPage, page}) {
             const docData = {
                 pickEmGameId: currentPickEmGame.meta_id,
                 userId: user.uid,
+                league: currentPickEmGame?.leagueAbbr,
+                year: currentPickEmGame?.year,
                 picks: {
                     [matchId]: teamId
                 }

@@ -1,4 +1,4 @@
-const repData = require('../src/data/repData.json');
+const repData = require('./data/repData.json');
 const {getFirestore} = require("firebase-admin/firestore");
 
 
