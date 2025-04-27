@@ -7,6 +7,7 @@
  * See a full list of supported triggers at https://firebase.google.com/docs/functions
  */
 
+
 // const {onRequest} = require("firebase-functions/v2/https");
 // const logger = require("firebase-functions/logger");
 
@@ -123,7 +124,7 @@ const updateUserRep = async (userLeagueScoreData, userRef, pickEmGameId, league,
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // Function to check the answers and add score to user's selections document
-exports.updateSelectionScores = onDocumentUpdated('z_pickemgames/{pickEmGameId}', 
+exports.updateSelectionScores = onDocumentUpdated('pickemgames/{pickEmGameId}', 
     async (change) => {
         //console.log("Inside updateSelectionScores");
 
@@ -141,7 +142,7 @@ exports.updateSelectionScores = onDocumentUpdated('z_pickemgames/{pickEmGameId}'
             //console.log("pickEmGameId", pickEmGameId)
 
             // Get all selections related to the updated pickEmGameId
-            const selectionsSnapshot = await dbContext.collection('z_selections')
+            const selectionsSnapshot = await dbContext.collection('selections')
                 .where('pickEmGameId', '==', pickEmGameId)
                 .get();
 
@@ -167,7 +168,7 @@ exports.updateSelectionScores = onDocumentUpdated('z_pickemgames/{pickEmGameId}'
                         score++;
                     }
                 }
-                // Update the score in the z_selections document
+                // Update the score in the selections document
                 batch.update(selectionDoc.ref, { score, attempted });
             });
 
@@ -184,7 +185,7 @@ exports.updateSelectionScores = onDocumentUpdated('z_pickemgames/{pickEmGameId}'
 /// when score is added to a selection, recalculate that users total score
 /// CONSIDER: Is there a case in which score ISN't updated but rep would need to be recalculated?
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-exports.updateUserScores = onDocumentUpdated('z_selections/{selectionId}',
+exports.updateUserScores = onDocumentUpdated('selections/{selectionId}',
     async (change) => {
         //console.log("Full selection data >>> ", change.data.after.data())
         //console.log("selection score before: ", change.data.before.data().score);
@@ -202,7 +203,7 @@ exports.updateUserScores = onDocumentUpdated('z_selections/{selectionId}',
             //console.log("LEAGUE right here >>>>>", league);
             
             // Set user's score in user doc
-            const userRef = dbContext.collection('z_users').doc(userId);
+            const userRef = dbContext.collection('users').doc(userId);
             const res = await userRef.set(
                 { 
                     pickEmGameScores: {
